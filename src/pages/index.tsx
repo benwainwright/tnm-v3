@@ -2,7 +2,6 @@ import { FC, useEffect } from "react"
 
 import { ParagraphText } from "@app/components/atoms"
 import { Layout, Hero } from "@app/components/containers"
-import Seo from "@app/components/seo"
 import { signOut } from "@app/aws/authenticate"
 import styled from "@emotion/styled"
 
@@ -17,8 +16,6 @@ const IndexPage: FC = () => {
 
   return (
     <Layout>
-      <Seo title="Home" />
-
       <Hero>
         <h1>Hi people</h1>
       </Hero>

@@ -10,21 +10,24 @@ const testingLibrary = [
 const deps = [
     "next-aws-lambda-webpack-plugin",
     "@axe-core/react",
+    "jest-extended",
     "@storybook/react",
     ...testingLibrary.map(dep => `@testing-library/${dep}`),
     "ts-jest",
     "@aws-amplify/auth",
     "@emotion/jest",
+    "@emotion/styled",
+    "@emotion/react",
     "@wojtekmaj/enzyme-adapter-react-17",
     "amazon-cognito-identity-js",
     "@types/testing-library__jest-dom",
-    "@emotion/styled",
     "jest-mock-extended",
     "jest-when",
     "fp-ts"
 ]
 
 const depsWithoutTypes = [
+  "react-helmet",
   "lodash",
   "ramda",
   "enzyme",
@@ -43,6 +46,9 @@ const tnmApp = new web.NextJsTypeScriptProject({
   projenrcTs: true,
   tsconfig: {
     include: ["src/global.d.ts"],
+    exclude: [
+      "build", "out_lambda", "next.config.js"
+    ],
     compilerOptions: {
       isolatedModules: false
     }
@@ -68,7 +74,7 @@ tnmApp.tsconfig.addExclude(infrastructure.outdir)
 
 const tsConfig = tnmApp.tryFindObjectFile('tsconfig.json')
 
-tsConfig.addOverride('compilerOptions.paths', { "@app/*": [ "./src/*" ]})
-tsConfig.addOverride('compilerOptions.types', [ "@types/testing-library__jest-dom", "node" ])
+tsConfig.addOverride('compilerOptions.paths', { "@app/*": [ "*" ]})
+tsConfig.addOverride('compilerOptions.baseUrl', "./src")
 
 tnmApp.synth();

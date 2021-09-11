@@ -1,7 +1,7 @@
 import { FC, useState, useEffect } from "react"
 import { currentUser } from "@app/aws/authenticate"
-import { navigate } from "gatsby"
 import styled from "@emotion/styled"
+import { navigate } from "@app/utils/navigate"
 
 export enum Redirect {
   IfLoggedIn,

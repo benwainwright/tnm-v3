@@ -13,6 +13,10 @@
       "type": "build"
     },
     {
+      "name": "@emotion/react",
+      "type": "build"
+    },
+    {
       "name": "@emotion/styled",
       "type": "build"
     },
@@ -70,6 +74,10 @@
       "type": "build"
     },
     {
+      "name": "@types/react-helmet",
+      "type": "build"
+    },
+    {
       "name": "@types/testing-library__jest-dom",
       "type": "build"
     },
@@ -91,6 +99,10 @@
     },
     {
       "name": "jest",
+      "type": "build"
+    },
+    {
+      "name": "jest-extended",
       "type": "build"
     },
     {
@@ -120,6 +132,10 @@
     },
     {
       "name": "ramda",
+      "type": "build"
+    },
+    {
+      "name": "react-helmet",
       "type": "build"
     },
     {

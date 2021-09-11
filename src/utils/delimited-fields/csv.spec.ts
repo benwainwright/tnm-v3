@@ -120,7 +120,7 @@ describe("Generate CSV string", () => {
     ["commas", ","],
   ])(
     "fields containing %s are always enclosed double quotes. Others are not.",
-    (name: string, character: string) => {
+    (_name: string, character: string) => {
       const bar = [
         {
           foo: `${character}bar`,

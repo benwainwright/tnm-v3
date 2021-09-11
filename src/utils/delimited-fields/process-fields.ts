@@ -2,7 +2,7 @@ import { ValueType } from "./types"
 import { left, right, Either } from "fp-ts/Either"
 import { curry, pipe } from "ramda"
 
-interface ArbitraryObjectType {
+export interface ArbitraryObjectType {
   [key: string]: ValueType
 }
 

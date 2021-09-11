@@ -86,7 +86,7 @@
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @aws-amplify/auth @axe-core/react @emotion/jest @emotion/styled @storybook/react @testing-library/jest-dom @testing-library/react @testing-library/react-hooks @testing-library/user-event @types/enzyme @types/jest @types/jest-when @types/lodash @types/node @types/ramda @types/react @types/react-dom @types/testing-library__jest-dom @wojtekmaj/enzyme-adapter-react-17 amazon-cognito-identity-js enzyme fp-ts jest jest-mock-extended jest-when lodash next-aws-lambda-webpack-plugin npm-check-updates ramda ts-jest ts-node typescript autoprefixer next postcss react react-dom tailwindcss"
+          "exec": "yarn upgrade @aws-amplify/auth @axe-core/react @emotion/jest @emotion/react @emotion/styled @storybook/react @testing-library/jest-dom @testing-library/react @testing-library/react-hooks @testing-library/user-event @types/enzyme @types/jest @types/jest-when @types/lodash @types/node @types/ramda @types/react @types/react-dom @types/react-helmet @types/testing-library__jest-dom @wojtekmaj/enzyme-adapter-react-17 amazon-cognito-identity-js enzyme fp-ts jest jest-extended jest-mock-extended jest-when lodash next-aws-lambda-webpack-plugin npm-check-updates ramda react-helmet ts-jest ts-node typescript autoprefixer next postcss react react-dom tailwindcss"
         },
         {
           "exec": "npx projen"

@@ -5,7 +5,7 @@ import {
   LoginFormData,
   SrpData
 } from "@app/types/srp-data"
-import { navigate } from "gatsby"
+import { navigate } from "@app/utils/navigate"
 import { useState } from "react"
 
 export enum LoginState {
