@@ -1,5 +1,37 @@
 import { web, AwsCdkTypeScriptApp } from 'projen';
 
+const testingLibrary = [
+  "user-event",
+  "react-hooks",
+  "jest-dom",
+  "react"
+]
+
+const deps = [
+    "next-aws-lambda-webpack-plugin",
+    "@axe-core/react",
+    "@storybook/react",
+    ...testingLibrary.map(dep => `@testing-library/${dep}`),
+    "ts-jest",
+    "@aws-amplify/auth",
+    "@emotion/jest",
+    "@wojtekmaj/enzyme-adapter-react-17",
+    "amazon-cognito-identity-js",
+    "@types/testing-library__jest-dom",
+    "@emotion/styled",
+    "jest-mock-extended",
+    "jest-when",
+    "fp-ts"
+]
+
+const depsWithoutTypes = [
+  "lodash",
+  "ramda",
+  "enzyme",
+  "jest",
+  "jest-when"
+]
+
 const tnmApp = new web.NextJsTypeScriptProject({
   defaultReleaseBranch: 'main',
   gitignore: [
@@ -7,8 +39,20 @@ const tnmApp = new web.NextJsTypeScriptProject({
     'build',
   ],
   name: 'tnm-v3',
+  srcdir: 'src',
   projenrcTs: true,
-  devDeps: ["next-aws-lambda-webpack-plugin"],
+  tsconfig: {
+    include: ["src/global.d.ts"],
+    compilerOptions: {
+      isolatedModules: false
+    }
+  },
+  jestOptions: {
+    jestConfig: {
+      setupFilesAfterEnv: ["<rootDir>/src/testSetup.ts"]
+    }
+  },
+  devDeps: [...deps, ...depsWithoutTypes, ...depsWithoutTypes.map(dep => `@types/${dep}`)],
 });
 
 const infrastructure = new AwsCdkTypeScriptApp({
@@ -21,5 +65,10 @@ const infrastructure = new AwsCdkTypeScriptApp({
 })
 
 tnmApp.tsconfig.addExclude(infrastructure.outdir)
+
+const tsConfig = tnmApp.tryFindObjectFile('tsconfig.json')
+
+tsConfig.addOverride('compilerOptions.paths', { "@app/*": [ "./src/*" ]})
+tsConfig.addOverride('compilerOptions.types', [ "@types/testing-library__jest-dom", "node" ])
 
 tnmApp.synth();

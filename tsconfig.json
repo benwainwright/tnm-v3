@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "rootDir": "pages",
+    "rootDir": "src",
     "outDir": "lib",
     "alwaysStrict": true,
     "declaration": true,
@@ -28,17 +28,25 @@
     "target": "es5",
     "esModuleInterop": true,
     "moduleResolution": "node",
-    "isolatedModules": true,
+    "isolatedModules": false,
     "jsx": "preserve",
     "allowJs": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true
+    "noEmit": true,
+    "paths": {
+      "@app/*": [
+        "./src/*"
+      ]
+    },
+    "types": [
+      "@types/testing-library__jest-dom",
+      "node"
+    ]
   },
   "include": [
-    "pages/**/*.ts",
-    "**/*.ts",
-    "**/*.tsx"
+    "src/**/*.ts",
+    "src/global.d.ts"
   ],
   "exclude": [
     "/Users/benwainwright1/repos/tnm-v3/infrastructure"

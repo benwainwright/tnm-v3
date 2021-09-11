@@ -38,7 +38,7 @@ build
 !/.github/pull_request_template.md
 !/test/
 !/tsconfig.json
-!/pages/
+!/src/
 /lib
 /dist/
 !/tailwind.config.json

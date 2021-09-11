@@ -2,7 +2,7 @@
 /.projen/
 /.mergify.yml
 /test/
-/pages/
+/src/
 !/lib/
 !/lib/**/*.js
 !/lib/**/*.d.ts
