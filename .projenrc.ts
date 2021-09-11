@@ -1,14 +1,25 @@
-import { web } from 'projen';
-const project = new web.NextJsTypeScriptProject({
+import { web, AwsCdkTypeScriptApp } from 'projen';
+
+const tnmApp = new web.NextJsTypeScriptProject({
   defaultReleaseBranch: 'main',
+  gitignore: [
+    'out_lambda',
+    'build',
+  ],
   name: 'tnm-v3',
   projenrcTs: true,
-
-  // deps: [],                /* Runtime dependencies of this module. */
-  // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
-  // devDeps: [],             /* Build dependencies for this module. */
-  // packageName: undefined,  /* The "name" in package.json. */
-  // release: undefined,      /* Add release management to this project. */
-  // tailwind: true,          /* Setup Tailwind CSS as a PostCSS plugin. */
+  devDeps: ["next-aws-lambda-webpack-plugin"],
 });
-project.synth();
+
+const infrastructure = new AwsCdkTypeScriptApp({
+  name: 'tnm-v3-infrastructure',
+  cdkVersion: '2.0.0-rc.21',
+  outdir: 'infrastructure',
+  defaultReleaseBranch: 'main',
+  devDeps: ["fs-extra", "@types/fs-extra"],
+  parent: tnmApp
+})
+
+tnmApp.tsconfig.addExclude(infrastructure.outdir)
+
+tnmApp.synth();

@@ -14,6 +14,10 @@
       "type": "build"
     },
     {
+      "name": "next-aws-lambda-webpack-plugin",
+      "type": "build"
+    },
+    {
       "name": "npm-check-updates",
       "version": "^11",
       "type": "build"
