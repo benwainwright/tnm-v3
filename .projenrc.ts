@@ -10,6 +10,7 @@ const testingLibrary = [
 const deps = [
     "next-aws-lambda-webpack-plugin",
     "@axe-core/react",
+    "next-images",
     "jest-extended",
     "@storybook/react",
     ...testingLibrary.map(dep => `@testing-library/${dep}`),
@@ -38,6 +39,8 @@ const depsWithoutTypes = [
 const tnmApp = new web.NextJsTypeScriptProject({
   defaultReleaseBranch: 'main',
   gitignore: [
+    'out',
+    '.DS_Store',
     'out_lambda',
     'build',
   ],
@@ -66,7 +69,7 @@ const infrastructure = new AwsCdkTypeScriptApp({
   cdkVersion: '2.0.0-rc.21',
   outdir: 'infrastructure',
   defaultReleaseBranch: 'main',
-  devDeps: ["fs-extra", "@types/fs-extra"],
+  devDeps: ["fs-extra", "@types/fs-extra", "cdk-cloudfront-invalidator"],
   parent: tnmApp
 })
 

@@ -2,7 +2,6 @@ import { FC } from "react"
 import styled from "@emotion/styled"
 
 import SeasonalPattern from "../../../assets/images/Seasonal-pattern-spring-tnm.png"
-import TnmLogoWhite from "../../../assets/images/TNM-Full-white.svg"
 
 const StyledFooter = styled.footer`
   width: 100%;
@@ -64,7 +63,7 @@ const TnmLogoWhiteAnchor = styled.a`
   height: 46px;
   display: block;
   margin-bottom: 100px;
-  background: url(${TnmLogoWhite});
+  background: url('../../../assets/images/TNM-Full-white.svg');
 `
 
 const Footer: FC = () => (

@@ -9679,6 +9679,14 @@ next-aws-lambda-webpack-plugin@^0.2.8:
   dependencies:
     fs-extra "^9.1.0"
 
+next-images@^1.8.1:
+  version "1.8.1"
+  resolved "https://registry.npmjs.org/next-images/-/next-images-1.8.1.tgz#adea0c46a2e837cb49b6f95b478500a7ed4eea4f"
+  integrity sha512-/DoXucQKWkEBT2rCQKtm9bb+KTAnd1vVTLO12lX4oxdiBQa2uqn5vhcMPwKsdJlxNBzwg6EVnddFs3aqcwiiGA==
+  dependencies:
+    file-loader "^6.2.0"
+    url-loader "^4.1.0"
+
 next@^11.1.2:
   version "11.1.2"
   resolved "https://registry.npmjs.org/next/-/next-11.1.2.tgz#527475787a9a362f1bc916962b0c0655cc05bc91"
@@ -13219,7 +13227,7 @@ urix@^0.1.0:
   resolved "https://registry.npmjs.org/urix/-/urix-0.1.0.tgz#da937f7a62e21fec1fd18d49b35c2935067a6c72"
   integrity sha1-2pN/emLiH+wf0Y1Js1wpNQZ6bHI=
 
-url-loader@^4.1.1:
+url-loader@^4.1.0, url-loader@^4.1.1:
   version "4.1.1"
   resolved "https://registry.npmjs.org/url-loader/-/url-loader-4.1.1.tgz#28505e905cae158cf07c92ca622d7f237e70a4e2"
   integrity sha512-3BTV812+AVHHOJQO8O5MkWgZ5aosP7GnROJwvzLS9hWDj00lZ6Z0wNak423Lp9PBZN05N+Jk/N5Si8jRAlGyWA==

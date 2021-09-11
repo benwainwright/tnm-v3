@@ -6,4 +6,8 @@ module.exports = {
         config.plugins.push(new GenerateAwsLambda(nextConfig));
         return config
     },
+  images: {
+    loader: 'custom'
+  }
 };
+

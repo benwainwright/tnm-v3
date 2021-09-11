@@ -1537,6 +1537,11 @@ cdk-assets@2.0.0-rc.21:
     mime "^2.5.2"
     yargs "^16.2.0"
 
+cdk-cloudfront-invalidator@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/cdk-cloudfront-invalidator/-/cdk-cloudfront-invalidator-1.0.0.tgz#1dcc60418e3fed89057f8c9391a24f3b6ea0ba95"
+  integrity sha512-UbE2Ue6vxVRFC+MuViHnj+vFJQu2Hi8kY3jQT0f7uLXyKDnlEVBpn4+V3LvD3KAkX7euIzFHOERi3t4ybTlt+A==
+
 chalk@^2.0.0:
   version "2.4.2"
   resolved "https://registry.npmjs.org/chalk/-/chalk-2.4.2.tgz#cd42541677a54333cf541a49108c1432b44c9424"

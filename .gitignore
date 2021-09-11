@@ -29,6 +29,8 @@ jspm_packages/
 *.tgz
 .yarn-integrity
 .cache
+out
+.DS_Store
 out_lambda
 build
 !/.projenrc.js

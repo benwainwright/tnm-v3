@@ -122,6 +122,10 @@
       "type": "build"
     },
     {
+      "name": "next-images",
+      "type": "build"
+    },
+    {
       "name": "npm-check-updates",
       "version": "^11",
       "type": "build"
