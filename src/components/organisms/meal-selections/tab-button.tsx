@@ -1,10 +1,10 @@
-import { FC } from "react"
-import styled from "@emotion/styled"
+import { FC } from "react";
+import styled from "@emotion/styled";
 
 interface MealsSelectionsTabButtonProps {
-  onClick?: () => void
-  active?: boolean
-  tabListLength: number
+  onClick?: () => void;
+  active?: boolean;
+  tabListLength: number;
 }
 
 const MealsSelectionsTabButton: FC<MealsSelectionsTabButtonProps> = (props) => {
@@ -19,8 +19,8 @@ const MealsSelectionsTabButton: FC<MealsSelectionsTabButtonProps> = (props) => {
     background: white;
     color: ${props.active ? `black` : `#939393`};
     text-decoration: ${props.active ? `underline` : `none`};
-  `
-  StyledButton.displayName = "button"
+  `;
+  StyledButton.displayName = "button";
 
   return (
     <StyledButton
@@ -30,7 +30,7 @@ const MealsSelectionsTabButton: FC<MealsSelectionsTabButtonProps> = (props) => {
     >
       {props.children}
     </StyledButton>
-  )
-}
+  );
+};
 
-export default MealsSelectionsTabButton
+export default MealsSelectionsTabButton;

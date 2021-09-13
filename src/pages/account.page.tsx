@@ -1,24 +1,24 @@
-import { FC } from "react"
-import { Hero, Layout } from "@app/components/containers"
-import { API } from "@aws-amplify/api"
+import { FC } from "react";
+import { Hero, Layout } from "@app/components/containers";
+import { API } from "@aws-amplify/api";
 import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
   useQuery,
-  gql
-} from "@apollo/client"
+  gql,
+} from "@apollo/client";
 
-import { createHttpLink } from "@apollo/client"
-import { setContext } from "@apollo/client/link/context"
-import AccountIcon from "@app/assets/images/icons/TNM_Icons_Final_Account.png"
+import { createHttpLink } from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
+import AccountIcon from "@app/assets/images/icons/TNM_Icons_Final_Account.png";
 import Authenticated, {
-  Redirect
-} from "@app/components/organisms/login-and-register-box/authenticated"
-import styled from "@emotion/styled"
-import { currentUser } from "@app/aws/authenticate"
-import { GetServerSideProps } from "next"
-import { verifyJwtToken, authorizedRoute } from "@app/utils"
+  Redirect,
+} from "@app/components/organisms/login-and-register-box/authenticated";
+import styled from "@emotion/styled";
+import { currentUser } from "@app/aws/authenticate";
+import { GetServerSideProps } from "next";
+import { verifyJwtToken, authorizedRoute } from "@app/utils";
 
 const YourAccountHeaderBox = styled("div")`
   text-align: center;
@@ -28,13 +28,13 @@ const YourAccountHeaderBox = styled("div")`
   display: flex;
   justify-content: center;
   gap: 1rem;
-`
+`;
 
 const YourAccountHeader = styled("h1")`
   font-size: 40px;
   display: auto;
   margin: 0.5rem 0 0 0;
-`
+`;
 
 const Account: FC = () => {
   return (
@@ -49,9 +49,9 @@ const Account: FC = () => {
         <h2>You are logged in</h2>
       </Layout>
     </Authenticated>
-  )
-}
+  );
+};
 
-export const getServerSideProps = authorizedRoute()
+export const getServerSideProps = authorizedRoute();
 
-export default Account
+export default Account;

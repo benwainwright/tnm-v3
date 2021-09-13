@@ -1,20 +1,20 @@
-import { FC } from "react"
-import { ChallengeForm } from "@app/components/containers"
-import { Input } from "@app/components/atoms"
-import { ErrorResponse } from "@app/types/error-response"
-import { RegisterFormData } from "@app/types/srp-data"
-import styled from "@emotion/styled"
+import { FC } from "react";
+import { ChallengeForm } from "@app/components/containers";
+import { Input } from "@app/components/atoms";
+import { ErrorResponse } from "@app/types/error-response";
+import { RegisterFormData } from "@app/types/srp-data";
+import styled from "@emotion/styled";
 
 export interface RegisterFormProps {
-  onSubmit: (data: RegisterFormData) => void
-  errors?: ErrorResponse[]
+  onSubmit: (data: RegisterFormData) => void;
+  errors?: ErrorResponse[];
 }
 
 const FieldRow = styled.div`
   display: flex;
   flex-direction: row;
   gap: 0.3rem;
-`
+`;
 
 const FormDivider = styled.hr`
   background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='black' stroke-width='3' stroke-dasharray='4%2c 8' stroke-dashoffset='0' stroke-linecap='butt'/%3e%3c/svg%3e");
@@ -22,9 +22,9 @@ const FormDivider = styled.hr`
   height: 1px;
   margin: -5px 0;
   border: 0;
-`
+`;
 
-const RegisterForm: FC<RegisterFormProps> = props => {
+const RegisterForm: FC<RegisterFormProps> = (props) => {
   return (
     <ChallengeForm
       submitText="Register"
@@ -59,7 +59,7 @@ const RegisterForm: FC<RegisterFormProps> = props => {
       <Input label="Town/City" name="townOrCity" />
       <FormDivider />
     </ChallengeForm>
-  )
-}
+  );
+};
 
-export default RegisterForm
+export default RegisterForm;

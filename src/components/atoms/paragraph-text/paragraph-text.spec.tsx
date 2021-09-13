@@ -1,14 +1,14 @@
-import { shallow } from "enzyme"
-import ParagraphText from "./paragraph-text"
+import { shallow } from "enzyme";
+import ParagraphText from "./paragraph-text";
 
 describe("The <ParagraphTest> component", () => {
   it("renders without errors", () => {
-    shallow(<ParagraphText />)
-  })
+    shallow(<ParagraphText />);
+  });
 
   it("renders its children", () => {
-    const wrapper = shallow(<ParagraphText>Some text!</ParagraphText>)
+    const wrapper = shallow(<ParagraphText>Some text!</ParagraphText>);
 
-    expect(wrapper.text()).toInclude("Some text!")
-  })
-})
+    expect(wrapper.text()).toInclude("Some text!");
+  });
+});

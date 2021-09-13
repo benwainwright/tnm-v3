@@ -18,13 +18,9 @@ export class TnmV3Stack extends Stack {
   constructor(scope: Construct, id: string, props: TnmAppProps) {
     super(scope, id, props.stackProps);
 
-    const transient = props.envName !== "prod"
+    const transient = props.envName !== "prod";
 
-    const { userPool } = makeUserPool(
-      this,
-      transient,
-      props.envName
-    )
+    const { userPool } = makeUserPool(this, transient, props.envName);
 
     const { httpOrigin } = makePagesApi(
       this,
@@ -34,11 +30,7 @@ export class TnmV3Stack extends Stack {
       userPool
     );
 
-    const { distribution } = setupFrontDoor(
-      this,
-      props.envName,
-      httpOrigin
-    )
+    const { distribution } = setupFrontDoor(this, props.envName, httpOrigin);
 
     deployStatics(
       this,
@@ -48,11 +40,7 @@ export class TnmV3Stack extends Stack {
       distribution
     );
 
-    makeDataTables(
-      this,
-      transient,
-      props.envName
-    ) 
+    makeDataTables(this, transient, props.envName);
   }
 }
 
@@ -65,7 +53,7 @@ const env = {
 
 new TnmV3Stack(app, "tnm-v3-dev-stack", {
   stackProps: { env },
-  envName: 'dev'
+  envName: "dev",
 });
 
 app.synth();

@@ -1,17 +1,19 @@
-import { Meta, Story } from "@storybook/react"
+import { Meta, Story } from "@storybook/react";
 
-import MealSelectionsComponent, { MealSelectionsProps } from "./meal-selections"
+import MealSelectionsComponent, {
+  MealSelectionsProps,
+} from "./meal-selections";
 
 export default {
   title: "organisms/Meal Selections",
   component: MealSelectionsComponent,
-} as Meta
+} as Meta;
 
 const Template: Story<MealSelectionsProps> = (args) => (
   <MealSelectionsComponent {...args} />
-)
+);
 
-export const MealSelections = Template.bind({})
+export const MealSelections = Template.bind({});
 
 MealSelections.args = {
   maxMeals: 4,
@@ -81,4 +83,4 @@ MealSelections.args = {
         "Steamed rice & green peas, crispy shallots, roasted peanuts, red chilli, brocolli, coriander",
     },
   ],
-}
+};

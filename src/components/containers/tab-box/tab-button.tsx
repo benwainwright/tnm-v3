@@ -1,10 +1,10 @@
-import { FC } from "react"
-import styled from "@emotion/styled"
+import { FC } from "react";
+import styled from "@emotion/styled";
 
 interface TabButtonProps {
-  onClick?: () => void
-  active?: boolean
-  tabListLength: number
+  onClick?: () => void;
+  active?: boolean;
+  tabListLength: number;
 }
 
 const TabButton: FC<TabButtonProps> = (props) => {
@@ -26,8 +26,8 @@ const TabButton: FC<TabButtonProps> = (props) => {
       border-left: 1px solid black;
     }
     /* stylelint-disable */
-  `
-  StyledButton.displayName = "button"
+  `;
+  StyledButton.displayName = "button";
 
   return (
     <StyledButton
@@ -37,7 +37,7 @@ const TabButton: FC<TabButtonProps> = (props) => {
     >
       {props.children}
     </StyledButton>
-  )
-}
+  );
+};
 
-export default TabButton
+export default TabButton;

@@ -1,18 +1,18 @@
-import { FC, useEffect } from "react"
+import { FC, useEffect } from "react";
 
-import { ParagraphText } from "@app/components/atoms"
-import { Layout, Hero } from "@app/components/containers"
-import { signOut } from "@app/aws/authenticate"
-import styled from "@emotion/styled"
+import { ParagraphText } from "@app/components/atoms";
+import { Layout, Hero } from "@app/components/containers";
+import { signOut } from "@app/aws/authenticate";
+import styled from "@emotion/styled";
 
 const StyledDiv = styled.div`
   padding: 1rem;
-`
+`;
 
 const IndexPage: FC = () => {
   useEffect(() => {
-    signOut()
-  }, [])
+    signOut();
+  }, []);
 
   return (
     <Layout>
@@ -73,7 +73,7 @@ const IndexPage: FC = () => {
         </ParagraphText>
       </StyledDiv>
     </Layout>
-  )
-}
+  );
+};
 
-export default IndexPage
+export default IndexPage;

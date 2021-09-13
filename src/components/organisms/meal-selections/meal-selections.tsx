@@ -1,25 +1,25 @@
-import { FC, useState } from "react"
-import { TabBox, Tab } from "@app/components/containers"
-import MealList from "./meal-list"
-import TabButton from "./tab-button"
-import styled from "@emotion/styled"
-import { Meal } from "./meal"
-import CombinedBasket from "./combined-basket"
+import { FC, useState } from "react";
+import { TabBox, Tab } from "@app/components/containers";
+import MealList from "./meal-list";
+import TabButton from "./tab-button";
+import styled from "@emotion/styled";
+import { Meal } from "./meal";
+import CombinedBasket from "./combined-basket";
 
 export interface MealSelectionsProps {
-  mealsAvailable: Meal[]
-  breakfastsAvailable: Meal[]
-  snacksAvailable: Meal[]
-  maxMeals: number
-  maxSnacks: number
-  maxBreakfasts: number
+  mealsAvailable: Meal[];
+  breakfastsAvailable: Meal[];
+  snacksAvailable: Meal[];
+  maxMeals: number;
+  maxSnacks: number;
+  maxBreakfasts: number;
 }
 
 const GridParent = styled.div`
   display: grid;
   width: 100%;
   grid-template-columns: 70% 30%;
-`
+`;
 
 const DivContainer = styled.div`
   display: flex;
@@ -27,23 +27,23 @@ const DivContainer = styled.div`
   flex-wrap: wrap;
   align-items: flex-end;
   gap: 2rem;
-`
+`;
 
 const createDefaultSelectedThings = (things: Meal[]) =>
-  Object.fromEntries(things.map(thing => [thing.id, 0]))
+  Object.fromEntries(things.map((thing) => [thing.id, 0]));
 
-const MealSelections: FC<MealSelectionsProps> = props => {
+const MealSelections: FC<MealSelectionsProps> = (props) => {
   const [selectedMeals, setSelectedMeals] = useState(
     createDefaultSelectedThings(props.mealsAvailable)
-  )
+  );
 
   const [selectedBreakfasts, setSelectedBreakfasts] = useState(
     createDefaultSelectedThings(props.breakfastsAvailable)
-  )
+  );
 
   const [selectedSnacks, setSelectedSnacks] = useState(
     createDefaultSelectedThings(props.snacksAvailable)
-  )
+  );
 
   return (
     <DivContainer>
@@ -79,7 +79,7 @@ const MealSelections: FC<MealSelectionsProps> = props => {
           available={[
             ...props.mealsAvailable,
             ...props.snacksAvailable,
-            ...props.breakfastsAvailable
+            ...props.breakfastsAvailable,
           ]}
           selectedMeals={selectedMeals}
           setMeals={setSelectedMeals}
@@ -93,7 +93,7 @@ const MealSelections: FC<MealSelectionsProps> = props => {
         />
       </GridParent>
     </DivContainer>
-  )
-}
+  );
+};
 
-export default MealSelections
+export default MealSelections;

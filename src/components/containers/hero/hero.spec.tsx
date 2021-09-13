@@ -1,13 +1,13 @@
-import Hero from "./hero"
-import { shallow } from "enzyme"
+import Hero from "./hero";
+import { shallow } from "enzyme";
 
 describe("The hero box", () => {
   it("renders without error", () => {
-    shallow(<Hero />)
-  })
+    shallow(<Hero />);
+  });
 
   it("renders it children", () => {
-    const wrapper = shallow(<Hero>Hello!</Hero>)
-    expect(wrapper.text()).toContain("Hello!")
-  })
-})
+    const wrapper = shallow(<Hero>Hello!</Hero>);
+    expect(wrapper.text()).toContain("Hello!");
+  });
+});

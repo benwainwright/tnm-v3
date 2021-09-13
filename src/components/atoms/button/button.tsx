@@ -1,16 +1,16 @@
-import type { FC, MouseEvent } from "react"
+import type { FC, MouseEvent } from "react";
 
-import styled from "@emotion/styled"
-import { BUTTON_BLACK } from "../../../config"
+import styled from "@emotion/styled";
+import { BUTTON_BLACK } from "../../../config";
 
 export interface ButtonProps {
-  onClick?: (event: MouseEvent<HTMLButtonElement>) => void
-  primary?: boolean
-  color?: string
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
+  primary?: boolean;
+  color?: string;
 }
 
 const ButtonElement = styled.button((props: ButtonProps) => {
-  const color = props.color || BUTTON_BLACK
+  const color = props.color || BUTTON_BLACK;
   return {
     height: "100%",
     borderRadius: "25px",
@@ -29,13 +29,13 @@ const ButtonElement = styled.button((props: ButtonProps) => {
       color: props.primary ? color : "white",
       backgroundColor: props.primary ? "white" : color,
     },
-  }
-})
+  };
+});
 
-ButtonElement.displayName = "button"
+ButtonElement.displayName = "button";
 
 const Button: FC<ButtonProps> = (props) => (
   <ButtonElement {...props}>{props.children}</ButtonElement>
-)
+);
 
-export default Button
+export default Button;

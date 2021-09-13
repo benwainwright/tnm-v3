@@ -1,4 +1,4 @@
 export interface ErrorResponse {
-  message: string
-  fields?: string[]
+  message: string;
+  fields?: string[];
 }

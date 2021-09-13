@@ -1,6 +1,6 @@
-import { Story, Meta } from "@storybook/react"
+import { Story, Meta } from "@storybook/react";
 
-import ButtonComponent, { ButtonProps } from "./button"
+import ButtonComponent, { ButtonProps } from "./button";
 
 export default {
   title: "atoms/Button",
@@ -9,18 +9,18 @@ export default {
     primary: { name: "Primary", type: "boolean", defaultValue: false },
     color: { name: "Color", type: "string", defaultValue: undefined },
   },
-} as Meta
+} as Meta;
 
 const Template: Story<ButtonProps> = (args) => (
   <ButtonComponent {...args}>Click Me</ButtonComponent>
-)
+);
 
-export const Primary = Template.bind({})
+export const Primary = Template.bind({});
 Primary.args = {
   primary: true,
-}
+};
 
-export const Secondary = Template.bind({})
+export const Secondary = Template.bind({});
 Secondary.args = {
   primary: false,
-}
+};

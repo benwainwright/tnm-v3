@@ -1,11 +1,11 @@
-import type { FC, MouseEvent } from "react"
-import styled from "@emotion/styled"
+import type { FC, MouseEvent } from "react";
+import styled from "@emotion/styled";
 
 export interface IconButtonProps {
-  icon: string
-  onClick?: (event: MouseEvent<HTMLButtonElement>) => void
-  disabled?: boolean
-  a11yLabel: string
+  icon: string;
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
+  disabled?: boolean;
+  a11yLabel: string;
 }
 
 const StyledButton = styled("button")`
@@ -26,8 +26,8 @@ const StyledButton = styled("button")`
   &:hover:enabled {
     filter: opacity(50%);
   }
-`
-StyledButton.displayName = "button"
+`;
+StyledButton.displayName = "button";
 
 const VisuallyHiddenText = styled.span`
   position: absolute;
@@ -38,13 +38,13 @@ const VisuallyHiddenText = styled.span`
   clip-path: inset(100%);
   clip: rect(1px, 1px, 1px, 1px);
   white-space: nowrap;
-`
+`;
 
 const IconButton: FC<IconButtonProps> = (props) => (
   <StyledButton onClick={props.onClick} disabled={props.disabled}>
     <img src={props.icon} alt="" width="40px" height="40px" />
     <VisuallyHiddenText>{props.a11yLabel}</VisuallyHiddenText>
   </StyledButton>
-)
+);
 
-export default IconButton
+export default IconButton;

@@ -1,4 +1,4 @@
-import { Breakpoints } from "./hooks/useBreakpoints"
+import { Breakpoints } from "./hooks/useBreakpoints";
 
 export const breakpoints: Breakpoints = {
   small: {
@@ -11,4 +11,4 @@ export const breakpoints: Breakpoints = {
   large: {
     start: 601,
   },
-}
+};

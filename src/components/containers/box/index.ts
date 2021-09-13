@@ -1,2 +1,2 @@
-import Box from "./box"
-export { Box }
+import Box from "./box";
+export { Box };

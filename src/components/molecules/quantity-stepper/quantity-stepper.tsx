@@ -1,16 +1,16 @@
-import { FC, Fragment } from "react"
-import { IconButton } from "@app/components/atoms"
-import AddIcon from "@app/assets/images/icons/tnm-add.png"
-import MinusIcon from "@app/assets/images/icons/tnm-subtract.png"
-import { uniqueId } from "lodash"
-import styled from "@emotion/styled"
+import { FC, Fragment } from "react";
+import { IconButton } from "@app/components/atoms";
+import AddIcon from "@app/assets/images/icons/tnm-add.png";
+import MinusIcon from "@app/assets/images/icons/tnm-subtract.png";
+import { uniqueId } from "lodash";
+import styled from "@emotion/styled";
 
 export interface QuantityStepperProps {
-  value?: number
-  onChange?: (newValue: number) => void
-  label?: string
-  max?: number
-  min?: number
+  value?: number;
+  onChange?: (newValue: number) => void;
+  label?: string;
+  max?: number;
+  min?: number;
 }
 
 const StyledDiv = styled("div")`
@@ -23,7 +23,7 @@ const StyledDiv = styled("div")`
   border: 1px solid black;
   border-radius: 30px;
   padding: 5px;
-`
+`;
 
 const LabelText = styled.label`
   flex-grow: 999;
@@ -32,53 +32,53 @@ const LabelText = styled.label`
   white-space: nowrap;
   font-family: "Acumin Pro", Arial, sans-serif;
   padding-left: 0.5rem;
-`
+`;
 
-const QuantityStepper: FC<QuantityStepperProps> = props => {
+const QuantityStepper: FC<QuantityStepperProps> = (props) => {
   const CountLabel = styled("div")`
     font-family: "Acumin Pro", Arial, sans-serif;
     font-weight: bold;
     flex-grow: ${props.label ? `0` : `999`};
     padding-left: ${props.label ? `0.5rem` : `0`};
     text-align: center;
-  `
+  `;
   const minusDisabled =
     props.value !== undefined &&
     props.min !== undefined &&
-    props.value === props.min
+    props.value === props.min;
 
   const plusDisabled =
     props.value !== undefined &&
     props.max !== undefined &&
-    props.value === props.max
+    props.value === props.max;
 
   const minusButton = (
     <IconButton
       onClick={() => {
         if (!minusDisabled) {
-          props.onChange?.((props.value ?? 0) - 1)
+          props.onChange?.((props.value ?? 0) - 1);
         }
       }}
       icon={MinusIcon}
       a11yLabel="Decrease"
       disabled={minusDisabled}
     />
-  )
+  );
 
   const plusButton = (
     <IconButton
       onClick={() => {
         if (!plusDisabled) {
-          props.onChange?.((props.value ?? 0) + 1)
+          props.onChange?.((props.value ?? 0) + 1);
         }
       }}
       icon={AddIcon}
       a11yLabel="Increase"
       disabled={plusDisabled}
     />
-  )
+  );
 
-  const labelId = uniqueId()
+  const labelId = uniqueId();
 
   const countLabel = (
     <CountLabel
@@ -90,7 +90,7 @@ const QuantityStepper: FC<QuantityStepperProps> = props => {
     >
       {props.value ?? 0}
     </CountLabel>
-  )
+  );
   const widgets = props.label ? (
     <Fragment>
       {countLabel}
@@ -104,8 +104,8 @@ const QuantityStepper: FC<QuantityStepperProps> = props => {
       {countLabel}
       {plusButton}
     </Fragment>
-  )
-  return <StyledDiv>{widgets}</StyledDiv>
-}
+  );
+  return <StyledDiv>{widgets}</StyledDiv>;
+};
 
-export default QuantityStepper
+export default QuantityStepper;

@@ -1,13 +1,13 @@
-import { ValueType } from "./types"
-import { left, right, Either } from "fp-ts/Either"
-import { curry, pipe } from "ramda"
+import { ValueType } from "./types";
+import { left, right, Either } from "fp-ts/Either";
+import { curry, pipe } from "ramda";
 
 export interface ArbitraryObjectType {
-  [key: string]: ValueType
+  [key: string]: ValueType;
 }
 
 const isEmptyArray = <T extends ArbitraryObjectType>(inputObjectArray: T[]) =>
-  inputObjectArray.length === 0
+  inputObjectArray.length === 0;
 
 const mapRowsToMatrix = <T extends ArbitraryObjectType>(
   inputObjectArray: T[],
@@ -16,17 +16,17 @@ const mapRowsToMatrix = <T extends ArbitraryObjectType>(
   inputObjectArray.map((row) =>
     // eslint-disable-next-line security/detect-object-injection
     columnHeaders.map((columnHeader) => row[columnHeader])
-  )
+  );
 
 const getHeaders = <T extends ArbitraryObjectType>(inputObjectArray: T[]) =>
-  Object.keys(inputObjectArray[0])
+  Object.keys(inputObjectArray[0]);
 
 const convertToMatrix = <T extends ArbitraryObjectType>(
   inputObjectArray: T[]
 ) => [
   getHeaders(inputObjectArray),
   ...mapRowsToMatrix(inputObjectArray, getHeaders(inputObjectArray)),
-]
+];
 
 const processMatrixToOutputString = curry(
   (
@@ -38,7 +38,7 @@ const processMatrixToOutputString = curry(
     matrix
       .map((row) => row.map(fieldProcessor).join(fieldSeparator))
       .join(lineSeparator)
-)
+);
 
 const doProcess = <T extends ArbitraryObjectType>(
   fieldSeparator: string,
@@ -49,7 +49,7 @@ const doProcess = <T extends ArbitraryObjectType>(
   pipe<T[], ReturnType<typeof convertToMatrix>, string>(
     convertToMatrix,
     processMatrixToOutputString(fieldSeparator, lineSeparator, fieldProcessor)
-  )(inputObjectArray)
+  )(inputObjectArray);
 
 const processObjectArray = curry(
   <T extends ArbitraryObjectType>(
@@ -68,6 +68,6 @@ const processObjectArray = curry(
             inputObjectArray
           )
         )
-)
+);
 
-export default processObjectArray
+export default processObjectArray;

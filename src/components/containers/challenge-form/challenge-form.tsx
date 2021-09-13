@@ -1,6 +1,6 @@
-import { Button, Input } from "@app/components/atoms"
-import { addNewProps } from "@app/utils/react"
-import { ErrorResponse } from "@app/types/error-response"
+import { Button, Input } from "@app/components/atoms";
+import { addNewProps } from "@app/utils/react";
+import { ErrorResponse } from "@app/types/error-response";
 import {
   Dispatch,
   SetStateAction,
@@ -8,28 +8,28 @@ import {
   ReactNode,
   PropsWithChildren,
   ChangeEvent,
-  useState
-} from "react"
-import styled from "@emotion/styled"
+  useState,
+} from "react";
+import styled from "@emotion/styled";
 
 export interface ChallengeFormProps<T> {
-  value?: T
-  submitText?: string
-  onSubmit?: (data: T) => void
-  errors?: ErrorResponse[]
+  value?: T;
+  submitText?: string;
+  onSubmit?: (data: T) => void;
+  errors?: ErrorResponse[];
 }
 
 const FlexForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-`
+`;
 
 const FormHeader = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`
+`;
 
 const FormError = styled.div`
   color: red;
@@ -38,24 +38,24 @@ const FormError = styled.div`
   margin-top: 1rem;
   text-align: center;
   font-weight: bold;
-`
+`;
 const StyledH2 = styled.h2`
   font-family: "Acumin Pro", Arial, sans-serif;
   margin: 0 0 0 0;
-`
-StyledH2.displayName = "h2"
+`;
+StyledH2.displayName = "h2";
 
 const findMessage = (
   errorMessages: ErrorResponse[],
   name: string
 ): ErrorResponse | undefined =>
-  errorMessages?.find(message => message.fields?.includes(name))
+  errorMessages?.find((message) => message.fields?.includes(name));
 
 const addErrorMessages = (nodes: ReactNode, errorMessages: ErrorResponse[]) =>
   addNewProps<typeof Input>(nodes, ({ props: { name } }) => ({
     apply: Boolean(findMessage(errorMessages, name)),
-    props: { error: true }
-  }))
+    props: { error: true },
+  }));
 
 const addEventHandlers = <T,>(
   nodes: ReactNode,
@@ -66,9 +66,9 @@ const addEventHandlers = <T,>(
     apply: name,
     props: {
       onChange: (event: ChangeEvent<HTMLInputElement>) =>
-        setData({ ...data, [name]: event.target.value })
-    }
-  }))
+        setData({ ...data, [name]: event.target.value }),
+    },
+  }));
 
 function assertFC<P>(
   _component: React.FC<P>
@@ -78,19 +78,19 @@ function assertFC<P>(
 function ChallengeForm<T>(
   props: PropsWithChildren<ChallengeFormProps<T>>
 ): ReactElement | null {
-  const [data, setData] = useState<T | undefined>()
-  const eventHandlersAdded = addEventHandlers(props.children, data, setData)
+  const [data, setData] = useState<T | undefined>();
+  const eventHandlersAdded = addEventHandlers(props.children, data, setData);
   const errorMessagesAdded = addErrorMessages(
     eventHandlersAdded,
     props.errors ?? []
-  )
-  const formErrors = props.errors?.filter(error => !error.fields) ?? []
+  );
+  const formErrors = props.errors?.filter((error) => !error.fields) ?? [];
   return (
     <FlexForm>
       <FormHeader>
         <FormError role="alert">
           {formErrors
-            .map(error =>
+            .map((error) =>
               error.message.endsWith(".")
                 ? error.message.slice(0, -1)
                 : error.message
@@ -101,19 +101,19 @@ function ChallengeForm<T>(
       {errorMessagesAdded}
       <Button
         primary
-        onClick={event => {
+        onClick={(event) => {
           if (data) {
-            props.onSubmit?.(data)
-            event.preventDefault()
+            props.onSubmit?.(data);
+            event.preventDefault();
           }
         }}
       >
         {props.submitText ?? "Submit"}
       </Button>
     </FlexForm>
-  )
+  );
 }
 
-assertFC(ChallengeForm)
+assertFC(ChallengeForm);
 
-export default ChallengeForm
+export default ChallengeForm;

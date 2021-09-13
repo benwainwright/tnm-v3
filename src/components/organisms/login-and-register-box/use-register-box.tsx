@@ -1,23 +1,23 @@
-import { confirmSignup, login, register } from "@app/aws/authenticate"
-import { ErrorResponse } from "@app/types/error-response"
-import { MfaFormData, RegisterFormData, SrpData } from "@app/types/srp-data"
-import { navigate } from "@app/utils/navigate"
-import { useState } from "react"
+import { confirmSignup, login, register } from "@app/aws/authenticate";
+import { ErrorResponse } from "@app/types/error-response";
+import { MfaFormData, RegisterFormData, SrpData } from "@app/types/srp-data";
+import { navigate } from "@app/utils/navigate";
+import { useState } from "react";
 
 export enum RegisterState {
   DoRegister = "DoRegister",
-  ConfirmMobile = "ConfirmMobile"
+  ConfirmMobile = "ConfirmMobile",
 }
 
 const isRegister = (
   _data: SrpData,
   state: RegisterState
-): _data is RegisterFormData => state === RegisterState.DoRegister
+): _data is RegisterFormData => state === RegisterState.DoRegister;
 
 const isConfirm = (
   _data: SrpData,
   state: RegisterState
-): _data is MfaFormData => state === RegisterState.ConfirmMobile
+): _data is MfaFormData => state === RegisterState.ConfirmMobile;
 
 const callRegister = (data: RegisterFormData) => {
   const address = [
@@ -25,10 +25,10 @@ const callRegister = (data: RegisterFormData) => {
     data.addressLine2,
     data.county,
     data.townOrCity,
-    data.postcode
+    data.postcode,
   ]
     .filter(Boolean)
-    .join("\n")
+    .join("\n");
 
   return register(
     data.username,
@@ -39,45 +39,45 @@ const callRegister = (data: RegisterFormData) => {
     data.surname,
     address,
     data.telephone
-  )
-}
+  );
+};
 
 export const useRegisterBox = () => {
-  const [errorMessage, setErrorMessage] = useState<ErrorResponse | undefined>()
+  const [errorMessage, setErrorMessage] = useState<ErrorResponse | undefined>();
 
   const [registerState, setRegisterState] = useState<RegisterState>(
     RegisterState.DoRegister
-  )
+  );
 
   const [registerData, setRegisterData] = useState<
     RegisterFormData | undefined
-  >()
+  >();
 
   const onSubmit = async (data: SrpData) => {
     try {
       if (isRegister(data, registerState)) {
-        const result = await callRegister(data)
+        const result = await callRegister(data);
         if (!result.userConfirmed) {
-          setRegisterState(RegisterState.ConfirmMobile)
+          setRegisterState(RegisterState.ConfirmMobile);
         }
-        setRegisterData(data)
+        setRegisterData(data);
       } else if (isConfirm(data, registerState)) {
         const result = await confirmSignup(
           registerData?.username ?? "",
           data.code
-        )
+        );
         if (result === "SUCCESS") {
           await login(
             registerData?.username ?? "",
             registerData?.password ?? ""
-          )
-          navigate("/account/")
+          );
+          navigate("/account/");
         }
       }
     } catch (error) {
-      setErrorMessage({ message: error.message })
+      setErrorMessage({ message: error.message });
     }
-  }
+  };
 
-  return { errorMessage, registerState, onSubmit }
-}
+  return { errorMessage, registerState, onSubmit };
+};

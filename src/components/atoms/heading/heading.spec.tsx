@@ -1,15 +1,15 @@
-import { shallow } from "enzyme"
-import Heading from "./heading"
+import { shallow } from "enzyme";
+import Heading from "./heading";
 
 describe("The <Heading> component", () => {
   it("renders without errors", () => {
-    shallow(<Heading level={1} />)
-  })
+    shallow(<Heading level={1} />);
+  });
 
   it("renders its children", () => {
-    const wrapper = shallow(<Heading level={1}>Foo!</Heading>)
-    expect(wrapper.text()).toInclude("Foo!")
-  })
+    const wrapper = shallow(<Heading level={1}>Foo!</Heading>);
+    expect(wrapper.text()).toInclude("Foo!");
+  });
 
   it.each([
     ["h1", 1],
@@ -19,7 +19,7 @@ describe("The <Heading> component", () => {
     ["h5", 5],
     ["h6", 6],
   ])("renders a %s if level is set to %d", (tag: string, level: number) => {
-    const wrapper = shallow(<Heading level={level}>Foo!</Heading>)
-    expect(wrapper.find(tag)).toHaveLength(1)
-  })
-})
+    const wrapper = shallow(<Heading level={level}>Foo!</Heading>);
+    expect(wrapper.find(tag)).toHaveLength(1);
+  });
+});

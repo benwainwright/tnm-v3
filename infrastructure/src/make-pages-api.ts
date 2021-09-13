@@ -15,12 +15,11 @@ export const makePagesApi = (
   projectRoot: string,
   pool: UserPool
 ) => {
-
-  const awsNextLayer = new LayerVersion(context, 'aws-next-layer', {
+  const awsNextLayer = new LayerVersion(context, "aws-next-layer", {
     code: Code.fromAsset(path.resolve(projectRoot, "out_lambda", "layer")),
   });
 
-  const api = new RestApi(context, 'pages-api', {
+  const api = new RestApi(context, "pages-api", {
     defaultCorsPreflightOptions: {
       allowOrigins: Cors.ALL_ORIGINS,
     },
@@ -48,7 +47,7 @@ export const makePagesApi = (
       layers: [awsNextLayer],
       environment: {
         COGNITO_POOL_ID: pool.userPoolId,
-      }
+      },
     });
 
     const resource =
@@ -64,6 +63,6 @@ export const makePagesApi = (
   return {
     api,
     functions,
-    httpOrigin
+    httpOrigin,
   };
 };

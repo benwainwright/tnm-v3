@@ -1,12 +1,12 @@
-import { Story, Meta } from "@storybook/react"
+import { Story, Meta } from "@storybook/react";
 
-import HeaderComponent from "./header"
+import HeaderComponent from "./header";
 
 export default {
   title: "organisms/Header",
   component: HeaderComponent,
-} as Meta
+} as Meta;
 
-const Template: Story = (args) => <HeaderComponent {...args} />
+const Template: Story = (args) => <HeaderComponent {...args} />;
 
-export const Header = Template.bind({})
+export const Header = Template.bind({});

@@ -15,22 +15,18 @@ export const deployStatics = (
 ) => {
   const prefixes = ["_next", "images", "assets"];
 
-  const bucketName = getDomainName(envName)
+  const bucketName = getDomainName(envName);
 
-  const deploymentBucket = new Bucket(
-    context,
-    `statics-bucket`,
-    {
-      bucketName,
-      publicReadAccess: true,
-      websiteIndexDocument: "index.html",
-      websiteErrorDocument: "index.html",
-      removalPolicy: RemovalPolicy.DESTROY,
-    }
-  );
+  const deploymentBucket = new Bucket(context, `statics-bucket`, {
+    bucketName,
+    publicReadAccess: true,
+    websiteIndexDocument: "index.html",
+    websiteErrorDocument: "index.html",
+    removalPolicy: RemovalPolicy.DESTROY,
+  });
 
   new CfnOutput(context, "StaticsBucket", {
-    value: deploymentBucket.bucketName
+    value: deploymentBucket.bucketName,
   });
 
   const bucketOrigin = new S3Origin(deploymentBucket);
@@ -39,19 +35,15 @@ export const deployStatics = (
     distribution.addBehavior(`/${prefix}/*`, bucketOrigin)
   );
 
-  distribution.addBehavior(`/backend-config.json`, bucketOrigin)
+  distribution.addBehavior(`/backend-config.json`, bucketOrigin);
 
   new BucketDeployment(context, "deploy-public-folder", {
-    sources: [
-      Source.asset(publicFolder),
-    ],
+    sources: [Source.asset(publicFolder)],
     destinationBucket: deploymentBucket,
   });
 
   new BucketDeployment(context, "deploy-statics-folder", {
-    sources: [
-      Source.asset(staticsFolder),
-    ],
+    sources: [Source.asset(staticsFolder)],
     destinationBucket: deploymentBucket,
     distribution,
     destinationKeyPrefix: "_next/static",

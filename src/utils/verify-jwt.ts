@@ -1,10 +1,10 @@
 /*
  * Borrowed from https://github.com/awslabs/aws-support-tools/blob/master/Cognito/decode-verify-jwt/decode-verify-jwt.ts
  */
-import { promisify } from 'util';
-import * as Axios from 'axios';
-import * as jsonwebtoken from 'jsonwebtoken';
-import jwkToPem from 'jwk-to-pem';
+import { promisify } from "util";
+import * as Axios from "axios";
+import * as jsonwebtoken from "jsonwebtoken";
+import jwkToPem from "jwk-to-pem";
 
 export interface ClaimVerifyRequest {
   readonly token?: string;
@@ -26,7 +26,7 @@ interface PublicKey {
   alg: string;
   e: string;
   kid: string;
-  kty: 'RSA';
+  kty: "RSA";
   n: string;
   use: string;
 }
@@ -49,19 +49,18 @@ interface Claim {
   auth_time: number;
   iss: string;
   exp: number;
-  'cognito:groups': string[],
+  "cognito:groups": string[];
   username: string;
   client_id: string;
 }
 
 const getIssuer = () => {
-  const cognitoPoolId = process.env.COGNITO_POOL_ID || '';
+  const cognitoPoolId = process.env.COGNITO_POOL_ID || "";
   if (!cognitoPoolId) {
-    throw new Error('env var required for cognito pool');
+    throw new Error("env var required for cognito pool");
   }
   return `https://cognito-idp.${process.env.AWS_REGION}.amazonaws.com/${cognitoPoolId}`;
-}
-
+};
 
 let cacheKeys: MapOfKidToPublicKey | undefined;
 const getPublicKeys = async (): Promise<MapOfKidToPublicKey> => {
@@ -70,7 +69,7 @@ const getPublicKeys = async (): Promise<MapOfKidToPublicKey> => {
     const publicKeys = await Axios.default.get<PublicKeys>(url);
     cacheKeys = publicKeys.data.keys.reduce((agg, current) => {
       const pem = jwkToPem(current);
-      agg[current.kid] = {instance: current, pem};
+      agg[current.kid] = { instance: current, pem };
       return agg;
     }, {} as MapOfKidToPublicKey);
     return cacheKeys;
@@ -81,32 +80,38 @@ const getPublicKeys = async (): Promise<MapOfKidToPublicKey> => {
 
 const verifyPromised = promisify(jsonwebtoken.verify.bind(jsonwebtoken));
 
-export const verifyJwtToken = async (token: string): Promise<ClaimVerifyResult> => {
+export const verifyJwtToken = async (
+  token: string
+): Promise<ClaimVerifyResult> => {
   try {
-    const tokenSections = (token || '').split('.');
+    const tokenSections = (token || "").split(".");
     if (tokenSections.length < 2) {
-      throw new Error('requested token is invalid');
+      throw new Error("requested token is invalid");
     }
-    const headerJSON = Buffer.from(tokenSections[0], 'base64').toString('utf8');
+    const headerJSON = Buffer.from(tokenSections[0], "base64").toString("utf8");
     const header = JSON.parse(headerJSON) as TokenHeader;
     const keys = await getPublicKeys();
     const key = keys[header.kid];
     if (key === undefined) {
-      throw new Error('claim made for unknown kid');
+      throw new Error("claim made for unknown kid");
     }
-    const claim = await verifyPromised(token, key.pem) as Claim;
-    const currentSeconds = Math.floor( (new Date()).valueOf() / 1000);
+    const claim = (await verifyPromised(token, key.pem)) as Claim;
+    const currentSeconds = Math.floor(new Date().valueOf() / 1000);
     if (currentSeconds > claim.exp || currentSeconds < claim.auth_time) {
-      throw new Error('claim is expired or invalid');
+      throw new Error("claim is expired or invalid");
     }
     if (claim.iss !== getIssuer()) {
-      throw new Error('claim issuer is invalid');
+      throw new Error("claim issuer is invalid");
     }
-    if (claim.token_use !== 'access') {
-      throw new Error('claim use is not access');
+    if (claim.token_use !== "access") {
+      throw new Error("claim use is not access");
     }
-    return { userName: claim.username, isValid: true, groups: claim['cognito:groups'] ?? []};
+    return {
+      userName: claim.username,
+      isValid: true,
+      groups: claim["cognito:groups"] ?? [],
+    };
   } catch (error) {
-    return { userName: '', error, isValid: false, groups: [] };
+    return { userName: "", error, isValid: false, groups: [] };
   }
 };

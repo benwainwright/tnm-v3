@@ -1,2 +1,2 @@
-import MealCounter from "./meal-counter"
-export { MealCounter }
+import MealCounter from "./meal-counter";
+export { MealCounter };

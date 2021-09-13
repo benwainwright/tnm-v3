@@ -8,7 +8,6 @@ export const makeUserPool = (
   transient: boolean,
   environmentName: string
 ) => {
-
   const removalPolicy = transient
     ? RemovalPolicy.DESTROY
     : RemovalPolicy.RETAIN;
@@ -45,12 +44,12 @@ export const makeUserPool = (
   });
 
   const client = userPool.addClient("Client", {
-    disableOAuth: true
+    disableOAuth: true,
   });
 
   new CfnOutput(context, "ClientId", {
     value: client.userPoolClientId,
   });
 
-  return { userPool }
+  return { userPool };
 };

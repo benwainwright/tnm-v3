@@ -1,13 +1,13 @@
-import { FC } from "react"
+import { FC } from "react";
 import {
   LoginAndRegisterBox,
   Authenticated,
-  Redirect
-} from "@app/components/organisms"
-import AccountIcon from "@app/assets/images/icons/TNM_Icons_Final_Account.png"
-import { Hero, Layout } from "@app/components/containers"
-import styled from "@emotion/styled"
-import { loggedOutOnlyRoute } from "@app/utils"
+  Redirect,
+} from "@app/components/organisms";
+import AccountIcon from "@app/assets/images/icons/TNM_Icons_Final_Account.png";
+import { Hero, Layout } from "@app/components/containers";
+import styled from "@emotion/styled";
+import { loggedOutOnlyRoute } from "@app/utils";
 
 const YourAccountHeaderBox = styled("div")`
   text-align: center;
@@ -17,13 +17,13 @@ const YourAccountHeaderBox = styled("div")`
   display: flex;
   justify-content: center;
   gap: 1rem;
-`
+`;
 
 const YourAccountHeader = styled("h1")`
   font-size: 40px;
   display: auto;
   margin: 0.5rem 0 0 0;
-`
+`;
 
 const Register: FC = () => {
   return (
@@ -38,10 +38,9 @@ const Register: FC = () => {
         <LoginAndRegisterBox defaultTab="Register" />
       </Layout>
     </Authenticated>
-  )
-}
+  );
+};
 
-export const getServerSideProps = loggedOutOnlyRoute("account")
+export const getServerSideProps = loggedOutOnlyRoute("account");
 
-
-export default Register
+export default Register;

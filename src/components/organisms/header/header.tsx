@@ -1,11 +1,11 @@
-import { FC } from "react"
+import { FC } from "react";
 
-import styled from "@emotion/styled"
-import MobileHeader from "./mobile-header"
-import DesktopHeader from "./desktop-header"
-import { useBreakpoints } from "@app/hooks"
-import { breakpoints } from "@app/breakpoints"
-import { MENUBAR_HEIGHT } from "@app/config"
+import styled from "@emotion/styled";
+import MobileHeader from "./mobile-header";
+import DesktopHeader from "./desktop-header";
+import { useBreakpoints } from "@app/hooks";
+import { breakpoints } from "@app/breakpoints";
+import { MENUBAR_HEIGHT } from "@app/config";
 
 const SiteNavbar = styled("nav")`
   display: flex;
@@ -18,15 +18,15 @@ const SiteNavbar = styled("nav")`
   position: fixed;
   width: 100%;
   background-color: white;
-`
+`;
 
 const Header: FC = () => {
-  const currentBreakpoint = useBreakpoints(breakpoints)
+  const currentBreakpoint = useBreakpoints(breakpoints);
   return (
     <SiteNavbar>
       {currentBreakpoint === "large" ? <DesktopHeader /> : <MobileHeader />}
     </SiteNavbar>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

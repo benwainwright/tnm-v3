@@ -1,19 +1,19 @@
-import { isLeft, isRight } from "fp-ts/Either"
-import processFieldRfc4180 from "./csv/rfc4180/process-field"
-import processFields from "./process-fields"
+import { isLeft, isRight } from "fp-ts/Either";
+import processFieldRfc4180 from "./csv/rfc4180/process-field";
+import processFields from "./process-fields";
 
-const csv = processFields(",", "\r\n", processFieldRfc4180)
+const csv = processFields(",", "\r\n", processFieldRfc4180);
 
 describe("Generate CSV string", () => {
   it("Returns an error if there is no rows", () => {
-    const result = csv([])
-    expect(isLeft(result)).toBeTrue()
+    const result = csv([]);
+    expect(isLeft(result)).toBeTrue();
     if (isLeft(result)) {
       expect(result.left).toEqual(
         "inputObjectArray.length must have a length greater than zero"
-      )
+      );
     }
-  })
+  });
 
   it("creates empty cells where the value is undefined", () => {
     const bar = [
@@ -21,15 +21,15 @@ describe("Generate CSV string", () => {
         foo: undefined,
         baz: "bap",
       },
-    ]
+    ];
 
-    const result = csv(bar)
-    expect(isRight(result)).toBeTrue()
+    const result = csv(bar);
+    expect(isRight(result)).toBeTrue();
     if (isRight(result)) {
-      const splitResult = result.right.split("\r\n")
-      expect(splitResult[1]).toEqual(",bap")
+      const splitResult = result.right.split("\r\n");
+      expect(splitResult[1]).toEqual(",bap");
     }
-  })
+  });
 
   it("generates rows separated with CRLF", () => {
     const bar = [
@@ -37,17 +37,17 @@ describe("Generate CSV string", () => {
         foo: "bar",
         baz: "bap",
       },
-    ]
+    ];
 
-    const result = csv(bar)
+    const result = csv(bar);
 
-    expect(isRight(result)).toBeTrue()
+    expect(isRight(result)).toBeTrue();
 
     if (isRight(result)) {
-      const splitResult = result.right.split("\r\n")
-      expect(splitResult).toHaveLength(2)
+      const splitResult = result.right.split("\r\n");
+      expect(splitResult).toHaveLength(2);
     }
-  })
+  });
 
   it("Generates a csv string containing the key names as the header row", () => {
     const bar = [
@@ -55,17 +55,17 @@ describe("Generate CSV string", () => {
         foo: "bar",
         baz: "bap",
       },
-    ]
+    ];
 
-    const result = csv(bar)
+    const result = csv(bar);
 
-    expect(isRight(result)).toBeTrue()
+    expect(isRight(result)).toBeTrue();
 
     if (isRight(result)) {
-      const splitResult = result.right.split("\r\n")
-      expect(splitResult[0]).toEqual("foo,baz")
+      const splitResult = result.right.split("\r\n");
+      expect(splitResult[0]).toEqual("foo,baz");
     }
-  })
+  });
 
   it("Generates a csv string containing the values of a few rows correctly", () => {
     const bar = [
@@ -81,17 +81,17 @@ describe("Generate CSV string", () => {
         foo: "bif",
         baz: "boo",
       },
-    ]
+    ];
 
-    const result = csv(bar)
+    const result = csv(bar);
 
     if (isRight(result)) {
-      const splitResult = result.right.split("\r\n")
-      expect(splitResult[1]).toEqual("bar,bap")
-      expect(splitResult[2]).toEqual("bap1,bap2")
-      expect(splitResult[3]).toEqual("bif,boo")
+      const splitResult = result.right.split("\r\n");
+      expect(splitResult[1]).toEqual("bar,bap");
+      expect(splitResult[2]).toEqual("bap1,bap2");
+      expect(splitResult[3]).toEqual("bif,boo");
     }
-  })
+  });
 
   it("Doubles up double quotes contained within fields", () => {
     const bar = [
@@ -103,17 +103,17 @@ describe("Generate CSV string", () => {
         foo: `b"i"f`,
         baz: `b""oo`,
       },
-    ]
+    ];
 
-    const result = csv(bar)
+    const result = csv(bar);
 
-    expect(isRight(result)).toBeTrue()
+    expect(isRight(result)).toBeTrue();
     if (isRight(result)) {
       expect(result.right).toEqual(
         `foo,baz\r\n"bap""1",bap2\r\n"b""i""f","b""""oo"`
-      )
+      );
     }
-  })
+  });
 
   it.each([
     ["CRFL", "\r\n"],
@@ -138,16 +138,16 @@ describe("Generate CSV string", () => {
           foo: "bif",
           baz: "boo",
         },
-      ]
+      ];
 
-      const result = csv(bar)
+      const result = csv(bar);
 
-      expect(isRight(result)).toBeTrue()
+      expect(isRight(result)).toBeTrue();
       if (isRight(result)) {
         expect(result.right).toEqual(
           `foo,baz\r\n"${character}bar",bap\r\nbap1,"bap${character}2"\r\n"bap${character}1","bap${character}2"\r\nbif,boo`
-        )
+        );
       }
     }
-  )
-})
+  );
+});

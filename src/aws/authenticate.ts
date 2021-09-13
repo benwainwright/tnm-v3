@@ -1,38 +1,40 @@
-import { Auth } from "@aws-amplify/auth"
-import { getPoolConfig, AuthDetails } from "./getPoolConfig"
+import { Auth } from "@aws-amplify/auth";
+import { getPoolConfig, AuthDetails } from "./getPoolConfig";
 
-const REGION = "eu-west-2"
+const REGION = "eu-west-2";
 
 const getConfigurer = () => {
   // eslint-disable-next-line fp/no-let
-  let outputs: undefined | AuthDetails
+  let outputs: undefined | AuthDetails;
   return async () => {
     if (!outputs) {
-      outputs = await getPoolConfig()
+      outputs = await getPoolConfig();
       Auth.configure({
         Auth: {
           region: REGION,
           userPoolId: outputs.UserPoolId,
           userPoolWebClientId: outputs.ClientId,
           cookieStorage: {
-            domain: process.env.NEXT_PUBLIC_IS_LOCAL_DEV ? 'localhost' : outputs.DomainName,
+            domain: process.env.NEXT_PUBLIC_IS_LOCAL_DEV
+              ? "localhost"
+              : outputs.DomainName,
             secure: !Boolean(process.env.NEXT_PUBLIC_IS_LOCAL_DEV),
-            path: '/',
+            path: "/",
             expires: 365,
           },
-        }
-      })
+        },
+      });
     }
-    return outputs
-  }
-}
+    return outputs;
+  };
+};
 
-const configureAuth = getConfigurer()
+const configureAuth = getConfigurer();
 
 export const login = async (username: string, password: string) => {
-  await configureAuth()
-  return Auth.signIn(username, password)
-}
+  await configureAuth();
+  return Auth.signIn(username, password);
+};
 
 export const register = async (
   username: string,
@@ -44,7 +46,7 @@ export const register = async (
   _address: string,
   telephone: string
 ) => {
-  await configureAuth()
+  await configureAuth();
   return Auth.signUp({
     username,
     password,
@@ -54,34 +56,34 @@ export const register = async (
       // given_name: firstname,
       // family_name: surname,
       // address: address,
-      phone_number: telephone
-    }
-  })
-}
+      phone_number: telephone,
+    },
+  });
+};
 
 export const signOut = async () => {
-  await configureAuth()
-  return Auth.signOut()
-}
+  await configureAuth();
+  return Auth.signOut();
+};
 
 export const confirmSignup = async (username: string, code: string) => {
-  await configureAuth()
-  return Auth.confirmSignUp(username, code)
-}
+  await configureAuth();
+  return Auth.confirmSignUp(username, code);
+};
 
 export const currentUser = async () => {
-  await configureAuth()
+  await configureAuth();
   try {
-    return await Auth.currentAuthenticatedUser()
+    return await Auth.currentAuthenticatedUser();
   } catch {
-    return undefined
+    return undefined;
   }
-}
+};
 
 export const newPasswordChallengeResponse = async (
   user: any,
   password: string
 ) => {
-  await configureAuth()
-  return Auth.completeNewPassword(user, password)
-}
+  await configureAuth();
+  return Auth.completeNewPassword(user, password);
+};

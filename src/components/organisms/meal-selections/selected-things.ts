@@ -1,3 +1,3 @@
 export interface SelectedThings {
-  [id: string]: number
+  [id: string]: number;
 }

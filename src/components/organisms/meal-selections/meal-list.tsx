@@ -1,14 +1,14 @@
-import { FC, Dispatch, SetStateAction } from "react"
-import MealCounter from "./meal-counter"
-import { SelectedThings } from "./selected-things"
-import { Meal } from "./meal"
-import styled from "@emotion/styled"
+import { FC, Dispatch, SetStateAction } from "react";
+import MealCounter from "./meal-counter";
+import { SelectedThings } from "./selected-things";
+import { Meal } from "./meal";
+import styled from "@emotion/styled";
 
 interface MealListProps {
-  things: Meal[]
-  selected: SelectedThings
-  setSelected: Dispatch<SetStateAction<SelectedThings>>
-  max: number
+  things: Meal[];
+  selected: SelectedThings;
+  setSelected: Dispatch<SetStateAction<SelectedThings>>;
+  max: number;
 }
 
 const FlexBox = styled.div`
@@ -18,13 +18,13 @@ const FlexBox = styled.div`
   gap: 2rem;
   flex-wrap: wrap;
   width: 100%;
-`
+`;
 
 const MealList: FC<MealListProps> = (props) => {
   const total = Object.entries(props.selected).reduce(
     (accum, item) => accum + item[1],
     0
-  )
+  );
 
   return (
     <FlexBox>
@@ -45,7 +45,7 @@ const MealList: FC<MealListProps> = (props) => {
         />
       ))}
     </FlexBox>
-  )
-}
+  );
+};
 
-export default MealList
+export default MealList;

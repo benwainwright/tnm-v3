@@ -1,2 +1,2 @@
-import { QuantityStepper } from "./quantity-stepper"
-export { QuantityStepper }
+import { QuantityStepper } from "./quantity-stepper";
+export { QuantityStepper };

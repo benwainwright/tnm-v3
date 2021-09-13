@@ -1,13 +1,13 @@
-import { act } from "react-dom/test-utils"
-import TabBox from "./tab-box"
-import Tab from "./tab"
-import { render, screen } from "@testing-library/react"
-import userEvent from "@testing-library/user-event"
+import { act } from "react-dom/test-utils";
+import TabBox from "./tab-box";
+import Tab from "./tab";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
 describe("The <TabBox> component", () => {
   it("renders without errors", () => {
-    render(<TabBox />)
-  })
+    render(<TabBox />);
+  });
 
   it("renders the first tab by default", () => {
     render(
@@ -15,9 +15,9 @@ describe("The <TabBox> component", () => {
         <Tab tabTitle="one">One</Tab>
         <Tab tabTitle="two">Two</Tab>
       </TabBox>
-    )
-    expect(screen.queryByText("One")).toBeInTheDocument()
-  })
+    );
+    expect(screen.queryByText("One")).toBeInTheDocument();
+  });
 
   it("doesn't render the second tab by default", () => {
     render(
@@ -25,10 +25,10 @@ describe("The <TabBox> component", () => {
         <Tab tabTitle="one">One</Tab>
         <Tab tabTitle="two">Two</Tab>
       </TabBox>
-    )
+    );
 
-    expect(screen.queryByText("Two")).not.toBeInTheDocument()
-  })
+    expect(screen.queryByText("Two")).not.toBeInTheDocument();
+  });
 
   it("renders a list of buttons for each tab", () => {
     render(
@@ -36,14 +36,14 @@ describe("The <TabBox> component", () => {
         <Tab tabTitle="oneTitle">One</Tab>
         <Tab tabTitle="twoTitle">Two</Tab>
       </TabBox>
-    )
+    );
 
-    const tabOne = screen.queryByRole("tab", { name: "oneTitle" })
-    expect(tabOne).toBeInTheDocument()
+    const tabOne = screen.queryByRole("tab", { name: "oneTitle" });
+    expect(tabOne).toBeInTheDocument();
 
-    const tabTwo = screen.queryByRole("tab", { name: "twoTitle" })
-    expect(tabTwo).toBeInTheDocument()
-  })
+    const tabTwo = screen.queryByRole("tab", { name: "twoTitle" });
+    expect(tabTwo).toBeInTheDocument();
+  });
 
   it("shows the second tab when the second button is clicked", () => {
     render(
@@ -51,16 +51,16 @@ describe("The <TabBox> component", () => {
         <Tab tabTitle="oneTitle">One</Tab>
         <Tab tabTitle="twoTitle">Two</Tab>
       </TabBox>
-    )
+    );
 
-    const tabTwo = screen.getByRole("tab", { name: "twoTitle" })
+    const tabTwo = screen.getByRole("tab", { name: "twoTitle" });
 
     act(() => {
-      userEvent.click(tabTwo)
-    })
+      userEvent.click(tabTwo);
+    });
 
-    expect(screen.queryByText("Two")).toBeInTheDocument()
-  })
+    expect(screen.queryByText("Two")).toBeInTheDocument();
+  });
 
   it("hides the second tab when the second button is clicked", () => {
     render(
@@ -68,16 +68,16 @@ describe("The <TabBox> component", () => {
         <Tab tabTitle="oneTitle">One</Tab>
         <Tab tabTitle="twoTitle">Two</Tab>
       </TabBox>
-    )
+    );
 
-    const tabTwo = screen.getByRole("tab", { name: "twoTitle" })
+    const tabTwo = screen.getByRole("tab", { name: "twoTitle" });
 
     act(() => {
-      userEvent.click(tabTwo)
-    })
+      userEvent.click(tabTwo);
+    });
 
-    expect(screen.queryByText("One")).not.toBeInTheDocument()
-  })
+    expect(screen.queryByText("One")).not.toBeInTheDocument();
+  });
 
   it("renders the defaultTab first if provided", () => {
     render(
@@ -85,9 +85,9 @@ describe("The <TabBox> component", () => {
         <Tab tabTitle="oneTitle">One</Tab>
         <Tab tabTitle="twoTitle">Two</Tab>
       </TabBox>
-    )
+    );
 
-    expect(screen.queryByText("One")).not.toBeInTheDocument()
-    expect(screen.queryByText("Two")).toBeInTheDocument()
-  })
-})
+    expect(screen.queryByText("One")).not.toBeInTheDocument();
+    expect(screen.queryByText("Two")).toBeInTheDocument();
+  });
+});

@@ -1,1 +1,1 @@
-export type ValueType = string | number | boolean | undefined
+export type ValueType = string | number | boolean | undefined;

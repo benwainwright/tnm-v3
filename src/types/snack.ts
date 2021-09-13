@@ -1,7 +1,7 @@
 enum Snack {
   None = "None",
   Standard = "Standard",
-  Large = "Large"
+  Large = "Large",
 }
 
-export default Snack
+export default Snack;

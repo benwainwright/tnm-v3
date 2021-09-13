@@ -1,12 +1,12 @@
-import { Story, Meta } from "@storybook/react"
+import { Story, Meta } from "@storybook/react";
 
-import TabBoxComponent from "./tab-box"
-import Tab from "./tab"
+import TabBoxComponent from "./tab-box";
+import Tab from "./tab";
 
 export default {
   title: "containers/Tab Box",
   component: TabBoxComponent,
-} as Meta
+} as Meta;
 
 const Template: Story = (args) => (
   <TabBoxComponent {...args}>
@@ -17,6 +17,6 @@ const Template: Story = (args) => (
       <p>Contents of two</p>
     </Tab>
   </TabBoxComponent>
-)
+);
 
-export const TabBox = Template.bind({})
+export const TabBox = Template.bind({});

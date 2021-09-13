@@ -1,20 +1,20 @@
-import { FC, Dispatch, SetStateAction } from "react"
-import { Meal } from "./meal"
-import { SelectedThings } from "./selected-things"
-import Basket from "./basket"
-import styled from "@emotion/styled"
+import { FC, Dispatch, SetStateAction } from "react";
+import { Meal } from "./meal";
+import { SelectedThings } from "./selected-things";
+import Basket from "./basket";
+import styled from "@emotion/styled";
 
 interface BasketProps {
-  available: Meal[]
-  selectedMeals: SelectedThings
-  maxMeals: number
-  setMeals: Dispatch<SetStateAction<SelectedThings>>
-  selectedSnacks: SelectedThings
-  maxSnacks: number
-  setSnacks: Dispatch<SetStateAction<SelectedThings>>
-  selectedBreakfasts: SelectedThings
-  maxBreakfasts: number
-  setBreakfasts: Dispatch<SetStateAction<SelectedThings>>
+  available: Meal[];
+  selectedMeals: SelectedThings;
+  maxMeals: number;
+  setMeals: Dispatch<SetStateAction<SelectedThings>>;
+  selectedSnacks: SelectedThings;
+  maxSnacks: number;
+  setSnacks: Dispatch<SetStateAction<SelectedThings>>;
+  selectedBreakfasts: SelectedThings;
+  maxBreakfasts: number;
+  setBreakfasts: Dispatch<SetStateAction<SelectedThings>>;
 }
 
 const SelectedBox = styled.div`
@@ -23,7 +23,7 @@ const SelectedBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-`
+`;
 
 const BasketHeader = styled.h2`
   font-family: "Acumin Pro", Arial, sans-serif;
@@ -31,7 +31,7 @@ const BasketHeader = styled.h2`
   font-weight: bold;
   margin: 0;
   padding: 0;
-`
+`;
 
 const Divider = styled.hr`
   background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='black' stroke-width='3' stroke-dasharray='4%2c 8' stroke-dashoffset='0' stroke-linecap='butt'/%3e%3c/svg%3e");
@@ -39,7 +39,7 @@ const Divider = styled.hr`
   height: 1px;
   margin: 0 0 0.5rem 0;
   border: 0;
-`
+`;
 
 const CombinedBasket: FC<BasketProps> = (props) => {
   return (
@@ -72,7 +72,7 @@ const CombinedBasket: FC<BasketProps> = (props) => {
         setSelected={props.setBreakfasts}
       />
     </SelectedBox>
-  )
-}
+  );
+};
 
-export default CombinedBasket
+export default CombinedBasket;

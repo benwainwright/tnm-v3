@@ -1,4 +1,4 @@
-import { isValidElement, ReactElement, ReactNode, Children, FC } from "react"
+import { isValidElement, ReactElement, ReactNode, Children, FC } from "react";
 
 export const recursiveTransform = (
   nodes: ReactNode,
@@ -13,14 +13,14 @@ export const recursiveTransform = (
             children: recursiveTransform(node.props.children, func),
           },
         })
-      : node
-  })
+      : node;
+  });
 
-type PropsOf<P> = P extends FC<infer T> ? T : never
+type PropsOf<P> = P extends FC<infer T> ? T : never;
 
 interface AddNewPropsReturnVal<P> {
-  props: Partial<PropsOf<P>>
-  apply?: boolean
+  props: Partial<PropsOf<P>>;
+  apply?: boolean;
 }
 
 export const addNewProps = <P,>(
@@ -32,5 +32,5 @@ export const addNewProps = <P,>(
       <element.type {...{ ...element.props, ...newProps(element).props }} />
     ) : (
       <element.type {...element.props} />
-    )
-  })
+    );
+  });
