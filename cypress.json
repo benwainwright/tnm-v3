@@ -1,0 +1,19 @@
+{
+  "baseUrl": "http://localhost:3000",
+  "testFiles": [
+    "initial/*",
+    "app/*"
+  ],
+  "viewportWidth": 1600,
+  "viewportHeight": 1000,
+  "env": {
+    "POOL_ID": "eu-west-2_HOqyElaT4",
+    "CLIENT_ID": "6llerho2av21sa799gjn9gq16j",
+    "TEST_USER_INITIAL_PASSWORD": "Asdasdfasdad.a123",
+    "TEST_EMAIL": "somethin2g@someone.com",
+    "TEST_USER_FINAL_PASSWORD": "Asdasdfasdasd.asd113",
+    "TEST_REGISTER_USER": "cypress-test-register-user",
+    "INT_TEST_EMAIL": "another@this.com",
+    "INT_TEST_PASSWORD": "123.123.aA"
+  }
+}

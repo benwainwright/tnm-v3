@@ -1,10 +1,18 @@
 import { web, AwsCdkTypeScriptApp } from 'projen';
+import { Task } from 'projen/lib/tasks';
 
 const testingLibrary = [
   "user-event",
   "react-hooks",
   "jest-dom",
   "react"
+]
+
+const emotion = [
+  "jest",
+  "styled",
+  "react",
+  "babel-plugin"
 ]
 
 const deps = [
@@ -17,19 +25,19 @@ const deps = [
     "jest-extended",
     "@storybook/react",
     ...testingLibrary.map(dep => `@testing-library/${dep}`),
+    ...emotion.map(dep => `@emotion/${dep}`),
     "ts-jest",
     "@aws-amplify/auth",
-    "@emotion/jest",
-    "@emotion/styled",
-    "@emotion/react",
     "@wojtekmaj/enzyme-adapter-react-17",
     "amazon-cognito-identity-js",
     "@types/testing-library__jest-dom",
     "jest-mock-extended",
     "jest-when",
     "fp-ts",
-    "@emotion/babel-plugin",
-    "@babel/core"
+    "cypress",
+    "aws-sdk",
+    "@babel/core",
+    "@cypress/code-coverage"
 ]
 
 const depsWithoutTypes = [
@@ -113,6 +121,21 @@ const tsConfigJest = tnmApp.tryFindObjectFile('tsconfig.jest.json')
 
 tsConfigJest.addOverride('compilerOptions.paths', { "@app/*": [ "*" ]})
 tsConfigJest.addOverride('compilerOptions.baseUrl', "./src")
+
+const addCypressEnvVars = (task: Task) => {
+  task.env("CYPRESS_TEST_REGISTER_USER", "test-user-1")
+  task.env("CYPRESS_TEST_EMAIL", "a@b.com")
+  task.env("CYPRESS_TEST_USER_INITIAL_PASSWORD", "123.123Aa")
+  task.env("CYPRESS_INT_TEST_EMAIL", "a1@b1.com")
+  task.env("CYPRESS_INT_TEST_PASSWORD", "123.123Aa")
+  task.env("CYPRESS_INT_TEST_PASSWORD", "123.123Aa")
+}
+
+const cypressOpen = tnmApp.addTask("test:cypress:open")
+
+addCypressEnvVars(cypressOpen)
+
+cypressOpen.exec("yarn cypress open")
 
 
 tnmApp.synth();

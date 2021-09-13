@@ -13,6 +13,10 @@
       "type": "build"
     },
     {
+      "name": "@cypress/code-coverage",
+      "type": "build"
+    },
+    {
       "name": "@emotion/babel-plugin",
       "type": "build"
     },
@@ -106,7 +110,15 @@
       "type": "build"
     },
     {
+      "name": "aws-sdk",
+      "type": "build"
+    },
+    {
       "name": "axios",
+      "type": "build"
+    },
+    {
+      "name": "cypress",
       "type": "build"
     },
     {

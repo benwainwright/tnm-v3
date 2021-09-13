@@ -115,7 +115,7 @@
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @aws-amplify/auth @axe-core/react @babel/core @emotion/babel-plugin @emotion/jest @emotion/react @emotion/styled @storybook/react @testing-library/jest-dom @testing-library/react @testing-library/react-hooks @testing-library/user-event @types/enzyme @types/jest @types/jest-when @types/jsonwebtoken @types/jwk-to-pem @types/lodash @types/node @types/ramda @types/react @types/react-dom @types/react-helmet @types/testing-library__jest-dom @wojtekmaj/enzyme-adapter-react-17 amazon-cognito-identity-js axios enzyme fp-ts jest jest-enzyme jest-extended jest-junit jest-mock-extended jest-transform-stub jest-when jsonwebtoken jwk-to-pem lodash next-aws-lambda-webpack-plugin next-images npm-check-updates ramda react-helmet ts-jest ts-node typescript autoprefixer next postcss react react-dom tailwindcss"
+          "exec": "yarn upgrade @aws-amplify/auth @axe-core/react @babel/core @cypress/code-coverage @emotion/babel-plugin @emotion/jest @emotion/react @emotion/styled @storybook/react @testing-library/jest-dom @testing-library/react @testing-library/react-hooks @testing-library/user-event @types/enzyme @types/jest @types/jest-when @types/jsonwebtoken @types/jwk-to-pem @types/lodash @types/node @types/ramda @types/react @types/react-dom @types/react-helmet @types/testing-library__jest-dom @wojtekmaj/enzyme-adapter-react-17 amazon-cognito-identity-js aws-sdk axios cypress enzyme fp-ts jest jest-enzyme jest-extended jest-junit jest-mock-extended jest-transform-stub jest-when jsonwebtoken jwk-to-pem lodash next-aws-lambda-webpack-plugin next-images npm-check-updates ramda react-helmet ts-jest ts-node typescript autoprefixer next postcss react react-dom tailwindcss"
         },
         {
           "exec": "npx projen"
@@ -193,6 +193,21 @@
       "steps": [
         {
           "exec": "next telemetry"
+        }
+      ]
+    },
+    "test:cypress:open": {
+      "name": "test:cypress:open",
+      "env": {
+        "CYPRESS_TEST_REGISTER_USER": "test-user-1",
+        "CYPRESS_TEST_EMAIL": "a@b.com",
+        "CYPRESS_TEST_USER_INITIAL_PASSWORD": "123.123Aa",
+        "CYPRESS_INT_TEST_EMAIL": "a1@b1.com",
+        "CYPRESS_INT_TEST_PASSWORD": "123.123Aa"
+      },
+      "steps": [
+        {
+          "exec": "yarn cypress open"
         }
       ]
     }
