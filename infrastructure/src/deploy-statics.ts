@@ -38,7 +38,7 @@ export const deployStatics = (
     distribution.addBehavior(`/${prefix}/*`, bucketOrigin)
   );
 
-  distribution.addBehavior(`/backend.config.json`, bucketOrigin)
+  distribution.addBehavior(`/backend-config.json`, bucketOrigin)
 
   new BucketDeployment(context, "DeployWebsite", {
     sources: [Source.asset(path)],

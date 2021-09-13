@@ -1,6 +1,7 @@
 {
   "tnm-v3-dev-stack": {
     "UserPoolId": "eu-west-2_HOqyElaT4",
+    "DomainName": "dev.app.thenutritionistmcr.com",
     "StaticsBucket": "dev.app.thenutritionistmcr.com",
     "ClientId": "6llerho2av21sa799gjn9gq16j",
     "pagesapiEndpoint356D7B8F": "https://ms8nyy4eg4.execute-api.eu-west-2.amazonaws.com/prod/"

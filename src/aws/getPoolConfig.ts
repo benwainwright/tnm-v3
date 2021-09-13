@@ -5,6 +5,7 @@ export type AuthDetails = {
   AuthUrl: string
   ClientId: string
   RedirectUrl: string
+  DomainName: string
 }
 
 type BackendOutputs = {

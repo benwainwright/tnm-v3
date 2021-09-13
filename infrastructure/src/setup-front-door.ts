@@ -1,3 +1,4 @@
+import { CfnOutput } from "aws-cdk-lib";
 import { DnsValidatedCertificate } from "aws-cdk-lib/lib/aws-certificatemanager";
 import { Distribution, ViewerProtocolPolicy } from "aws-cdk-lib/lib/aws-cloudfront";
 import { HttpOrigin } from "aws-cdk-lib/lib/aws-cloudfront-origins";
@@ -9,6 +10,10 @@ import { getDomainName } from "./get-domain-name";
 export const setupFrontDoor = (context: Construct, environmentName: string, origin: HttpOrigin) => {
 
   const domainName = getDomainName(environmentName)
+
+  new CfnOutput(context, "DomainName", {
+    value: domainName
+  });
 
   const hostedZone = new PublicHostedZone(context, "HostedZone", {
     zoneName: domainName,

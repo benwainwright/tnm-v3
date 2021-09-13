@@ -4,6 +4,7 @@ const withImages = require('next-images')
 module.exports = withImages({
   pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js'],
   target: 'serverless',
+  productionBrowserSourceMaps: true,
   webpack: (config, nextConfig) => {
       config.plugins.push(new GenerateAwsLambda(nextConfig));
       if(!nextConfig.isServer) {

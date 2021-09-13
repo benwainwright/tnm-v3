@@ -16,6 +16,7 @@ describe("The authenticate module", () => {
       mocked(getPoolConfig).mockResolvedValue({
         UserPoolId: "pool-id",
         ClientId: "client-id",
+        DomainName: 'something',
         RedirectUrl: "redirect-url",
         AuthUrl: "auth-url"
       })
@@ -57,6 +58,7 @@ describe("The authenticate module", () => {
       mocked(getPoolConfig).mockResolvedValue({
         UserPoolId: "pool-id",
         ClientId: "client-id",
+        DomainName: 'something',
         RedirectUrl: "redirect-url",
         AuthUrl: "auth-url"
       })
@@ -77,6 +79,7 @@ describe("The authenticate module", () => {
         UserPoolId: "pool-id",
         ClientId: "client-id",
         RedirectUrl: "redirect-url",
+        DomainName: 'something',
         AuthUrl: "auth-url"
       })
 
@@ -93,6 +96,7 @@ describe("The authenticate module", () => {
       mocked(getPoolConfig).mockResolvedValue({
         UserPoolId: "pool-id",
         ClientId: "client-id",
+        DomainName: 'something',
         RedirectUrl: "redirect-url",
         AuthUrl: "auth-url"
       })
@@ -115,6 +119,7 @@ describe("The authenticate module", () => {
     it("Returns the promise from Auth.confirmSignup", async () => {
       mocked(getPoolConfig).mockResolvedValue({
         UserPoolId: "pool-id",
+        DomainName: 'something',
         ClientId: "client-id",
         RedirectUrl: "redirect-url",
         AuthUrl: "auth-url"
@@ -136,6 +141,7 @@ describe("The authenticate module", () => {
         UserPoolId: "pool-id",
         ClientId: "client-id",
         RedirectUrl: "redirect-url",
+        DomainName: 'something',
         AuthUrl: "auth-url"
       })
 
@@ -153,6 +159,7 @@ describe("The authenticate module", () => {
         UserPoolId: "pool-id",
         ClientId: "client-id",
         RedirectUrl: "redirect-url",
+        DomainName: 'something',
         AuthUrl: "auth-url"
       })
 
