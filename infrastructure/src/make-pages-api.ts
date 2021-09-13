@@ -49,7 +49,6 @@ export const makePagesApi = (
       layers: [awsNextLayer],
       environment: {
         COGNITO_POOL_ID: pool.userPoolId,
-        AWS_REGION: Aws.REGION
       }
     });
 
