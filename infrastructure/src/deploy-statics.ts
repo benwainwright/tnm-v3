@@ -1,29 +1,49 @@
-import { RemovalPolicy } from "aws-cdk-lib"
-import { Distribution } from "aws-cdk-lib/lib/aws-cloudfront"
-import { S3Origin } from "aws-cdk-lib/lib/aws-cloudfront-origins"
-import { Bucket } from "aws-cdk-lib/lib/aws-s3"
-import { BucketDeployment, Source } from "aws-cdk-lib/lib/aws-s3-deployment"
-import { Construct } from "constructs"
+import { CfnOutput, RemovalPolicy } from "aws-cdk-lib";
+import { Distribution } from "aws-cdk-lib/lib/aws-cloudfront";
+import { S3Origin } from "aws-cdk-lib/lib/aws-cloudfront-origins";
+import { Bucket } from "aws-cdk-lib/lib/aws-s3";
+import { BucketDeployment, Source } from "aws-cdk-lib/lib/aws-s3-deployment";
+import { Construct } from "constructs";
+import { getDomainName } from "./get-domain-name";
 
-export const deployStatics = (context: Construct, path: string, envName: string, distribution: Distribution) => {
-  const prefixes = ["_next", "images", "assets"]
+export const deployStatics = (
+  context: Construct,
+  path: string,
+  envName: string,
+  distribution: Distribution
+) => {
+  const prefixes = ["_next", "images", "assets"];
 
-  const deploymentBucket = new Bucket(context, `${envName}-tnm-v3-statics-bucket`, {
-    bucketName: `${envName}-tnm-v3-statics-bucket`,
-    publicReadAccess: true,
-    websiteIndexDocument: "index.html",
-    websiteErrorDocument: "index.html",
-    removalPolicy: RemovalPolicy.DESTROY
-  })
+  const bucketName = getDomainName(envName)
 
-  const bucketOrigin = new S3Origin(deploymentBucket)
+  const deploymentBucket = new Bucket(
+    context,
+    `statics-bucket`,
+    {
+      bucketName,
+      publicReadAccess: true,
+      websiteIndexDocument: "index.html",
+      websiteErrorDocument: "index.html",
+      removalPolicy: RemovalPolicy.DESTROY,
+    }
+  );
 
-  prefixes.forEach(prefix => distribution.addBehavior(`/${prefix}/*`, bucketOrigin))
+  new CfnOutput(context, "StaticsBucket", {
+    value: deploymentBucket.bucketName
+  });
 
-  new BucketDeployment(context, 'DeployWebsite', {
+  const bucketOrigin = new S3Origin(deploymentBucket);
+
+  prefixes.forEach((prefix) =>
+    distribution.addBehavior(`/${prefix}/*`, bucketOrigin)
+  );
+
+  distribution.addBehavior(`/backend.config.json`, bucketOrigin)
+
+  new BucketDeployment(context, "DeployWebsite", {
     sources: [Source.asset(path)],
     destinationBucket: deploymentBucket,
     distribution,
-    distributionPaths: ["/*"]
+    distributionPaths: ["/*"],
   });
-}
+};

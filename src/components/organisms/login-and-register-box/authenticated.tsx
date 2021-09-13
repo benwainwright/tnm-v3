@@ -1,6 +1,5 @@
-import { FC, useState, useEffect } from "react"
+import { FC, useEffect } from "react"
 import { currentUser } from "@app/aws/authenticate"
-import styled from "@emotion/styled"
 import { navigate } from "@app/utils/navigate"
 
 export enum Redirect {
@@ -14,7 +13,6 @@ interface AuthenticatedProps {
 }
 
 const Authenticated: FC<AuthenticatedProps> = props => {
-  const [authenticated, setAuthenticated] = useState(false)
 
   useEffect(() => {
     ;(async () => {
@@ -24,19 +22,12 @@ const Authenticated: FC<AuthenticatedProps> = props => {
         (foundUser && props.redirect === Redirect.IfLoggedIn)
       ) {
         navigate(props.redirectPath ?? "/login/")
-      } else {
-        setAuthenticated(true)
       }
     })()
   }, [props.redirectPath, props.redirect])
 
-  const HideShowDiv = styled.div`
-    width: 100%;
-    display: ${authenticated ? `block` : `none`};
-    /* stylelint-disable */
-  `
 
-  return <HideShowDiv>{props.children}</HideShowDiv>
+  return <>{props.children}</>
 }
 
 export default Authenticated

@@ -173,15 +173,6 @@
         }
       ]
     },
-    "deploy": {
-      "name": "deploy",
-      "description": "Deploys your CDK app to the AWS cloud",
-      "steps": [
-        {
-          "exec": "cdk deploy"
-        }
-      ]
-    },
     "destroy": {
       "name": "destroy",
       "description": "Destroys your cdk app in the AWS cloud",
@@ -197,6 +188,17 @@
       "steps": [
         {
           "exec": "cdk diff"
+        }
+      ]
+    },
+    "deploy:dev": {
+      "name": "deploy:dev",
+      "steps": [
+        {
+          "exec": "yarn cdk deploy tnm-v3-dev-stack --outputs-file backend-config.json"
+        },
+        {
+          "exec": "aws s3 cp backend-config.json s3://$(cat backend-config.json | jq --raw-output 'keys[] as $k | .[$k] | .StaticsBucket')"
         }
       ]
     }

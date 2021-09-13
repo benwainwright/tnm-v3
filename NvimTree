@@ -1,0 +1,1542 @@
+~/repos/tnm-v3/..
+  .git
+  .github
+  ◌ .next
+  .projen
+  ◌ build
+  ★ infrastructure
+    ✗ .projen
+    ◌ cdk.out
+    ◌ node_modules
+      ◌ .bin
+      ◌ @aws-cdk
+      ◌ @babel
+      ◌ @balena
+      ◌ @bcoe
+      ◌ @eslint
+      ◌ @gar
+      ◌ @humanwhocodes
+      ◌ @iarna
+      ◌ @istanbuljs
+      ◌ @jest
+      ◌ @jsii
+      ◌ @nodelib
+      ◌ @npmcli
+      ◌ @oozcitak
+      ◌ @sindresorhus
+      ◌ @sinonjs
+      ◌ @szmarczak
+      ◌ @tootallnate
+      ◌ @types
+      ◌ @typescript-eslint
+      ◌ abab
+      ◌ abbrev
+      ◌ acorn
+      ◌ acorn-globals
+      ◌ acorn-jsx
+      ◌ acorn-walk
+      ◌ agent-base
+      ◌ agentkeepalive
+      ◌ aggregate-error
+      ◌ ajv
+      ◌ ansi-align
+      ◌ ansi-colors
+      ◌ ansi-escapes
+      ◌ ansi-regex
+      ◌ ansi-styles
+      ◌ anymatch
+      ◌ aproba
+      ◌ archiver
+      ◌ archiver-utils
+      ◌ are-we-there-yet
+      ◌ arg
+      ◌ argparse
+      ◌ array-includes
+      ◌ array-union
+      ◌ array.prototype.flat
+      ◌ asn1
+      ◌ assert-plus
+      ◌ ast-types
+      ◌ astral-regex
+      ◌ async
+      ◌ asynckit
+      ◌ at-least-node
+      ◌ aws-cdk
+      ◌ aws-cdk-lib
+        ◌ lib
+          ◌ alexa-ask
+          ◌ assets
+          ◌ aws-accessanalyzer
+          ◌ aws-acmpca
+          ◌ aws-amazonmq
+          ◌ aws-amplify
+          ◌ aws-apigateway
+            ◌ lib
+              ◌ authorizers
+              ◌ integrations
+               ◌ access-log.d.ts
+               ◌ access-log.js
+               ◌ api-definition.d.ts
+               ◌ api-definition.js
+               ◌ api-key.d.ts
+               ◌ api-key.js
+               ◌ apigateway-canned-metrics.generated.d.ts
+               ◌ apigateway-canned-metrics.generated.js
+               ◌ apigateway.generated.d.ts
+               ◌ apigateway.generated.js
+               ◌ apigatewayv2.d.ts
+               ◌ apigatewayv2.js
+               ◌ authorizer.d.ts
+               ◌ authorizer.js
+               ◌ base-path-mapping.d.ts
+               ◌ base-path-mapping.js
+               ◌ cors.d.ts
+               ◌ cors.js
+               ◌ deployment.d.ts
+               ◌ deployment.js
+               ◌ domain-name.d.ts
+               ◌ domain-name.js
+               ◌ gateway-response.d.ts
+               ◌ gateway-response.js
+               ◌ index.d.ts
+               ◌ index.js
+               ◌ integration.d.ts
+               ◌ integration.js
+               ◌ json-schema.d.ts
+               ◌ json-schema.js
+               ◌ lambda-api.d.ts
+               ◌ lambda-api.js
+               ◌ method.d.ts
+               ◌ method.js
+               ◌ methodresponse.d.ts
+               ◌ methodresponse.js
+               ◌ model.d.ts
+               ◌ model.js
+               ◌ requestvalidator.d.ts
+               ◌ requestvalidator.js
+               ◌ resource.d.ts
+               ◌ resource.js
+               ◌ restapi.d.ts
+               ◌ restapi.js
+               ◌ stage.d.ts
+               ◌ stage.js
+               ◌ usage-plan.d.ts
+               ◌ usage-plan.js
+               ◌ util.d.ts
+               ◌ util.js
+               ◌ vpc-link.d.ts
+               ◌ vpc-link.js
+             ◌ .jsiirc.json
+             ◌ index.d.ts
+             ◌ index.js
+             ◌ jest.config.js
+            ◌ README.md
+          ◌ aws-apigatewayv2
+          ◌ aws-appconfig
+          ◌ aws-appflow
+          ◌ aws-appintegrations
+          ◌ aws-applicationautoscaling
+          ◌ aws-applicationinsights
+          ◌ aws-appmesh
+          ◌ aws-apprunner
+          ◌ aws-appstream
+          ◌ aws-appsync
+          ◌ aws-athena
+          ◌ aws-auditmanager
+          ◌ aws-autoscaling
+          ◌ aws-autoscaling-common
+          ◌ aws-autoscaling-hooktargets
+          ◌ aws-autoscalingplans
+          ◌ aws-backup
+          ◌ aws-batch
+          ◌ aws-budgets
+          ◌ aws-cassandra
+          ◌ aws-ce
+          ◌ aws-certificatemanager
+            ◌ lambda-packages
+            ◌ lib
+               ◌ certificate-base.d.ts
+               ◌ certificate-base.js
+               ◌ certificate.d.ts
+               ◌ certificate.js
+               ◌ certificatemanager.generated.d.ts
+               ◌ certificatemanager.generated.js
+               ◌ dns-validated-certificate.d.ts
+               ◌ dns-validated-certificate.js
+               ◌ index.d.ts
+               ◌ index.js
+               ◌ public-suffixes.d.ts
+               ◌ public-suffixes.js
+               ◌ util.d.ts
+               ◌ util.js
+            ◌ suffixes
+             ◌ .jsiirc.json
+             ◌ index.d.ts
+             ◌ index.js
+             ◌ jest.config.js
+            ◌ README.md
+          ◌ aws-chatbot
+          ◌ aws-cloud9
+          ◌ aws-cloudformation
+          ◌ aws-cloudfront
+            ◌ lib
+              ◌ experimental
+              ◌ private
+               ◌ cache-policy.d.ts
+               ◌ cache-policy.js
+               ◌ cloudfront-canned-metrics.generated.d.ts
+               ◌ cloudfront-canned-metrics.generated.js
+               ◌ cloudfront.generated.d.ts
+               ◌ cloudfront.generated.js
+               ◌ distribution.d.ts
+               ◌ distribution.js
+               ◌ function.d.ts
+               ◌ function.js
+               ◌ geo-restriction.d.ts
+               ◌ geo-restriction.js
+               ◌ index.d.ts
+               ◌ index.js
+               ◌ key-group.d.ts
+               ◌ key-group.js
+               ◌ origin-access-identity.d.ts
+               ◌ origin-access-identity.js
+               ◌ origin-request-policy.d.ts
+               ◌ origin-request-policy.js
+               ◌ origin.d.ts
+               ◌ origin.js
+               ◌ public-key.d.ts
+               ◌ public-key.js
+               ◌ web-distribution.d.ts
+               ◌ web-distribution.js
+             ◌ .jsiirc.json
+             ◌ index.d.ts
+             ◌ index.js
+             ◌ jest.config.js
+            ◌ README.md
+          ◌ aws-cloudfront-origins
+          ◌ aws-cloudtrail
+          ◌ aws-cloudwatch
+          ◌ aws-cloudwatch-actions
+          ◌ aws-codeartifact
+          ◌ aws-codebuild
+          ◌ aws-codecommit
+          ◌ aws-codedeploy
+          ◌ aws-codeguruprofiler
+          ◌ aws-codegurureviewer
+          ◌ aws-codepipeline
+          ◌ aws-codepipeline-actions
+          ◌ aws-codestar
+          ◌ aws-codestarconnections
+          ◌ aws-codestarnotifications
+          ◌ aws-cognito
+          ◌ aws-config
+          ◌ aws-connect
+          ◌ aws-cur
+          ◌ aws-customerprofiles
+          ◌ aws-databrew
+          ◌ aws-datapipeline
+          ◌ aws-datasync
+          ◌ aws-dax
+          ◌ aws-detective
+          ◌ aws-devopsguru
+          ◌ aws-directoryservice
+          ◌ aws-dlm
+          ◌ aws-dms
+          ◌ aws-docdb
+          ◌ aws-dynamodb
+          ◌ aws-ec2
+          ◌ aws-ecr
+          ◌ aws-ecr-assets
+          ◌ aws-ecs
+          ◌ aws-ecs-patterns
+          ◌ aws-efs
+          ◌ aws-eks
+          ◌ aws-elasticache
+          ◌ aws-elasticbeanstalk
+          ◌ aws-elasticloadbalancing
+          ◌ aws-elasticloadbalancingv2
+          ◌ aws-elasticloadbalancingv2-actions
+          ◌ aws-elasticloadbalancingv2-targets
+          ◌ aws-elasticsearch
+          ◌ aws-emr
+          ◌ aws-emrcontainers
+          ◌ aws-events
+          ◌ aws-events-targets
+          ◌ aws-eventschemas
+          ◌ aws-finspace
+          ◌ aws-fis
+          ◌ aws-fms
+          ◌ aws-frauddetector
+          ◌ aws-fsx
+          ◌ aws-gamelift
+          ◌ aws-globalaccelerator
+          ◌ aws-globalaccelerator-endpoints
+          ◌ aws-glue
+          ◌ aws-greengrass
+          ◌ aws-greengrassv2
+          ◌ aws-groundstation
+          ◌ aws-guardduty
+          ◌ aws-iam
+          ◌ aws-imagebuilder
+          ◌ aws-inspector
+          ◌ aws-iot
+          ◌ aws-iot1click
+          ◌ aws-iotanalytics
+          ◌ aws-iotcoredeviceadvisor
+          ◌ aws-iotevents
+          ◌ aws-iotfleethub
+          ◌ aws-iotsitewise
+          ◌ aws-iotthingsgraph
+          ◌ aws-iotwireless
+          ◌ aws-ivs
+          ◌ aws-kendra
+          ◌ aws-kinesis
+          ◌ aws-kinesisanalytics
+          ◌ aws-kinesisfirehose
+          ◌ aws-kms
+          ◌ aws-lakeformation
+          ◌ aws-lambda
+          ◌ aws-lambda-destinations
+          ◌ aws-lambda-event-sources
+          ◌ aws-lambda-nodejs
+          ◌ aws-licensemanager
+          ◌ aws-location
+          ◌ aws-logs
+          ◌ aws-logs-destinations
+          ◌ aws-lookoutequipment
+          ◌ aws-lookoutmetrics
+          ◌ aws-lookoutvision
+          ◌ aws-macie
+          ◌ aws-managedblockchain
+          ◌ aws-mediaconnect
+          ◌ aws-mediaconvert
+          ◌ aws-medialive
+          ◌ aws-mediapackage
+          ◌ aws-mediastore
+          ◌ aws-msk
+          ◌ aws-mwaa
+          ◌ aws-neptune
+          ◌ aws-networkfirewall
+          ◌ aws-networkmanager
+          ◌ aws-nimblestudio
+          ◌ aws-opsworks
+          ◌ aws-opsworkscm
+          ◌ aws-pinpoint
+          ◌ aws-pinpointemail
+          ◌ aws-qldb
+          ◌ aws-quicksight
+          ◌ aws-ram
+          ◌ aws-rds
+          ◌ aws-redshift
+          ◌ aws-resourcegroups
+          ◌ aws-robomaker
+          ◌ aws-route53
+          ◌ aws-route53-patterns
+          ◌ aws-route53-targets
+          ◌ aws-route53recoverycontrol
+          ◌ aws-route53recoveryreadiness
+          ◌ aws-route53resolver
+          ◌ aws-s3
+          ◌ aws-s3-assets
+          ◌ aws-s3-deployment
+          ◌ aws-s3-notifications
+          ◌ aws-s3objectlambda
+          ◌ aws-s3outposts
+          ◌ aws-sagemaker
+          ◌ aws-sam
+          ◌ aws-sdb
+          ◌ aws-secretsmanager
+          ◌ aws-securityhub
+          ◌ aws-servicecatalog
+          ◌ aws-servicecatalogappregistry
+          ◌ aws-servicediscovery
+          ◌ aws-ses
+          ◌ aws-ses-actions
+          ◌ aws-signer
+          ◌ aws-sns
+          ◌ aws-sns-subscriptions
+          ◌ aws-sqs
+          ◌ aws-ssm
+          ◌ aws-ssmcontacts
+          ◌ aws-ssmincidents
+          ◌ aws-sso
+          ◌ aws-stepfunctions
+          ◌ aws-stepfunctions-tasks
+          ◌ aws-synthetics
+          ◌ aws-timestream
+          ◌ aws-transfer
+          ◌ aws-waf
+          ◌ aws-wafregional
+          ◌ aws-wafv2
+          ◌ aws-workspaces
+          ◌ aws-xray
+          ◌ cloud-assembly-schema
+          ◌ cloudformation-include
+          ◌ core
+            ◌ .vscode
+            ◌ lib
+              ◌ custom-resource-provider
+              ◌ fs
+              ◌ private
+              ◌ stack-synthesizers
+               ◌ annotations.d.ts
+               ◌ annotations.js
+               ◌ app.d.ts
+               ◌ app.js
+               ◌ arn.d.ts
+               ◌ arn.js
+               ◌ aspect.d.ts
+               ◌ aspect.js
+               ◌ asset-staging.d.ts
+               ◌ asset-staging.js
+               ◌ assets.d.ts
+               ◌ assets.js
+               ◌ bundling.d.ts
+               ◌ bundling.js
+               ◌ cfn-capabilities.d.ts
+               ◌ cfn-capabilities.js
+               ◌ cfn-codedeploy-blue-green-hook.d.ts
+               ◌ cfn-codedeploy-blue-green-hook.js
+               ◌ cfn-condition.d.ts
+               ◌ cfn-condition.js
+               ◌ cfn-dynamic-reference.d.ts
+               ◌ cfn-dynamic-reference.js
+               ◌ cfn-element.d.ts
+               ◌ cfn-element.js
+               ◌ cfn-fn.d.ts
+               ◌ cfn-fn.js
+               ◌ cfn-hook.d.ts
+               ◌ cfn-hook.js
+               ◌ cfn-include.d.ts
+               ◌ cfn-include.js
+               ◌ cfn-json.d.ts
+               ◌ cfn-json.js
+               ◌ cfn-mapping.d.ts
+               ◌ cfn-mapping.js
+               ◌ cfn-output.d.ts
+               ◌ cfn-output.js
+               ◌ cfn-parameter.d.ts
+               ◌ cfn-parameter.js
+               ◌ cfn-parse.d.ts
+               ◌ cfn-parse.js
+               ◌ cfn-pseudo.d.ts
+               ◌ cfn-pseudo.js
+               ◌ cfn-resource-policy.d.ts
+               ◌ cfn-resource-policy.js
+               ◌ cfn-resource.d.ts
+               ◌ cfn-resource.js
+               ◌ cfn-rule.d.ts
+               ◌ cfn-rule.js
+               ◌ cfn-tag.d.ts
+               ◌ cfn-tag.js
+               ◌ cloudformation.generated.d.ts
+               ◌ cloudformation.generated.js
+               ◌ context-provider.d.ts
+               ◌ context-provider.js
+               ◌ custom-resource.d.ts
+               ◌ custom-resource.js
+               ◌ debug.d.ts
+               ◌ debug.js
+               ◌ deps.d.ts
+               ◌ deps.js
+               ◌ duration.d.ts
+               ◌ duration.js
+               ◌ environment.d.ts
+               ◌ environment.js
+               ◌ expiration.d.ts
+               ◌ expiration.js
+               ◌ feature-flags.d.ts
+               ◌ feature-flags.js
+               ◌ index.d.ts
+               ◌ index.js
+               ◌ lazy.d.ts
+               ◌ lazy.js
+               ◌ names.d.ts
+               ◌ names.js
+               ◌ nested-stack.d.ts
+               ◌ nested-stack.js
+               ◌ physical-name.d.ts
+               ◌ physical-name.js
+               ◌ reference.d.ts
+               ◌ reference.js
+               ◌ removal-policy.d.ts
+               ◌ removal-policy.js
+               ◌ resolvable.d.ts
+               ◌ resolvable.js
+               ◌ resource.d.ts
+               ◌ resource.js
+               ◌ runtime.d.ts
+               ◌ runtime.js
+               ◌ secret-value.d.ts
+               ◌ secret-value.js
+               ◌ size.d.ts
+               ◌ size.js
+               ◌ stack-trace.d.ts
+               ◌ stack-trace.js
+               ◌ stack.d.ts
+               ◌ stack.js
+               ◌ stage.d.ts
+               ◌ stage.js
+               ◌ string-fragments.d.ts
+               ◌ string-fragments.js
+               ◌ tag-aspect.d.ts
+               ◌ tag-aspect.js
+               ◌ tag-manager.d.ts
+               ◌ tag-manager.js
+               ◌ token.d.ts
+               ◌ token.js
+               ◌ tree.d.ts
+               ◌ tree.js
+               ◌ util.d.ts
+               ◌ util.js
+            ◌ rosetta
+             ◌ index.d.ts
+             ◌ index.js
+             ◌ jest.config.js
+            ◌ README.md
+          ◌ custom-resources
+          ◌ cx-api
+          ◌ lambda-layer-awscli
+          ◌ lambda-layer-kubectl
+          ◌ pipelines
+          ◌ region-info
+           ◌ index.d.ts
+           ◌ index.js
+        ◌ node_modules
+        ◌ rosetta
+        ◌ scripts
+        ◌ .jsii
+         ◌ alexa-ask.d.ts
+         ◌ alexa-ask.js
+         ◌ assets.d.ts
+         ◌ assets.js
+         ◌ aws-accessanalyzer.d.ts
+         ◌ aws-accessanalyzer.js
+         ◌ aws-acmpca.d.ts
+         ◌ aws-acmpca.js
+         ◌ aws-amazonmq.d.ts
+         ◌ aws-amazonmq.js
+         ◌ aws-amplify.d.ts
+         ◌ aws-amplify.js
+         ◌ aws-apigateway.d.ts
+         ◌ aws-apigateway.js
+         ◌ aws-apigatewayv2.d.ts
+         ◌ aws-apigatewayv2.js
+         ◌ aws-appconfig.d.ts
+         ◌ aws-appconfig.js
+         ◌ aws-appflow.d.ts
+         ◌ aws-appflow.js
+         ◌ aws-appintegrations.d.ts
+         ◌ aws-appintegrations.js
+         ◌ aws-applicationautoscaling.d.ts
+         ◌ aws-applicationautoscaling.js
+         ◌ aws-applicationinsights.d.ts
+         ◌ aws-applicationinsights.js
+         ◌ aws-appmesh.d.ts
+         ◌ aws-appmesh.js
+         ◌ aws-apprunner.d.ts
+         ◌ aws-apprunner.js
+         ◌ aws-appstream.d.ts
+         ◌ aws-appstream.js
+         ◌ aws-appsync.d.ts
+         ◌ aws-appsync.js
+         ◌ aws-athena.d.ts
+         ◌ aws-athena.js
+         ◌ aws-auditmanager.d.ts
+         ◌ aws-auditmanager.js
+         ◌ aws-autoscaling-common.d.ts
+         ◌ aws-autoscaling-common.js
+         ◌ aws-autoscaling-hooktargets.d.ts
+         ◌ aws-autoscaling-hooktargets.js
+         ◌ aws-autoscaling.d.ts
+         ◌ aws-autoscaling.js
+         ◌ aws-autoscalingplans.d.ts
+         ◌ aws-autoscalingplans.js
+         ◌ aws-backup.d.ts
+         ◌ aws-backup.js
+         ◌ aws-batch.d.ts
+         ◌ aws-batch.js
+         ◌ aws-budgets.d.ts
+         ◌ aws-budgets.js
+         ◌ aws-cassandra.d.ts
+         ◌ aws-cassandra.js
+         ◌ aws-ce.d.ts
+         ◌ aws-ce.js
+         ◌ aws-certificatemanager.d.ts
+         ◌ aws-certificatemanager.js
+         ◌ aws-chatbot.d.ts
+         ◌ aws-chatbot.js
+         ◌ aws-cloud9.d.ts
+         ◌ aws-cloud9.js
+         ◌ aws-cloudformation.d.ts
+         ◌ aws-cloudformation.js
+         ◌ aws-cloudfront-origins.d.ts
+         ◌ aws-cloudfront-origins.js
+         ◌ aws-cloudfront.d.ts
+         ◌ aws-cloudfront.js
+         ◌ aws-cloudtrail.d.ts
+         ◌ aws-cloudtrail.js
+         ◌ aws-cloudwatch-actions.d.ts
+         ◌ aws-cloudwatch-actions.js
+         ◌ aws-cloudwatch.d.ts
+         ◌ aws-cloudwatch.js
+         ◌ aws-codeartifact.d.ts
+         ◌ aws-codeartifact.js
+         ◌ aws-codebuild.d.ts
+         ◌ aws-codebuild.js
+         ◌ aws-codecommit.d.ts
+         ◌ aws-codecommit.js
+         ◌ aws-codedeploy.d.ts
+         ◌ aws-codedeploy.js
+         ◌ aws-codeguruprofiler.d.ts
+         ◌ aws-codeguruprofiler.js
+         ◌ aws-codegurureviewer.d.ts
+         ◌ aws-codegurureviewer.js
+         ◌ aws-codepipeline-actions.d.ts
+         ◌ aws-codepipeline-actions.js
+         ◌ aws-codepipeline.d.ts
+         ◌ aws-codepipeline.js
+         ◌ aws-codestar.d.ts
+         ◌ aws-codestar.js
+         ◌ aws-codestarconnections.d.ts
+         ◌ aws-codestarconnections.js
+         ◌ aws-codestarnotifications.d.ts
+         ◌ aws-codestarnotifications.js
+         ◌ aws-cognito.d.ts
+         ◌ aws-cognito.js
+         ◌ aws-config.d.ts
+         ◌ aws-config.js
+         ◌ aws-connect.d.ts
+         ◌ aws-connect.js
+         ◌ aws-cur.d.ts
+         ◌ aws-cur.js
+         ◌ aws-customerprofiles.d.ts
+         ◌ aws-customerprofiles.js
+         ◌ aws-databrew.d.ts
+         ◌ aws-databrew.js
+         ◌ aws-datapipeline.d.ts
+         ◌ aws-datapipeline.js
+         ◌ aws-datasync.d.ts
+         ◌ aws-datasync.js
+         ◌ aws-dax.d.ts
+         ◌ aws-dax.js
+         ◌ aws-detective.d.ts
+         ◌ aws-detective.js
+         ◌ aws-devopsguru.d.ts
+         ◌ aws-devopsguru.js
+         ◌ aws-directoryservice.d.ts
+         ◌ aws-directoryservice.js
+         ◌ aws-dlm.d.ts
+         ◌ aws-dlm.js
+         ◌ aws-dms.d.ts
+         ◌ aws-dms.js
+         ◌ aws-docdb.d.ts
+         ◌ aws-docdb.js
+         ◌ aws-dynamodb.d.ts
+         ◌ aws-dynamodb.js
+         ◌ aws-ec2.d.ts
+         ◌ aws-ec2.js
+         ◌ aws-ecr-assets.d.ts
+         ◌ aws-ecr-assets.js
+         ◌ aws-ecr.d.ts
+         ◌ aws-ecr.js
+         ◌ aws-ecs-patterns.d.ts
+         ◌ aws-ecs-patterns.js
+         ◌ aws-ecs.d.ts
+         ◌ aws-ecs.js
+         ◌ aws-efs.d.ts
+         ◌ aws-efs.js
+         ◌ aws-eks.d.ts
+         ◌ aws-eks.js
+         ◌ aws-elasticache.d.ts
+         ◌ aws-elasticache.js
+         ◌ aws-elasticbeanstalk.d.ts
+         ◌ aws-elasticbeanstalk.js
+         ◌ aws-elasticloadbalancing.d.ts
+         ◌ aws-elasticloadbalancing.js
+         ◌ aws-elasticloadbalancingv2-actions.d.ts
+         ◌ aws-elasticloadbalancingv2-actions.js
+         ◌ aws-elasticloadbalancingv2-targets.d.ts
+         ◌ aws-elasticloadbalancingv2-targets.js
+         ◌ aws-elasticloadbalancingv2.d.ts
+         ◌ aws-elasticloadbalancingv2.js
+         ◌ aws-elasticsearch.d.ts
+         ◌ aws-elasticsearch.js
+         ◌ aws-emr.d.ts
+         ◌ aws-emr.js
+         ◌ aws-emrcontainers.d.ts
+         ◌ aws-emrcontainers.js
+         ◌ aws-events-targets.d.ts
+         ◌ aws-events-targets.js
+         ◌ aws-events.d.ts
+         ◌ aws-events.js
+         ◌ aws-eventschemas.d.ts
+         ◌ aws-eventschemas.js
+         ◌ aws-finspace.d.ts
+         ◌ aws-finspace.js
+         ◌ aws-fis.d.ts
+         ◌ aws-fis.js
+         ◌ aws-fms.d.ts
+         ◌ aws-fms.js
+         ◌ aws-frauddetector.d.ts
+         ◌ aws-frauddetector.js
+         ◌ aws-fsx.d.ts
+         ◌ aws-fsx.js
+         ◌ aws-gamelift.d.ts
+         ◌ aws-gamelift.js
+         ◌ aws-globalaccelerator-endpoints.d.ts
+         ◌ aws-globalaccelerator-endpoints.js
+         ◌ aws-globalaccelerator.d.ts
+         ◌ aws-globalaccelerator.js
+         ◌ aws-glue.d.ts
+         ◌ aws-glue.js
+         ◌ aws-greengrass.d.ts
+         ◌ aws-greengrass.js
+         ◌ aws-greengrassv2.d.ts
+         ◌ aws-greengrassv2.js
+         ◌ aws-groundstation.d.ts
+         ◌ aws-groundstation.js
+         ◌ aws-guardduty.d.ts
+         ◌ aws-guardduty.js
+         ◌ aws-iam.d.ts
+         ◌ aws-iam.js
+         ◌ aws-imagebuilder.d.ts
+         ◌ aws-imagebuilder.js
+         ◌ aws-inspector.d.ts
+         ◌ aws-inspector.js
+         ◌ aws-iot.d.ts
+         ◌ aws-iot.js
+         ◌ aws-iot1click.d.ts
+         ◌ aws-iot1click.js
+         ◌ aws-iotanalytics.d.ts
+         ◌ aws-iotanalytics.js
+         ◌ aws-iotcoredeviceadvisor.d.ts
+         ◌ aws-iotcoredeviceadvisor.js
+         ◌ aws-iotevents.d.ts
+         ◌ aws-iotevents.js
+         ◌ aws-iotfleethub.d.ts
+         ◌ aws-iotfleethub.js
+         ◌ aws-iotsitewise.d.ts
+         ◌ aws-iotsitewise.js
+         ◌ aws-iotthingsgraph.d.ts
+         ◌ aws-iotthingsgraph.js
+         ◌ aws-iotwireless.d.ts
+         ◌ aws-iotwireless.js
+         ◌ aws-ivs.d.ts
+         ◌ aws-ivs.js
+         ◌ aws-kendra.d.ts
+         ◌ aws-kendra.js
+         ◌ aws-kinesis.d.ts
+         ◌ aws-kinesis.js
+         ◌ aws-kinesisanalytics.d.ts
+         ◌ aws-kinesisanalytics.js
+         ◌ aws-kinesisfirehose.d.ts
+         ◌ aws-kinesisfirehose.js
+         ◌ aws-kms.d.ts
+         ◌ aws-kms.js
+         ◌ aws-lakeformation.d.ts
+         ◌ aws-lakeformation.js
+         ◌ aws-lambda-destinations.d.ts
+         ◌ aws-lambda-destinations.js
+         ◌ aws-lambda-event-sources.d.ts
+         ◌ aws-lambda-event-sources.js
+         ◌ aws-lambda-nodejs.d.ts
+         ◌ aws-lambda-nodejs.js
+         ◌ aws-lambda.d.ts
+         ◌ aws-lambda.js
+         ◌ aws-licensemanager.d.ts
+         ◌ aws-licensemanager.js
+         ◌ aws-location.d.ts
+         ◌ aws-location.js
+         ◌ aws-logs-destinations.d.ts
+         ◌ aws-logs-destinations.js
+         ◌ aws-logs.d.ts
+         ◌ aws-logs.js
+         ◌ aws-lookoutequipment.d.ts
+         ◌ aws-lookoutequipment.js
+         ◌ aws-lookoutmetrics.d.ts
+         ◌ aws-lookoutmetrics.js
+         ◌ aws-lookoutvision.d.ts
+         ◌ aws-lookoutvision.js
+         ◌ aws-macie.d.ts
+         ◌ aws-macie.js
+         ◌ aws-managedblockchain.d.ts
+         ◌ aws-managedblockchain.js
+         ◌ aws-mediaconnect.d.ts
+         ◌ aws-mediaconnect.js
+         ◌ aws-mediaconvert.d.ts
+         ◌ aws-mediaconvert.js
+         ◌ aws-medialive.d.ts
+         ◌ aws-medialive.js
+         ◌ aws-mediapackage.d.ts
+         ◌ aws-mediapackage.js
+         ◌ aws-mediastore.d.ts
+         ◌ aws-mediastore.js
+         ◌ aws-msk.d.ts
+         ◌ aws-msk.js
+         ◌ aws-mwaa.d.ts
+         ◌ aws-mwaa.js
+         ◌ aws-neptune.d.ts
+         ◌ aws-neptune.js
+         ◌ aws-networkfirewall.d.ts
+         ◌ aws-networkfirewall.js
+         ◌ aws-networkmanager.d.ts
+         ◌ aws-networkmanager.js
+         ◌ aws-nimblestudio.d.ts
+         ◌ aws-nimblestudio.js
+         ◌ aws-opsworks.d.ts
+         ◌ aws-opsworks.js
+         ◌ aws-opsworkscm.d.ts
+         ◌ aws-opsworkscm.js
+         ◌ aws-pinpoint.d.ts
+         ◌ aws-pinpoint.js
+         ◌ aws-pinpointemail.d.ts
+         ◌ aws-pinpointemail.js
+         ◌ aws-qldb.d.ts
+         ◌ aws-qldb.js
+         ◌ aws-quicksight.d.ts
+         ◌ aws-quicksight.js
+         ◌ aws-ram.d.ts
+         ◌ aws-ram.js
+         ◌ aws-rds.d.ts
+         ◌ aws-rds.js
+         ◌ aws-redshift.d.ts
+         ◌ aws-redshift.js
+         ◌ aws-resourcegroups.d.ts
+         ◌ aws-resourcegroups.js
+         ◌ aws-robomaker.d.ts
+         ◌ aws-robomaker.js
+         ◌ aws-route53-patterns.d.ts
+         ◌ aws-route53-patterns.js
+         ◌ aws-route53-targets.d.ts
+         ◌ aws-route53-targets.js
+         ◌ aws-route53.d.ts
+         ◌ aws-route53.js
+         ◌ aws-route53recoverycontrol.d.ts
+         ◌ aws-route53recoverycontrol.js
+         ◌ aws-route53recoveryreadiness.d.ts
+         ◌ aws-route53recoveryreadiness.js
+         ◌ aws-route53resolver.d.ts
+         ◌ aws-route53resolver.js
+         ◌ aws-s3-assets.d.ts
+         ◌ aws-s3-assets.js
+         ◌ aws-s3-deployment.d.ts
+         ◌ aws-s3-deployment.js
+         ◌ aws-s3-notifications.d.ts
+         ◌ aws-s3-notifications.js
+         ◌ aws-s3.d.ts
+         ◌ aws-s3.js
+         ◌ aws-s3objectlambda.d.ts
+         ◌ aws-s3objectlambda.js
+         ◌ aws-s3outposts.d.ts
+         ◌ aws-s3outposts.js
+         ◌ aws-sagemaker.d.ts
+         ◌ aws-sagemaker.js
+         ◌ aws-sam.d.ts
+         ◌ aws-sam.js
+         ◌ aws-sdb.d.ts
+         ◌ aws-sdb.js
+         ◌ aws-secretsmanager.d.ts
+         ◌ aws-secretsmanager.js
+         ◌ aws-securityhub.d.ts
+         ◌ aws-securityhub.js
+         ◌ aws-servicecatalog.d.ts
+         ◌ aws-servicecatalog.js
+         ◌ aws-servicecatalogappregistry.d.ts
+         ◌ aws-servicecatalogappregistry.js
+         ◌ aws-servicediscovery.d.ts
+         ◌ aws-servicediscovery.js
+         ◌ aws-ses-actions.d.ts
+         ◌ aws-ses-actions.js
+         ◌ aws-ses.d.ts
+         ◌ aws-ses.js
+         ◌ aws-signer.d.ts
+         ◌ aws-signer.js
+         ◌ aws-sns-subscriptions.d.ts
+         ◌ aws-sns-subscriptions.js
+         ◌ aws-sns.d.ts
+         ◌ aws-sns.js
+         ◌ aws-sqs.d.ts
+         ◌ aws-sqs.js
+         ◌ aws-ssm.d.ts
+         ◌ aws-ssm.js
+         ◌ aws-ssmcontacts.d.ts
+         ◌ aws-ssmcontacts.js
+         ◌ aws-ssmincidents.d.ts
+         ◌ aws-ssmincidents.js
+         ◌ aws-sso.d.ts
+         ◌ aws-sso.js
+         ◌ aws-stepfunctions-tasks.d.ts
+         ◌ aws-stepfunctions-tasks.js
+         ◌ aws-stepfunctions.d.ts
+         ◌ aws-stepfunctions.js
+         ◌ aws-synthetics.d.ts
+         ◌ aws-synthetics.js
+         ◌ aws-timestream.d.ts
+         ◌ aws-timestream.js
+         ◌ aws-transfer.d.ts
+         ◌ aws-transfer.js
+         ◌ aws-waf.d.ts
+         ◌ aws-waf.js
+         ◌ aws-wafregional.d.ts
+         ◌ aws-wafregional.js
+         ◌ aws-wafv2.d.ts
+         ◌ aws-wafv2.js
+         ◌ aws-workspaces.d.ts
+         ◌ aws-workspaces.js
+         ◌ aws-xray.d.ts
+         ◌ aws-xray.js
+         ◌ cloud-assembly-schema.d.ts
+         ◌ cloud-assembly-schema.js
+         ◌ cloudformation-include.d.ts
+         ◌ cloudformation-include.js
+         ◌ custom-resources.d.ts
+         ◌ custom-resources.js
+         ◌ cx-api.d.ts
+         ◌ cx-api.js
+         ◌ lambda-layer-awscli.d.ts
+         ◌ lambda-layer-awscli.js
+         ◌ lambda-layer-kubectl.d.ts
+         ◌ lambda-layer-kubectl.js
+         ◌ LICENSE
+        ◌ NOTICE
+         ◌ package.json
+         ◌ pipelines.d.ts
+         ◌ pipelines.js
+        ◌ README.md
+         ◌ region-info.d.ts
+         ◌ region-info.js
+      ◌ aws-sdk
+      ◌ aws-sign2
+      ◌ aws4
+      ◌ babel-jest
+      ◌ babel-plugin-istanbul
+      ◌ babel-plugin-jest-hoist
+      ◌ babel-preset-current-node-syntax
+      ◌ babel-preset-jest
+      ◌ balanced-match
+      ◌ base64-js
+      ◌ bcrypt-pbkdf
+      ◌ bl
+      ◌ boxen
+      ◌ brace-expansion
+      ◌ braces
+      ◌ browser-process-hrtime
+      ◌ browserslist
+      ◌ bs-logger
+      ◌ bser
+      ◌ buffer
+      ◌ buffer-crc32
+      ◌ buffer-from
+      ◌ builtins
+      ◌ bytes
+      ◌ cacache
+      ◌ cacheable-request
+      ◌ call-bind
+      ◌ callsites
+      ◌ camelcase
+      ◌ caniuse-lite
+      ◌ case
+      ◌ caseless
+      ◌ cdk-assets
+      ◌ chalk
+      ◌ char-regex
+      ◌ charenc
+      ◌ chownr
+      ◌ ci-info
+      ◌ cint
+      ◌ cjs-module-lexer
+      ◌ clean-stack
+      ◌ cli-boxes
+      ◌ cli-color
+      ◌ cli-table
+      ◌ cliui
+      ◌ clone-response
+      ◌ co
+      ◌ code-point-at
+      ◌ collect-v8-coverage
+      ◌ color-convert
+      ◌ color-name
+      ◌ colorette
+      ◌ colors
+      ◌ combined-stream
+      ◌ commander
+      ◌ compress-commons
+      ◌ concat-map
+      ◌ configstore
+      ◌ console-control-strings
+      ◌ constructs
+      ◌ convert-source-map
+      ◌ core-util-is
+      ◌ crc-32
+      ◌ crc32-stream
+      ◌ create-require
+      ◌ cross-spawn
+      ◌ crypt
+      ◌ crypto-random-string
+      ◌ cssom
+      ◌ cssstyle
+      ◌ dashdash
+      ◌ data-uri-to-buffer
+      ◌ data-urls
+      ◌ debug
+      ◌ decamelize
+      ◌ decimal.js
+      ◌ decompress-response
+      ◌ dedent
+      ◌ deep-extend
+      ◌ deep-is
+      ◌ deepmerge
+      ◌ defer-to-connect
+      ◌ define-properties
+      ◌ degenerator
+      ◌ delayed-stream
+      ◌ delegates
+      ◌ depd
+      ◌ detect-newline
+      ◌ diff
+      ◌ diff-sequences
+      ◌ difflib
+      ◌ dir-glob
+      ◌ doctrine
+      ◌ domexception
+      ◌ dot-prop
+      ◌ dreamopt
+      ◌ duplexer3
+      ◌ ecc-jsbn
+      ◌ electron-to-chromium
+      ◌ emittery
+      ◌ emoji-regex
+      ◌ encoding
+      ◌ end-of-stream
+      ◌ enquirer
+      ◌ env-paths
+      ◌ err-code
+      ◌ error-ex
+      ◌ es-abstract
+      ◌ es-to-primitive
+      ◌ es5-ext
+      ◌ escalade
+      ◌ escape-goat
+      ◌ escape-string-regexp
+      ◌ escodegen
+      ◌ eslint
+      ◌ eslint-import-resolver-node
+      ◌ eslint-import-resolver-typescript
+      ◌ eslint-module-utils
+      ◌ eslint-plugin-import
+      ◌ eslint-scope
+      ◌ eslint-utils
+      ◌ eslint-visitor-keys
+      ◌ espree
+      ◌ esprima
+      ◌ esquery
+      ◌ esrecurse
+      ◌ estraverse
+      ◌ esutils
+      ◌ events
+      ◌ execa
+      ◌ exit
+      ◌ exit-on-epipe
+      ◌ expect
+      ◌ extend
+      ◌ extsprintf
+      ◌ fast-deep-equal
+      ◌ fast-glob
+      ◌ fast-json-stable-stringify
+      ◌ fast-levenshtein
+      ◌ fast-memoize
+      ◌ fastq
+      ◌ fb-watchman
+      ◌ figgy-pudding
+      ◌ file-entry-cache
+      ◌ file-uri-to-path
+      ◌ fill-range
+      ◌ find-up
+      ◌ flat-cache
+      ◌ flatted
+      ◌ forever-agent
+      ◌ form-data
+      ◌ fp-and-or
+      ◌ fs-constants
+      ◌ fs-extra
+      ◌ fs-minipass
+      ◌ fs.realpath
+      ◌ fsevents
+      ◌ ftp
+      ◌ function-bind
+      ◌ functional-red-black-tree
+      ◌ gauge
+      ◌ gensync
+      ◌ get-caller-file
+      ◌ get-intrinsic
+      ◌ get-package-type
+      ◌ get-stdin
+      ◌ get-stream
+      ◌ get-symbol-description
+      ◌ get-uri
+      ◌ getpass
+      ◌ glob
+      ◌ glob-parent
+      ◌ global-dirs
+      ◌ globals
+      ◌ globby
+      ◌ got
+      ◌ graceful-fs
+      ◌ har-schema
+      ◌ har-validator
+      ◌ has
+      ◌ has-bigints
+      ◌ has-flag
+      ◌ has-symbols
+      ◌ has-tostringtag
+      ◌ has-unicode
+      ◌ has-yarn
+      ◌ heap
+      ◌ hosted-git-info
+      ◌ html-encoding-sniffer
+      ◌ html-escaper
+      ◌ http-cache-semantics
+      ◌ http-errors
+      ◌ http-proxy-agent
+      ◌ http-signature
+      ◌ https-proxy-agent
+      ◌ human-signals
+      ◌ humanize-ms
+      ◌ iconv-lite
+      ◌ ieee754
+      ◌ ignore
+      ◌ ignore-walk
+      ◌ import-fresh
+      ◌ import-lazy
+      ◌ import-local
+      ◌ imurmurhash
+      ◌ indent-string
+      ◌ infer-owner
+      ◌ inflight
+      ◌ inherits
+      ◌ ini
+      ◌ internal-slot
+      ◌ interpret
+      ◌ ip
+      ◌ is-arrayish
+      ◌ is-bigint
+      ◌ is-boolean-object
+      ◌ is-buffer
+      ◌ is-callable
+      ◌ is-ci
+      ◌ is-core-module
+      ◌ is-date-object
+      ◌ is-extglob
+      ◌ is-fullwidth-code-point
+      ◌ is-generator-fn
+      ◌ is-glob
+      ◌ is-installed-globally
+      ◌ is-lambda
+      ◌ is-negative-zero
+      ◌ is-npm
+      ◌ is-number
+      ◌ is-number-object
+      ◌ is-obj
+      ◌ is-path-inside
+      ◌ is-potential-custom-element-name
+      ◌ is-regex
+      ◌ is-stream
+      ◌ is-string
+      ◌ is-symbol
+      ◌ is-typedarray
+      ◌ is-yarn-global
+      ◌ isarray
+      ◌ isexe
+      ◌ isstream
+      ◌ istanbul-lib-coverage
+      ◌ istanbul-lib-instrument
+      ◌ istanbul-lib-report
+      ◌ istanbul-lib-source-maps
+      ◌ istanbul-reports
+      ◌ jest
+      ◌ jest-changed-files
+      ◌ jest-circus
+      ◌ jest-cli
+      ◌ jest-config
+      ◌ jest-diff
+      ◌ jest-docblock
+      ◌ jest-each
+      ◌ jest-environment-jsdom
+      ◌ jest-environment-node
+      ◌ jest-get-type
+      ◌ jest-haste-map
+      ◌ jest-jasmine2
+      ◌ jest-junit
+      ◌ jest-leak-detector
+      ◌ jest-matcher-utils
+      ◌ jest-message-util
+      ◌ jest-mock
+      ◌ jest-pnp-resolver
+      ◌ jest-regex-util
+      ◌ jest-resolve
+      ◌ jest-resolve-dependencies
+      ◌ jest-runner
+      ◌ jest-runtime
+      ◌ jest-serializer
+      ◌ jest-snapshot
+      ◌ jest-util
+      ◌ jest-validate
+      ◌ jest-watcher
+      ◌ jest-worker
+      ◌ jju
+      ◌ jmespath
+      ◌ js-tokens
+      ◌ js-yaml
+      ◌ jsbn
+      ◌ jsdom
+      ◌ jsesc
+      ◌ json-buffer
+      ◌ json-diff
+      ◌ json-parse-better-errors
+      ◌ json-parse-even-better-errors
+      ◌ json-parse-helpfulerror
+      ◌ json-schema
+      ◌ json-schema-traverse
+      ◌ json-stable-stringify-without-jsonify
+      ◌ json-stringify-safe
+      ◌ json5
+      ◌ jsonfile
+      ◌ jsonlines
+      ◌ jsonparse
+      ◌ jsonschema
+      ◌ jsprim
+      ◌ keyv
+      ◌ kleur
+      ◌ latest-version
+      ◌ lazystream
+      ◌ leven
+      ◌ levn
+      ◌ libnpmconfig
+      ◌ load-json-file
+      ◌ locate-path
+      ◌ lodash
+      ◌ lodash.clonedeep
+      ◌ lodash.defaults
+      ◌ lodash.difference
+      ◌ lodash.flatten
+      ◌ lodash.isplainobject
+      ◌ lodash.merge
+      ◌ lodash.truncate
+      ◌ lodash.union
+      ◌ lowercase-keys
+      ◌ lru-cache
+      ◌ make-dir
+      ◌ make-error
+      ◌ make-fetch-happen
+      ◌ makeerror
+      ◌ md5
+      ◌ merge-stream
+      ◌ merge2
+      ◌ micromatch
+      ◌ mime
+      ◌ mime-db
+      ◌ mime-types
+      ◌ mimic-fn
+      ◌ mimic-response
+      ◌ minimatch
+      ◌ minimist
+      ◌ minipass
+      ◌ minipass-collect
+      ◌ minipass-fetch
+      ◌ minipass-flush
+      ◌ minipass-json-stream
+      ◌ minipass-pipeline
+      ◌ minipass-sized
+      ◌ minizlib
+      ◌ mkdirp
+      ◌ ms
+      ◌ mute-stream
+      ◌ natural-compare
+      ◌ negotiator
+      ◌ netmask
+      ◌ node-gyp
+      ◌ node-int64
+      ◌ node-modules-regexp
+      ◌ node-releases
+      ◌ nopt
+      ◌ normalize-package-data
+      ◌ normalize-path
+      ◌ normalize-url
+      ◌ npm-bundled
+      ◌ npm-check-updates
+      ◌ npm-install-checks
+      ◌ npm-normalize-package-bin
+      ◌ npm-package-arg
+      ◌ npm-packlist
+      ◌ npm-pick-manifest
+      ◌ npm-registry-fetch
+      ◌ npm-run-path
+      ◌ npmlog
+      ◌ number-is-nan
+      ◌ nwsapi
+      ◌ oauth-sign
+      ◌ object-assign
+      ◌ object-inspect
+      ◌ object-keys
+      ◌ object.assign
+      ◌ object.values
+      ◌ once
+      ◌ onetime
+      ◌ optionator
+      ◌ p-cancelable
+      ◌ p-each-series
+      ◌ p-limit
+      ◌ p-locate
+      ◌ p-map
+      ◌ p-try
+      ◌ pac-proxy-agent
+      ◌ pac-resolver
+      ◌ package-json
+      ◌ pacote
+      ◌ parent-module
+      ◌ parse-github-url
+      ◌ parse-json
+      ◌ parse5
+      ◌ path-exists
+      ◌ path-is-absolute
+      ◌ path-key
+      ◌ path-parse
+      ◌ path-type
+      ◌ performance-now
+      ◌ picomatch
+      ◌ pify
+      ◌ pirates
+      ◌ pkg-dir
+      ◌ pkg-up
+      ◌ prelude-ls
+      ◌ prepend-http
+      ◌ pretty-format
+      ◌ printj
+      ◌ process-nextick-args
+      ◌ progress
+      ◌ projen
+      ◌ promise-inflight
+      ◌ promise-retry
+      ◌ promptly
+      ◌ prompts
+      ◌ proxy-agent
+      ◌ proxy-from-env
+      ◌ psl
+      ◌ pump
+      ◌ punycode
+      ◌ pupa
+      ◌ qs
+      ◌ querystring
+      ◌ queue-microtask
+      ◌ raw-body
+      ◌ rc
+      ◌ rc-config-loader
+      ◌ react-is
+      ◌ read
+      ◌ read-package-json-fast
+      ◌ read-pkg
+      ◌ read-pkg-up
+      ◌ readable-stream
+      ◌ readdir-glob
+      ◌ rechoir
+      ◌ regexpp
+      ◌ registry-auth-token
+      ◌ registry-url
+      ◌ remote-git-tags
+      ◌ request
+      ◌ require-directory
+      ◌ require-from-string
+      ◌ resolve
+      ◌ resolve-cwd
+      ◌ resolve-from
+      ◌ responselike
+      ◌ retry
+      ◌ reusify
+      ◌ rimraf
+      ◌ run-parallel
+      ◌ safe-buffer
+      ◌ safer-buffer
+      ◌ sax
+      ◌ saxes
+      ◌ semver
+      ◌ semver-diff
+      ◌ semver-utils
+      ◌ set-blocking
+      ◌ setprototypeof
+      ◌ shebang-command
+      ◌ shebang-regex
+      ◌ shelljs
+      ◌ shx
+      ◌ side-channel
+      ◌ signal-exit
+      ◌ sisteransi
+      ◌ slash
+      ◌ slice-ansi
+      ◌ smart-buffer
+      ◌ socks
+      ◌ socks-proxy-agent
+      ◌ source-map
+      ◌ source-map-support
+      ◌ spawn-please
+      ◌ spdx-correct
+      ◌ spdx-exceptions
+      ◌ spdx-expression-parse
+      ◌ spdx-license-ids
+      ◌ sprintf-js
+      ◌ sshpk
+      ◌ ssri
+      ◌ stack-utils
+      ◌ statuses
+      ◌ string-length
+      ◌ string-width
+      ◌ string.prototype.trimend
+      ◌ string.prototype.trimstart
+      ◌ string_decoder
+      ◌ strip-ansi
+      ◌ strip-bom
+      ◌ strip-final-newline
+      ◌ strip-json-comments
+      ◌ supports-color
+      ◌ supports-hyperlinks
+      ◌ symbol-tree
+      ◌ table
+      ◌ tar
+      ◌ tar-stream
+      ◌ terminal-link
+      ◌ test-exclude
+      ◌ text-table
+      ◌ throat
+      ◌ tmpl
+      ◌ to-fast-properties
+      ◌ to-readable-stream
+      ◌ to-regex-range
+      ◌ toidentifier
+      ◌ tough-cookie
+      ◌ tr46
+      ◌ ts-jest
+      ◌ ts-node
+      ◌ tsconfig-paths
+      ◌ tslib
+      ◌ tsutils
+      ◌ tunnel-agent
+      ◌ tweetnacl
+      ◌ type-check
+      ◌ type-detect
+      ◌ type-fest
+      ◌ typedarray-to-buffer
+      ◌ typescript
+      ◌ unbox-primitive
+      ◌ unique-filename
+      ◌ unique-slug
+      ◌ unique-string
+      ◌ universalify
+      ◌ unpipe
+      ◌ update-notifier
+      ◌ uri-js
+      ◌ url
+      ◌ url-parse-lax
+      ◌ util-deprecate
+      ◌ uuid
+      ◌ v8-compile-cache
+      ◌ v8-to-istanbul
+      ◌ validate-npm-package-license
+      ◌ validate-npm-package-name
+      ◌ verror
+      ◌ w3c-hr-time
+      ◌ w3c-xmlserializer
+      ◌ walker
+      ◌ webidl-conversions
+      ◌ whatwg-encoding
+      ◌ whatwg-mimetype
+      ◌ whatwg-url
+      ◌ which
+      ◌ which-boxed-primitive
+      ◌ wide-align
+      ◌ widest-line
+      ◌ word-wrap
+      ◌ wordwrap
+      ◌ wrap-ansi
+      ◌ wrappy
+      ◌ write-file-atomic
+      ◌ ws
+      ◌ xdg-basedir
+      ◌ xml
+      ◌ xml-name-validator
+      ◌ xml2js
+      ◌ xmlbuilder
+      ◌ xmlbuilder2
+      ◌ xmlchars
+      ◌ xregexp
+      ◌ y18n
+      ◌ yallist
+      ◌ yaml
+      ◌ yargs
+      ◌ yargs-parser
+      ◌ yn
+      ◌ yocto-queue
+      ◌ zip-stream
+      ◌ .yarn-integrity
+    ★ src
+       ✗ deploy-statics.ts
+       ★ get-domain-name.ts
+       ★ get-resource-name.ts
+       ✗ main.ts
+       ★ make-data-tables.ts
+       ✗ make-pages-api.ts
+       ★ make-user-pool.ts
+       ★ setup-dns-zone.ts
+       ★ setup-front-door.ts
+    test
+     .eslintrc.json
+     .gitattributes
+     .gitignore
+     .npmignore
+     ★ backend-config.json
+     cdk.json
+     LICENSE
+     ✗ package.json
+    README.md
+    test.txt
+     tsconfig.eslint.json
+     tsconfig.jest.json
+     tsconfig.json
+    yarn.lock
+  ◌ node_modules
+  ◌ out
+  ◌ out_lambda
+  ★ public
+   src
+    assets
+    ✗ aws
+       authenticate.spec.node.ts
+       ✗ authenticate.ts
+       getOutputs.ts
+       getPoolConfig.spec.node.ts
+       ✗ getPoolConfig.ts
+    ✗ components
+    hooks
+     pages
+    types
+    utils
+     breakpoints.ts
+     config.ts
+     global.d.ts
+     testSetup.ts
+     user-context.ts
+  ◌ .DS_Store
+   .gitattributes
+   .gitignore
+   .mergify.yml
+   .npmignore
+   ✗ .projenrc.ts
+   LICENSE
+   next-env.d.ts
+   ✗ next.config.js
+   package.json
+   postcss.config.json
+  README.md
+   tailwind.config.json
+   test.tsx
+   tsconfig.json
+  yarn.lock

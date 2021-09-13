@@ -73,6 +73,12 @@ const infrastructure = new AwsCdkTypeScriptApp({
   parent: tnmApp
 })
 
+infrastructure.tasks.removeTask('deploy')
+
+const deploy = infrastructure.addTask("deploy:dev")
+deploy.exec("yarn cdk deploy tnm-v3-dev-stack --outputs-file backend-config.json")
+deploy.exec("aws s3 cp backend-config.json s3://$(cat backend-config.json | jq --raw-output 'keys[] as $k | .[$k] | .StaticsBucket')")
+
 tnmApp.tsconfig.addExclude(infrastructure.outdir)
 
 const tsConfig = tnmApp.tryFindObjectFile('tsconfig.json')

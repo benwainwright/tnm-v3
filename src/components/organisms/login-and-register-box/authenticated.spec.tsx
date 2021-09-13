@@ -2,9 +2,10 @@ import Authenticated, { Redirect } from "./authenticated"
 import { currentUser } from "@app/aws/authenticate"
 import { mocked } from "ts-jest/utils"
 import { render, screen, waitFor } from "@testing-library/react"
+import { navigate } from "@app/utils/navigate"
 
 jest.mock("@app/aws/authenticate")
-jest.mock("gatsby")
+jest.mock("@app/utils/navigate")
 
 describe("The <Authenticated> component", () => {
   it("shows contents when a user has been found", async () => {

@@ -13,9 +13,9 @@
     "default": "npx projen default",
     "eslint": "npx projen eslint",
     "synth": "npx projen synth",
-    "deploy": "npx projen deploy",
     "destroy": "npx projen destroy",
     "diff": "npx projen diff",
+    "deploy:dev": "npx projen deploy:dev",
     "projen": "npx projen"
   },
   "devDependencies": {

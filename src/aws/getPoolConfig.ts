@@ -14,7 +14,7 @@ type BackendOutputs = {
 export const getPoolConfig = async (): Promise<AuthDetails> => {
   const json: BackendOutputs = await getOutputs()
   const config = Object.entries(json).find(([key]) =>
-    key.includes("BackendStack")
+    key.includes("dev-stack")
   )
 
   if (!config) {

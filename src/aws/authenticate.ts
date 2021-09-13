@@ -13,7 +13,13 @@ const getConfigurer = () => {
         Auth: {
           region: REGION,
           userPoolId: outputs.UserPoolId,
-          userPoolWebClientId: outputs.ClientId
+          userPoolWebClientId: outputs.ClientId,
+          cookieStorage: {
+            domain: 'localhost',
+            secure: false,
+            path: '/',
+            expires: 365,
+          },
         }
       })
     }
@@ -31,11 +37,11 @@ export const login = async (username: string, password: string) => {
 export const register = async (
   username: string,
   password: string,
-  salutation: string,
+  _salutation: string,
   email: string,
-  firstname: string,
-  surname: string,
-  address: string,
+  _firstname: string,
+  _surname: string,
+  _address: string,
   telephone: string
 ) => {
   await configureAuth()
@@ -43,11 +49,11 @@ export const register = async (
     username,
     password,
     attributes: {
-      "custom:salutation": salutation,
+      // "custom:salutation": salutation,
       email: email,
-      given_name: firstname,
-      family_name: surname,
-      address: address,
+      // given_name: firstname,
+      // family_name: surname,
+      // address: address,
       phone_number: telephone
     }
   })

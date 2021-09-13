@@ -1,14 +1,14 @@
 import { login, newPasswordChallengeResponse } from "@app/aws/authenticate"
 import { SrpData } from "@app/types/srp-data"
 import { act, renderHook } from "@testing-library/react-hooks"
-import { navigate } from "gatsby"
 import { when } from "jest-when"
 import { mocked } from "ts-jest/utils"
 import { LoginState } from "./login-box"
 import { useLoginBox } from "./use-login-box"
+import { navigate } from "@app/utils/navigate"
 
 jest.mock("@app/aws/authenticate")
-jest.mock("gatsby")
+jest.mock("@app/utils/navigate")
 
 afterEach(() => jest.resetAllMocks())
 
