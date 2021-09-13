@@ -7,7 +7,6 @@ import * as fs from "fs-extra";
 import { HttpOrigin } from "aws-cdk-lib/lib/aws-cloudfront-origins";
 import { getResourceName } from "./get-resource-name";
 import { UserPool } from "aws-cdk-lib/lib/aws-cognito";
-import { Aws } from "aws-cdk-lib";
 
 export const makePagesApi = (
   context: Construct,
