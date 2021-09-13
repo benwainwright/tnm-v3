@@ -15,8 +15,8 @@ const getConfigurer = () => {
           userPoolId: outputs.UserPoolId,
           userPoolWebClientId: outputs.ClientId,
           cookieStorage: {
-            domain: process.env.IS_LOCAL_DEV ? 'localhost' : outputs.DomainName,
-            secure: !Boolean(process.env.IS_LOCAL_DEV),
+            domain: process.env.NEXT_PUBLIC_IS_LOCAL_DEV ? 'localhost' : outputs.DomainName,
+            secure: !Boolean(process.env.NEXT_PUBLIC_IS_LOCAL_DEV),
             path: '/',
             expires: 365,
           },

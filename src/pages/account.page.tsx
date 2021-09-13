@@ -17,6 +17,8 @@ import Authenticated, {
 } from "@app/components/organisms/login-and-register-box/authenticated"
 import styled from "@emotion/styled"
 import { currentUser } from "@app/aws/authenticate"
+import { GetServerSideProps } from "next"
+import { verifyJwtToken, authorizedRoute } from "@app/utils"
 
 const YourAccountHeaderBox = styled("div")`
   text-align: center;
@@ -49,5 +51,7 @@ const Account: FC = () => {
     </Authenticated>
   )
 }
+
+export const getServerSideProps = authorizedRoute()
 
 export default Account

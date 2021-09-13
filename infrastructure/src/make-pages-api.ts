@@ -6,12 +6,15 @@ import * as path from "path";
 import * as fs from "fs-extra";
 import { HttpOrigin } from "aws-cdk-lib/lib/aws-cloudfront-origins";
 import { getResourceName } from "./get-resource-name";
+import { UserPool } from "aws-cdk-lib/lib/aws-cognito";
+import { Aws } from "aws-cdk-lib";
 
 export const makePagesApi = (
   context: Construct,
   lambdaFolder: string,
   envName: string,
-  projectRoot: string
+  projectRoot: string,
+  pool: UserPool
 ) => {
 
   const awsNextLayer = new LayerVersion(context, 'aws-next-layer', {
@@ -44,6 +47,10 @@ export const makePagesApi = (
       handler: "page/handler.render",
       code: Code.fromAsset(build),
       layers: [awsNextLayer],
+      environment: {
+        COGNITO_POOL_ID: pool.userPoolId,
+        AWS_REGION: Aws.REGION
+      }
     });
 
     const resource =

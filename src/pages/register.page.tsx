@@ -7,6 +7,7 @@ import {
 import AccountIcon from "@app/assets/images/icons/TNM_Icons_Final_Account.png"
 import { Hero, Layout } from "@app/components/containers"
 import styled from "@emotion/styled"
+import { loggedOutOnlyRoute } from "@app/utils"
 
 const YourAccountHeaderBox = styled("div")`
   text-align: center;
@@ -39,6 +40,8 @@ const Register: FC = () => {
     </Authenticated>
   )
 }
+
+export const getServerSideProps = loggedOutOnlyRoute("account")
 
 
 export default Register

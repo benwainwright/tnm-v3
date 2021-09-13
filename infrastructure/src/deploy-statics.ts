@@ -8,7 +8,8 @@ import { getDomainName } from "./get-domain-name";
 
 export const deployStatics = (
   context: Construct,
-  path: string,
+  publicFolder: string,
+  staticsFolder: string,
   envName: string,
   distribution: Distribution
 ) => {
@@ -40,10 +41,20 @@ export const deployStatics = (
 
   distribution.addBehavior(`/backend-config.json`, bucketOrigin)
 
-  new BucketDeployment(context, "DeployWebsite", {
-    sources: [Source.asset(path)],
+  new BucketDeployment(context, "deploy-public-folder", {
+    sources: [
+      Source.asset(publicFolder),
+    ],
+    destinationBucket: deploymentBucket,
+  });
+
+  new BucketDeployment(context, "deploy-statics-folder", {
+    sources: [
+      Source.asset(staticsFolder),
+    ],
     destinationBucket: deploymentBucket,
     distribution,
+    destinationKeyPrefix: "_next",
     distributionPaths: ["/*"],
   });
 };

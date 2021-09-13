@@ -18,22 +18,41 @@ export class TnmV3Stack extends Stack {
   constructor(scope: Construct, id: string, props: TnmAppProps) {
     super(scope, id, props.stackProps);
 
-    const lambdaFolder = path.resolve(projectRoot, "out_lambda");
-    const exportFolder = path.resolve(projectRoot, "out");
-
     const transient = props.envName !== "prod"
+
+    const { userPool } = makeUserPool(
+      this,
+      transient,
+      props.envName
+    )
 
     const { httpOrigin } = makePagesApi(
       this,
-      lambdaFolder,
+      path.resolve(projectRoot, "out_lambda"),
       props.envName,
-      projectRoot
+      projectRoot,
+      userPool
     );
 
-    const { distribution } = setupFrontDoor(this, props.envName, httpOrigin)
-    deployStatics(this, exportFolder, props.envName, distribution);
-    makeUserPool(this, transient, props.envName)
-    makeDataTables(this, transient, props.envName)
+    const { distribution } = setupFrontDoor(
+      this,
+      props.envName,
+      httpOrigin
+    )
+
+    deployStatics(
+      this,
+      path.resolve(projectRoot, "public"),
+      path.resolve(projectRoot, ".next/static"),
+      props.envName,
+      distribution
+    );
+
+    makeDataTables(
+      this,
+      transient,
+      props.envName
+    ) 
   }
 }
 

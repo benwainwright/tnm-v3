@@ -9,6 +9,7 @@ const testingLibrary = [
 
 const deps = [
     "next-aws-lambda-webpack-plugin",
+    "axios",
     "@axe-core/react",
     "next-images",
     "jest-extended",
@@ -28,6 +29,8 @@ const deps = [
 ]
 
 const depsWithoutTypes = [
+  "jsonwebtoken",
+  "jwk-to-pem",
   "react-helmet",
   "lodash",
   "ramda",

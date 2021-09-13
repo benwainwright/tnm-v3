@@ -53,6 +53,14 @@
       "type": "build"
     },
     {
+      "name": "@types/jsonwebtoken",
+      "type": "build"
+    },
+    {
+      "name": "@types/jwk-to-pem",
+      "type": "build"
+    },
+    {
       "name": "@types/lodash",
       "type": "build"
     },
@@ -90,6 +98,10 @@
       "type": "build"
     },
     {
+      "name": "axios",
+      "type": "build"
+    },
+    {
       "name": "enzyme",
       "type": "build"
     },
@@ -111,6 +123,14 @@
     },
     {
       "name": "jest-when",
+      "type": "build"
+    },
+    {
+      "name": "jsonwebtoken",
+      "type": "build"
+    },
+    {
+      "name": "jwk-to-pem",
       "type": "build"
     },
     {
