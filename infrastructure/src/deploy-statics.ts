@@ -54,7 +54,7 @@ export const deployStatics = (
     ],
     destinationBucket: deploymentBucket,
     distribution,
-    destinationKeyPrefix: "_next",
+    destinationKeyPrefix: "_next/static",
     distributionPaths: ["/*"],
   });
 };

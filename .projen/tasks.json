@@ -43,14 +43,25 @@
     },
     "test:compile": {
       "name": "test:compile",
-      "description": "compiles the test code"
+      "description": "compiles the test code",
+      "steps": [
+        {
+          "exec": "tsc --noEmit --project tsconfig.jest.json"
+        }
+      ]
     },
     "test": {
       "name": "test",
       "description": "Run tests",
       "steps": [
         {
+          "exec": "rm -fr lib/"
+        },
+        {
           "spawn": "test:compile"
+        },
+        {
+          "exec": "jest --passWithNoTests --all --updateSnapshot"
         }
       ]
     },
@@ -72,6 +83,24 @@
         }
       ]
     },
+    "test:watch": {
+      "name": "test:watch",
+      "description": "Run jest in watch mode",
+      "steps": [
+        {
+          "exec": "jest --watch"
+        }
+      ]
+    },
+    "test:update": {
+      "name": "test:update",
+      "description": "Update jest snapshots",
+      "steps": [
+        {
+          "exec": "jest --updateSnapshot"
+        }
+      ]
+    },
     "upgrade": {
       "name": "upgrade",
       "description": "upgrade dependencies",
@@ -86,7 +115,7 @@
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @aws-amplify/auth @axe-core/react @emotion/jest @emotion/react @emotion/styled @storybook/react @testing-library/jest-dom @testing-library/react @testing-library/react-hooks @testing-library/user-event @types/enzyme @types/jest @types/jest-when @types/jsonwebtoken @types/jwk-to-pem @types/lodash @types/node @types/ramda @types/react @types/react-dom @types/react-helmet @types/testing-library__jest-dom @wojtekmaj/enzyme-adapter-react-17 amazon-cognito-identity-js axios enzyme fp-ts jest jest-extended jest-mock-extended jest-when jsonwebtoken jwk-to-pem lodash next-aws-lambda-webpack-plugin next-images npm-check-updates ramda react-helmet ts-jest ts-node typescript autoprefixer next postcss react react-dom tailwindcss"
+          "exec": "yarn upgrade @aws-amplify/auth @axe-core/react @babel/core @emotion/babel-plugin @emotion/jest @emotion/react @emotion/styled @storybook/react @testing-library/jest-dom @testing-library/react @testing-library/react-hooks @testing-library/user-event @types/enzyme @types/jest @types/jest-when @types/jsonwebtoken @types/jwk-to-pem @types/lodash @types/node @types/ramda @types/react @types/react-dom @types/react-helmet @types/testing-library__jest-dom @wojtekmaj/enzyme-adapter-react-17 amazon-cognito-identity-js axios enzyme fp-ts jest jest-enzyme jest-extended jest-junit jest-mock-extended jest-transform-stub jest-when jsonwebtoken jwk-to-pem lodash next-aws-lambda-webpack-plugin next-images npm-check-updates ramda react-helmet ts-jest ts-node typescript autoprefixer next postcss react react-dom tailwindcss"
         },
         {
           "exec": "npx projen"

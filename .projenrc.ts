@@ -10,6 +10,8 @@ const testingLibrary = [
 const deps = [
     "next-aws-lambda-webpack-plugin",
     "axios",
+    "jest-enzyme",
+    "jest-transform-stub",
     "@axe-core/react",
     "next-images",
     "jest-extended",
@@ -25,7 +27,9 @@ const deps = [
     "@types/testing-library__jest-dom",
     "jest-mock-extended",
     "jest-when",
-    "fp-ts"
+    "fp-ts",
+    "@emotion/babel-plugin",
+    "@babel/core"
 ]
 
 const depsWithoutTypes = [
@@ -49,6 +53,7 @@ const tnmApp = new web.NextJsTypeScriptProject({
   ],
   name: 'tnm-v3',
   srcdir: 'src',
+  jest: true,
   projenrcTs: true,
   tsconfig: {
     include: ["src/global.d.ts"],
@@ -61,6 +66,21 @@ const tnmApp = new web.NextJsTypeScriptProject({
   },
   jestOptions: {
     jestConfig: {
+      testEnvironment: "jsdom",
+      setupFiles: [`<rootDir>/config/loadershim.js`],
+      moduleNameMapper: {
+        "^@app(.*)$": "<rootDir>/src$1"
+      },
+      testPathIgnorePatterns: [
+        `node_modules`,
+        `\\.cache`,
+        `<rootDir>.*/public`,
+        `cypress`
+      ],
+      transform: {
+        "^.+\\.(svg|css|png)$": "jest-transform-stub",
+        "^.+\\.[jt]sx?$": "<rootDir>/config/jest-preprocess.js"
+      },
       setupFilesAfterEnv: ["<rootDir>/src/testSetup.ts"]
     }
   },
@@ -88,5 +108,11 @@ const tsConfig = tnmApp.tryFindObjectFile('tsconfig.json')
 
 tsConfig.addOverride('compilerOptions.paths', { "@app/*": [ "*" ]})
 tsConfig.addOverride('compilerOptions.baseUrl', "./src")
+
+const tsConfigJest = tnmApp.tryFindObjectFile('tsconfig.jest.json')
+
+tsConfigJest.addOverride('compilerOptions.paths', { "@app/*": [ "*" ]})
+tsConfigJest.addOverride('compilerOptions.baseUrl', "./src")
+
 
 tnmApp.synth();

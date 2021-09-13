@@ -1,6 +1,6 @@
 import { Layout } from "@app/components/containers"
 import { shallow } from "enzyme"
-import IndexPage from "./index"
+import IndexPage from "./index.page"
 
 describe("The index page", () => {
   it("renders everything within the main layout", () => {

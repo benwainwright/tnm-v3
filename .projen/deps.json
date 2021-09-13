@@ -9,6 +9,14 @@
       "type": "build"
     },
     {
+      "name": "@babel/core",
+      "type": "build"
+    },
+    {
+      "name": "@emotion/babel-plugin",
+      "type": "build"
+    },
+    {
       "name": "@emotion/jest",
       "type": "build"
     },
@@ -114,11 +122,24 @@
       "type": "build"
     },
     {
+      "name": "jest-enzyme",
+      "type": "build"
+    },
+    {
       "name": "jest-extended",
       "type": "build"
     },
     {
+      "name": "jest-junit",
+      "version": "^12",
+      "type": "build"
+    },
+    {
       "name": "jest-mock-extended",
+      "type": "build"
+    },
+    {
+      "name": "jest-transform-stub",
       "type": "build"
     },
     {
