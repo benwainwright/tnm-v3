@@ -82,6 +82,7 @@ const tnmApp = new web.NextJsTypeScriptProject({
       testPathIgnorePatterns: [
         `node_modules`,
         `\\.cache`,
+        `infrastructure`,
         `<rootDir>.*/public`,
         `cypress`
       ],

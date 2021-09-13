@@ -97,6 +97,7 @@
     "testPathIgnorePatterns": [
       "node_modules",
       "\\.cache",
+      "infrastructure",
       "<rootDir>.*/public",
       "cypress"
     ],
@@ -123,6 +124,7 @@
     "coveragePathIgnorePatterns": [
       "node_modules",
       "\\.cache",
+      "infrastructure",
       "<rootDir>.*/public",
       "cypress"
     ],
