@@ -1,5 +1,4 @@
 import { Cors, LambdaIntegration, RestApi } from "aws-cdk-lib/aws-apigateway"
-import { CloudFrontInvalidator } from 'cdk-cloudfront-invalidator'
 import { Code, LayerVersion, Function, Runtime } from "aws-cdk-lib/aws-lambda"
 import { Construct } from "constructs"
 import * as cdk from "aws-cdk-lib";
@@ -44,8 +43,6 @@ export const makePagesApi = (context: Construct, lambdaFolder: string, envName: 
     return pageFunction
   })
 
-  const versions = functions.reduce((versionString, func) => `${versionString}${func.currentVersion.version}`, ``)
-
   const domainName = `${api.restApiId}.execute-api.${cdk.Aws.REGION}.amazonaws.com`
 
   const httpOrigin = new HttpOrigin(domainName, { originPath: "/prod" })      
@@ -55,11 +52,6 @@ export const makePagesApi = (context: Construct, lambdaFolder: string, envName: 
       origin: httpOrigin,
       viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
     },
-  })
-
-  new CloudFrontInvalidator(this, 'CloudFrontInvalidator', {
-    distributionId: distribution.distributionId,
-    hash: versions
   })
 
   return {

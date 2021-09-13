@@ -27,10 +27,6 @@
       "type": "build"
     },
     {
-      "name": "cdk-cloudfront-invalidator",
-      "type": "build"
-    },
-    {
       "name": "eslint",
       "type": "build"
     },

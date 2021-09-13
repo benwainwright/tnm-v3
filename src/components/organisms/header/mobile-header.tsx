@@ -1,10 +1,9 @@
 import { FC, Fragment } from "react"
 
-import StaticImage from "../../../utils/StaticImage"
 import styled from "@emotion/styled"
 import { Button } from "../../atoms"
 
-const StyledMenuIcon = styled(StaticImage)`
+const StyledMenuIcon = styled.img`
   width: 40px;
   height: 40px;
 `
@@ -20,7 +19,7 @@ const MenuButtonContainerRight = styled("div")`
   text-align: right;
 `
 
-const StyledTnmLogo = styled(StaticImage)`
+const StyledTnmLogo = styled.img`
   flex-grow: 100;
   margin: 14px 0;
 `

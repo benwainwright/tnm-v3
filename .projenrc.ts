@@ -69,7 +69,7 @@ const infrastructure = new AwsCdkTypeScriptApp({
   cdkVersion: '2.0.0-rc.21',
   outdir: 'infrastructure',
   defaultReleaseBranch: 'main',
-  devDeps: ["fs-extra", "@types/fs-extra", "cdk-cloudfront-invalidator"],
+  devDeps: ["fs-extra", "@types/fs-extra"],
   parent: tnmApp
 })
 
