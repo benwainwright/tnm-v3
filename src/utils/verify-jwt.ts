@@ -20,6 +20,7 @@ export interface ClaimVerifyResult {
 interface TokenHeader {
   kid: string;
   alg: string;
+  typ: 'JWT';
 }
 
 interface PublicKey {
@@ -80,16 +81,34 @@ const getPublicKeys = async (): Promise<MapOfKidToPublicKey> => {
 
 const verifyPromised = promisify(jsonwebtoken.verify.bind(jsonwebtoken));
 
+const isTokenHeader = (thing: unknown): thing is TokenHeader =>
+  Object.hasOwnProperty.call(thing, "kid") &&
+  Object.hasOwnProperty.call(thing, "alg") &&
+  Object.hasOwnProperty.call(thing, "type")
+
+const parseHeader = (token: string): TokenHeader => {
+  const tokenSections = (token || "").split(".");
+  if (tokenSections.length < 2) {
+    throw new Error("Token is invalid");
+  }
+  const headerJSON = Buffer.from(tokenSections[0], "base64").toString("utf8");
+  try {
+    const header = JSON.parse(headerJSON)
+    console.log(header)
+    if(isTokenHeader(header)) {
+      return header
+    }
+  } catch(error) {
+    throw new Error("Token is invalid");
+  }
+  throw new Error("Token is invalid");
+} 
+
 export const verifyJwtToken = async (
   token: string
 ): Promise<ClaimVerifyResult> => {
   try {
-    const tokenSections = (token || "").split(".");
-    if (tokenSections.length < 2) {
-      throw new Error("requested token is invalid");
-    }
-    const headerJSON = Buffer.from(tokenSections[0], "base64").toString("utf8");
-    const header = JSON.parse(headerJSON) as TokenHeader;
+    const header = parseHeader(token)
     const keys = await getPublicKeys();
     const key = keys[header.kid];
     if (key === undefined) {
@@ -98,7 +117,7 @@ export const verifyJwtToken = async (
     const claim = (await verifyPromised(token, key.pem)) as Claim;
     const currentSeconds = Math.floor(new Date().valueOf() / 1000);
     if (currentSeconds > claim.exp || currentSeconds < claim.auth_time) {
-      throw new Error("claim is expired or invalid");
+      throw new Error("Token has expired");
     }
     if (claim.iss !== getIssuer()) {
       throw new Error("claim issuer is invalid");
