@@ -22,7 +22,7 @@ describe("get pool config", () => {
 
   it("gets the only backend stack present in the outputs", async () => {
     const outputs = {
-      "test-TnmV2BackendStack": {
+      "test-TnmV2BackendStack-dev-stack": {
         UserPoolId: "foo-id",
         AuthUrl: "a-url",
         ClientId: "a-id",
