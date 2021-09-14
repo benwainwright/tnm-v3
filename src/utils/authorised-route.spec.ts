@@ -2,9 +2,9 @@ import { authorizedRoute } from "./authorised-route";
 import { mock } from "jest-mock-extended";
 import { mocked } from "ts-jest/utils";
 import { GetServerSidePropsContext } from "next";
-import { verifyJwtToken } from "./verify-jwt";
+import { verifyJwtToken } from "./authentication";
 
-jest.mock("./verify-jwt");
+jest.mock("./authentication");
 
 describe("authorised route", () => {
   it("redirects to the login route without trying to verify if there is no token cookie", async () => {
@@ -95,9 +95,10 @@ describe("authorised route", () => {
       isValid: true,
       groups: ["a-different-group", "a-group"],
     });
+
     const mockContext = mock<GetServerSidePropsContext>();
     mockContext.req = mock<GetServerSidePropsContext["req"]>();
-    mockContext.req.cookies = { "foo.accessToken": "invalidtoken" };
+    mockContext.req.cookies = { "foo.accessToken": "a.valid.token" };
 
     const mockProps = { props: {} };
     const getServerSideProps = jest.fn(() => Promise.resolve(mockProps));

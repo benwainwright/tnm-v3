@@ -1,6 +1,6 @@
 import { GetServerSideProps } from "next";
 import { backendRedirect } from "./backend-redirect";
-import { verifyJwtToken } from "./verify-jwt";
+import { verifyJwtToken } from "./authentication";
 
 export const loggedOutOnlyRoute = (
   redirectTo: string,
@@ -24,3 +24,5 @@ export const loggedOutOnlyRoute = (
     return (await serverSidePropsCallback?.(context)) ?? { props: {} };
   };
 };
+
+
