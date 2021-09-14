@@ -39,7 +39,8 @@
         "*"
       ]
     },
-    "baseUrl": "./src"
+    "baseUrl": "./src",
+    "useUnknownInCatchVariables": true
   },
   "include": [
     "src/**/*.ts",

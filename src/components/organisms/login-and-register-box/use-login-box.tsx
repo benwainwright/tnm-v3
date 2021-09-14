@@ -61,7 +61,9 @@ export const useLoginBox = () => {
         }
       }
     } catch (error) {
-      setErrorMessage({ message: error.message });
+      if(error instanceof Error) {
+        setErrorMessage({ message: error.message });
+      }
     }
   };
   return { errorMessage, onSubmit, loginState };

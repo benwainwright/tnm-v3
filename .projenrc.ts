@@ -135,6 +135,7 @@ const tsConfig = tnmApp.tryFindObjectFile('tsconfig.json')
 
 tsConfig.addOverride('compilerOptions.paths', { "@app/*": [ "*" ]})
 tsConfig.addOverride('compilerOptions.baseUrl', "./src")
+tsConfig.addOverride('compilerOptions.useUnknownInCatchVariables', true)
 
 const tsConfigJest = tnmApp.tryFindObjectFile('tsconfig.jest.json')
 
