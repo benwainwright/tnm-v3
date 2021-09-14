@@ -1,7 +1,6 @@
 /*
  * Borrowed from https://github.com/awslabs/aws-support-tools/blob/master/Cognito/decode-verify-jwt/decode-verify-jwt.ts
  */
-import { promisify } from "util";
 import * as Axios from "axios";
 import * as jsonwebtoken from "jsonwebtoken";
 import jwkToPem from "jwk-to-pem";
@@ -20,7 +19,6 @@ export interface ClaimVerifyResult {
 interface TokenHeader {
   kid: string;
   alg: string;
-  typ: 'JWT';
 }
 
 interface PublicKey {
@@ -91,8 +89,7 @@ const verify = async (token: string, key: PublicKeyMeta): Promise<Claim> => {
 
 const isTokenHeader = (thing: unknown): thing is TokenHeader =>
   Object.hasOwnProperty.call(thing, "kid") &&
-  Object.hasOwnProperty.call(thing, "alg") &&
-  Object.hasOwnProperty.call(thing, "type")
+  Object.hasOwnProperty.call(thing, "alg")
 
 const parseHeader = (token: string): TokenHeader => {
   const tokenSections = (token || "").split(".");
@@ -102,7 +99,6 @@ const parseHeader = (token: string): TokenHeader => {
   const headerJSON = Buffer.from(tokenSections[0], "base64").toString("utf8");
   try {
     const header = JSON.parse(headerJSON)
-    console.log(header)
     if(isTokenHeader(header)) {
       return header
     }
@@ -128,7 +124,7 @@ export const verifyJwtToken = async (
     const header = parseHeader(token)
     const key = await getPublicKey(header)
     const claim = await verify(token, key)
-    const currentSeconds = Math.floor(new Date().valueOf() / 1000);
+    const currentSeconds = Math.floor(new Date(Date.now()).valueOf() / 1000);
     if (currentSeconds > claim.exp || currentSeconds < claim.auth_time) {
       throw new Error("Token has expired");
     }

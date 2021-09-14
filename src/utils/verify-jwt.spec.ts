@@ -1,6 +1,17 @@
+import { validToken } from "./test-tokens";
 import { verifyJwtToken } from "./verify-jwt"
 
 describe("verify JWT", () => {
+
+  beforeAll(() => {
+    jest
+      .useFakeTimers('modern')
+      .setSystemTime(new Date('2021-09-14').getTime());
+
+    process.env.COGNITO_POOL_ID = "us-east-1_nfWupeuVh"
+    process.env.AWS_REGION= "us-east-1"
+  });
+
 
   it.each`
   token
@@ -24,12 +35,16 @@ describe("verify JWT", () => {
     expect(result.error.message).toEqual('Token is invalid')
   })
 
-  it("fails verification when supplied with a valid token that is expired with the rror 'Token has expired'", async () => {
-    const token = `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTUxNjIzOTAyMn0.POstGetfAytaZS82wHcjoTyoqhMyxXiWdR7Nn7A29DNSl0EiXLdwJ6xC6AfgZWF1bOsS_TuYI3OG85AmiExREkrS6tDfTQ2B3WXlrr-wp5AokiRbz3_oB4OxG-W9KcEEbDRcZc0nH3L7LzYptiy1PtAylQGxHTWZXtGz4ht0bAecBgmpdgXMguEIcoqPJ1n3pIWk_dUZegpqx0Lka21H6XxUTxiy8OcaarA8zdnPUnV6AmNP3ecFawIFYdvJB_cm-GvpCSbr8G8y_Mllj8f4x9nBH8pQux89_6gUY618iYv7tuPWBFfEbLxtF2pZS6YC1aSfLQxeNe8djT9YjpvRZA`
+  it("passes verification when passed a valid token that hasn't expired", async () => {
+    jest.setSystemTime(new Date("2021-09-14T12:20:00"))
+    const result = await verifyJwtToken(validToken);
+    expect(result.isValid).toBeTrue()
+  })
 
-    const result = await verifyJwtToken(token);
-
+  it("fails verification when passed a valid token that has expired", async () => {
+    jest.setSystemTime(new Date("2020-09-14T12:20:00"))
+    const result = await verifyJwtToken(validToken);
     expect(result.isValid).toBeFalse()
-    expect(result.error).toBeDefined()
+    expect(result.error.message).toEqual("Token has expired")
   })
 })
