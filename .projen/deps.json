@@ -33,7 +33,39 @@
       "type": "build"
     },
     {
+      "name": "@storybook/addon-a11y",
+      "type": "build"
+    },
+    {
+      "name": "@storybook/addon-actions",
+      "type": "build"
+    },
+    {
+      "name": "@storybook/addon-essentials",
+      "type": "build"
+    },
+    {
+      "name": "@storybook/addon-links",
+      "type": "build"
+    },
+    {
+      "name": "@storybook/builder-webpack5",
+      "type": "build"
+    },
+    {
+      "name": "@storybook/cli",
+      "type": "build"
+    },
+    {
+      "name": "@storybook/manager-webpack5",
+      "type": "build"
+    },
+    {
       "name": "@storybook/react",
+      "type": "build"
+    },
+    {
+      "name": "@svgr/webpack",
       "type": "build"
     },
     {
@@ -115,6 +147,14 @@
     },
     {
       "name": "axios",
+      "type": "build"
+    },
+    {
+      "name": "babel-plugin-module-resolver",
+      "type": "build"
+    },
+    {
+      "name": "babel-preset-react-app",
       "type": "build"
     },
     {
@@ -206,6 +246,10 @@
     },
     {
       "name": "typescript",
+      "type": "build"
+    },
+    {
+      "name": "webpack",
       "type": "build"
     },
     {

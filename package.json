@@ -16,6 +16,8 @@
     "export": "npx projen export",
     "server": "npx projen server",
     "telemetry": "npx projen telemetry",
+    "storybook": "npx projen storybook",
+    "storybook:build": "npx projen storybook:build",
     "test:cypress:open": "npx projen test:cypress:open",
     "projen": "npx projen"
   },
@@ -28,7 +30,15 @@
     "@emotion/jest": "^11.3.0",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
+    "@storybook/addon-a11y": "^6.3.8",
+    "@storybook/addon-actions": "^6.3.8",
+    "@storybook/addon-essentials": "^6.3.8",
+    "@storybook/addon-links": "^6.3.8",
+    "@storybook/builder-webpack5": "^6.3.8",
+    "@storybook/cli": "^6.3.8",
+    "@storybook/manager-webpack5": "^6.3.8",
     "@storybook/react": "^6.3.8",
+    "@svgr/webpack": "^5.5.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.1.0",
     "@testing-library/react-hooks": "^7.0.2",
@@ -49,6 +59,8 @@
     "amazon-cognito-identity-js": "^5.1.0",
     "aws-sdk": "^2.988.0",
     "axios": "^0.21.4",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "babel-preset-react-app": "^10.0.0",
     "cypress": "^8.3.1",
     "enzyme": "^3.11.0",
     "fp-ts": "^2.11.1",
@@ -70,7 +82,8 @@
     "react-helmet": "^6.1.0",
     "ts-jest": "^27.0.5",
     "ts-node": "^9",
-    "typescript": "^4.4.3"
+    "typescript": "^4.4.3",
+    "webpack": "^5.52.1"
   },
   "dependencies": {
     "autoprefixer": "^10.3.4",

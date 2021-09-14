@@ -15,17 +15,33 @@ const emotion = [
   "babel-plugin"
 ]
 
+const storybook = [
+  "builder-webpack5",
+  "manager-webpack5",
+  "cli",
+  "addon-a11y",
+  "addon-actions",
+  "addon-essentials",
+  "addon-links",
+  "react",
+]
+
 const deps = [
     "next-aws-lambda-webpack-plugin",
     "axios",
+    "webpack",
+    "@svgr/webpack",
+    "babel-plugin-module-resolver",
     "jest-enzyme",
     "jest-transform-stub",
     "@axe-core/react",
+    "@storybook/builder-webpack5",
     "next-images",
     "jest-extended",
     "@storybook/react",
     ...testingLibrary.map(dep => `@testing-library/${dep}`),
     ...emotion.map(dep => `@emotion/${dep}`),
+    ...storybook.map(dep => `@storybook/${dep}`),
     "ts-jest",
     "@aws-amplify/auth",
     "@wojtekmaj/enzyme-adapter-react-17",
@@ -37,7 +53,8 @@ const deps = [
     "cypress",
     "aws-sdk",
     "@babel/core",
-    "@cypress/code-coverage"
+    "@cypress/code-coverage",
+    "babel-preset-react-app"
 ]
 
 const depsWithoutTypes = [
@@ -54,6 +71,7 @@ const depsWithoutTypes = [
 const tnmApp = new web.NextJsTypeScriptProject({
   defaultReleaseBranch: 'main',
   gitignore: [
+    'storybook',
     'out',
     '.DS_Store',
     'out_lambda',
@@ -130,13 +148,16 @@ const addCypressEnvVars = (task: Task) => {
   task.env("CYPRESS_INT_TEST_EMAIL", "a1@b1.com")
   task.env("CYPRESS_INT_TEST_PASSWORD", "123.123Aa")
   task.env("CYPRESS_INT_TEST_PASSWORD", "123.123Aa")
+  return task
 }
 
-const cypressOpen = tnmApp.addTask("test:cypress:open")
+tnmApp.addTask("storybook")
+      .exec('start-storybook --static-dir ./src/assets')
 
-addCypressEnvVars(cypressOpen)
+tnmApp.addTask("storybook:build")
+      .exec('build-storybook --static-dir ./src/assets --output-dir ./storybook')
 
-cypressOpen.exec("yarn cypress open")
-
+addCypressEnvVars(tnmApp.addTask("test:cypress:open"))
+                        .exec("yarn cypress open")
 
 tnmApp.synth();

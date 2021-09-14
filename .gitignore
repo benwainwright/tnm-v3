@@ -29,6 +29,7 @@ jspm_packages/
 *.tgz
 .yarn-integrity
 .cache
+storybook
 out
 .DS_Store
 out_lambda

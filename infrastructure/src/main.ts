@@ -36,6 +36,7 @@ export class TnmV3Stack extends Stack {
       this,
       path.resolve(projectRoot, "public"),
       path.resolve(projectRoot, ".next/static"),
+      path.resolve(projectRoot, "storybook"),
       props.envName,
       distribution
     );

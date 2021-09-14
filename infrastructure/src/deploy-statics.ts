@@ -10,6 +10,7 @@ export const deployStatics = (
   context: Construct,
   publicFolder: string,
   staticsFolder: string,
+  storybookFolder: string,
   envName: string,
   distribution: Distribution
 ) => {
@@ -36,9 +37,13 @@ export const deployStatics = (
   );
 
   distribution.addBehavior(`/backend-config.json`, bucketOrigin);
+  distribution.addBehavior("/storybook/*", bucketOrigin)
 
   new BucketDeployment(context, "deploy-public-folder", {
-    sources: [Source.asset(publicFolder)],
+    sources: [
+      Source.asset(publicFolder),
+      Source.asset(storybookFolder),
+    ],
     destinationBucket: deploymentBucket,
   });
 
