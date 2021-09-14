@@ -79,7 +79,15 @@ const getPublicKeys = async (): Promise<MapOfKidToPublicKey> => {
   }
 };
 
-const verifyPromised = promisify(jsonwebtoken.verify.bind(jsonwebtoken));
+const verify = async (token: string, key: PublicKeyMeta): Promise<Claim> => {
+  return new Promise<Claim>((accept, reject) => jsonwebtoken.verify(token, key.pem, (error, data) => {
+    if(error) {
+      reject(error)
+    } else {
+      accept(data as Claim)
+    }
+  }))
+}
 
 const isTokenHeader = (thing: unknown): thing is TokenHeader =>
   Object.hasOwnProperty.call(thing, "kid") &&
@@ -104,17 +112,22 @@ const parseHeader = (token: string): TokenHeader => {
   throw new Error("Token is invalid");
 } 
 
+const getPublicKey = async (header: TokenHeader) => {
+  const keys = await getPublicKeys();
+  const key = keys[header.kid];
+  if (key === undefined) {
+    throw new Error("claim made for unknown kid");
+  }
+  return key
+}
+
 export const verifyJwtToken = async (
   token: string
 ): Promise<ClaimVerifyResult> => {
   try {
     const header = parseHeader(token)
-    const keys = await getPublicKeys();
-    const key = keys[header.kid];
-    if (key === undefined) {
-      throw new Error("claim made for unknown kid");
-    }
-    const claim = (await verifyPromised(token, key.pem)) as Claim;
+    const key = await getPublicKey(header)
+    const claim = await verify(token, key)
     const currentSeconds = Math.floor(new Date().valueOf() / 1000);
     if (currentSeconds > claim.exp || currentSeconds < claim.auth_time) {
       throw new Error("Token has expired");
