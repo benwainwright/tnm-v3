@@ -2,32 +2,39 @@ import { GetServerSideProps } from "next";
 import { backendRedirect } from "./backend-redirect";
 import { verifyJwtToken } from "./verify-jwt";
 
-export const authorizedRoute = (
-  groups?: string[],
-  serverSidePropsCallback?: GetServerSideProps
-): GetServerSideProps => {
+interface AuthorizedRouteWrapper {
+  (args?: {
+    groups?: string[];
+    getServerSideProps?: GetServerSideProps;
+  }): GetServerSideProps;
+}
+
+export const authorizedRoute: AuthorizedRouteWrapper = ({
+  groups,
+  getServerSideProps,
+} = {}): GetServerSideProps => {
   return async (context) => {
     const tokenPair = Object.entries(context.req.cookies).find(([key]) =>
       key.endsWith(".accessToken")
     );
 
     if (!tokenPair || tokenPair.length !== 2) {
-      console.log("Redirecting due to invalid token");
-      return backendRedirect("login");
+      return backendRedirect("login", "No .accessToken found");
     }
 
     const verifyResult = await verifyJwtToken(tokenPair[1]);
 
     if (!verifyResult.isValid) {
-      console.log("Redirecting due verify failed");
-      return backendRedirect("login");
+      return backendRedirect("login", "Token verification failed");
     }
 
     if (groups?.some((group) => !verifyResult.groups.includes(group))) {
-      console.log("Redirecting due to missing group");
-      return backendRedirect("login");
+      return backendRedirect(
+        "login",
+        "Verification was successful, but user is not authorised to access this route"
+      );
     }
 
-    return (await serverSidePropsCallback?.(context)) ?? { props: {} };
+    return (await getServerSideProps?.(context)) ?? { props: {} };
   };
 };
