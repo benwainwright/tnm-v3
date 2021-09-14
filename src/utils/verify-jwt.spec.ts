@@ -3,14 +3,13 @@ import { verifyJwtToken } from "./verify-jwt"
 
 describe("verify JWT", () => {
 
-  beforeAll(() => {
+  beforeEach(() => {
+    process.env.COGNITO_POOL_ID = "us-east-1_nfWupeuVh"
+    process.env.AWS_REGION= "us-east-1"
     jest
       .useFakeTimers('modern')
       .setSystemTime(new Date('2021-09-14').getTime());
-
-    process.env.COGNITO_POOL_ID = "us-east-1_nfWupeuVh"
-    process.env.AWS_REGION= "us-east-1"
-  });
+  })
 
 
   it.each`
@@ -27,13 +26,20 @@ describe("verify JWT", () => {
   ${'{ }'}
   ${'.a.a'}
   `
-  ("fails verification when supplied with invalid token '$token' with the error 'Token is invalid'", async ({ token }) => {
+  ("fails verification when supplied with incorrectly formatted token '$token' with the error 'Token is invalid'", async ({ token }) => {
     const result = await verifyJwtToken(token);
 
     expect(result.isValid).toBeFalse()
     expect(result.error).toBeDefined()
     expect(result.error.message).toEqual('Token is invalid')
   })
+
+  it("fails verification if the user pool is not configured", async () => {
+    delete process.env.COGNITO_POOL_ID
+    const result = await verifyJwtToken(validToken)
+    expect(result.isValid).toBeFalse()
+    expect(result.error.message).toEqual("COGNITO_POOL_ID not configured")
+  });
 
   it("passes verification when passed a valid token that hasn't expired", async () => {
     jest.setSystemTime(new Date("2021-09-14T12:20:00"))

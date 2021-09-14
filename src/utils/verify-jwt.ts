@@ -56,7 +56,7 @@ interface Claim {
 const getIssuer = () => {
   const cognitoPoolId = process.env.COGNITO_POOL_ID || "";
   if (!cognitoPoolId) {
-    throw new Error("env var required for cognito pool");
+    throw new Error("COGNITO_POOL_ID not configured");
   }
   return `https://cognito-idp.${process.env.AWS_REGION}.amazonaws.com/${cognitoPoolId}`;
 };
