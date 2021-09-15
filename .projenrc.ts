@@ -117,11 +117,15 @@ const tnmApp = new web.NextJsTypeScriptProject({
 const infrastructure = new AwsCdkTypeScriptApp({
   name: 'tnm-v3-infrastructure',
   cdkVersion: '2.0.0-rc.21',
+  minNodeVersion: "14.17.6",
   outdir: 'infrastructure',
   defaultReleaseBranch: 'main',
-  devDeps: ["fs-extra", "@types/fs-extra"],
-  parent: tnmApp
-})
+  devDeps: ["fs-extra", "@types/fs-extra", "@types/node", "memfs", "extract-zip"],
+  parent: tnmApp,
+});
+
+const infrastructureJestTsconfig = infrastructure.tryFindObjectFile('tsconfig.jest.json')
+infrastructureJestTsconfig.addOverride('compilerOptions.typeRoots', [ "./node_modules/@types" ])
 
 infrastructure.tasks.removeTask('deploy')
 

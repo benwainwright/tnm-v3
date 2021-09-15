@@ -1,33 +1,33 @@
-import { CfnOutput, RemovalPolicy } from "aws-cdk-lib";
-import { UserPool, VerificationEmailStyle } from "aws-cdk-lib/lib/aws-cognito";
-import { Construct } from "constructs";
-import { getResourceName } from "./get-resource-name";
+import { CfnOutput, RemovalPolicy } from 'aws-cdk-lib';
+import { UserPool, VerificationEmailStyle } from 'aws-cdk-lib/lib/aws-cognito';
+import { Construct } from 'constructs';
+import { getResourceName } from './get-resource-name';
 
 export const makeUserPool = (
   context: Construct,
   transient: boolean,
-  environmentName: string
+  environmentName: string,
 ) => {
   const removalPolicy = transient
     ? RemovalPolicy.DESTROY
     : RemovalPolicy.RETAIN;
 
-  const verificationString = `Hey {username}! Thanks for signing up to The Nutritionist Manchester. Your verification code is {####}`;
-  const invitationString = `Hey {username}! you have been invited to join The Nutritionist Manchester. Your temporary password is {####}`;
-  const userPool = new UserPool(context, `user-pool`, {
+  const verificationString = 'Hey {username}! Thanks for signing up to The Nutritionist Manchester. Your verification code is {####}';
+  const invitationString = 'Hey {username}! you have been invited to join The Nutritionist Manchester. Your temporary password is {####}';
+  const userPool = new UserPool(context, 'user-pool', {
     removalPolicy,
-    userPoolName: getResourceName(`user-pool`, environmentName),
+    userPoolName: getResourceName('user-pool', environmentName),
     selfSignUpEnabled: true,
 
     userVerification: {
       emailBody: verificationString,
-      emailSubject: `TNM signup`,
+      emailSubject: 'TNM signup',
       emailStyle: VerificationEmailStyle.CODE,
       smsMessage: verificationString,
     },
 
     userInvitation: {
-      emailSubject: `TNM invite`,
+      emailSubject: 'TNM invite',
       emailBody: invitationString,
       smsMessage: invitationString,
     },
@@ -39,15 +39,15 @@ export const makeUserPool = (
     },
   });
 
-  new CfnOutput(context, "UserPoolId", {
+  new CfnOutput(context, 'UserPoolId', {
     value: userPool.userPoolId,
   });
 
-  const client = userPool.addClient("Client", {
+  const client = userPool.addClient('Client', {
     disableOAuth: true,
   });
 
-  new CfnOutput(context, "ClientId", {
+  new CfnOutput(context, 'ClientId', {
     value: client.userPoolClientId,
   });
 
