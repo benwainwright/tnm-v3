@@ -34,13 +34,14 @@ export class DynamoDbDataService<TN extends keyof MappingTable>
     return [];
   }
 
-  public async remove(_id: string): Promise<void> {}
+  public async remove(id: string): Promise<void> {
+    return await this.removeAll([id])
+  }
 
   public async removeAll(ids: string[]): Promise<void> {
     if (ids.length === 0) {
       return;
     }
-    const ddb = new AWS.DynamoDB.DocumentClient({ region: "us-east-1" });
 
     const batches = batchArray(ids, TRANSACT_ITEMS_MAX_SIZE);
     await Promise.all(
@@ -58,7 +59,7 @@ export class DynamoDbDataService<TN extends keyof MappingTable>
             },
           })),
         };
-        await ddb.transactWrite(params).promise();
+        await this.dynamoDb.transactWrite(params).promise();
       })
     );
   }
