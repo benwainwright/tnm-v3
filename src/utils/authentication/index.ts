@@ -1,3 +1,3 @@
-import { verifyJwtToken } from "./verify-jwt"
+import { verifyJwtToken } from "./verify-jwt";
 
-export { verifyJwtToken }
+export { verifyJwtToken };

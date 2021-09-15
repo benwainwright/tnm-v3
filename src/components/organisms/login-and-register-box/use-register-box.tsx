@@ -75,7 +75,7 @@ export const useRegisterBox = () => {
         }
       }
     } catch (error) {
-      if(error instanceof Error) {
+      if (error instanceof Error) {
         setErrorMessage({ message: error.message });
       }
     }

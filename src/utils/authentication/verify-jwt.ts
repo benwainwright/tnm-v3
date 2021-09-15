@@ -20,16 +20,16 @@ const getPublicKey = async (header: TokenHeader) => {
   if (key === undefined) {
     throw new Error("claim made for unknown kid");
   }
-  return key
-}
+  return key;
+};
 
 export const verifyJwtToken = async (
   token: string
 ): Promise<VerifyJwtResult> => {
   try {
-    const header = parseHeader(token)
-    const key = await getPublicKey(header)
-    const claim = await verify(token, key)
+    const header = parseHeader(token);
+    const key = await getPublicKey(header);
+    const claim = await verify(token, key);
     const currentSeconds = Math.floor(new Date(Date.now()).valueOf() / 1000);
     if (currentSeconds > claim.exp || currentSeconds < claim.auth_time) {
       throw new Error("Token has expired");

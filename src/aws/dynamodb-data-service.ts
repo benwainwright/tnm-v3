@@ -3,19 +3,19 @@ import { Database } from "@app/types/database";
 import { batchArray } from "@app/utils";
 import AWS from "aws-sdk";
 
-interface MappingTable { 
-  customers: Customer
+interface MappingTable {
+  customers: Customer;
 }
 
 const TRANSACT_ITEMS_MAX_SIZE = 25;
 
-export class DynamoDbDataService<TN extends keyof MappingTable> implements Database<MappingTable[TN]> {
-
+export class DynamoDbDataService<TN extends keyof MappingTable>
+  implements Database<MappingTable[TN]> {
   private dynamoDb = new AWS.DynamoDB.DocumentClient({ region: "us-east-1" });
-  private defaultParams: { TableName: string }
+  private defaultParams: { TableName: string };
 
   public constructor(tableName: TN) {
-    this.defaultParams = { TableName: tableName }
+    this.defaultParams = { TableName: tableName };
   }
 
   public async putAll(_item: MappingTable[TN][]): Promise<void> {
@@ -31,10 +31,10 @@ export class DynamoDbDataService<TN extends keyof MappingTable> implements Datab
   }
 
   public async getAll(): Promise<MappingTable[TN][]> {
-    return []
+    return [];
   }
 
-  public async remove(_id: string): Promise<void> { }
+  public async remove(_id: string): Promise<void> {}
 
   public async removeAll(ids: string[]): Promise<void> {
     if (ids.length === 0) {
@@ -53,13 +53,13 @@ export class DynamoDbDataService<TN extends keyof MappingTable> implements Datab
               UpdateExpression: "SET deleted = :newvalue",
               ExpressionAttributeValues: { ":newvalue": true },
               Key: {
-                id
+                id,
               },
             },
           })),
         };
         await ddb.transactWrite(params).promise();
       })
-    )
+    );
   }
 }

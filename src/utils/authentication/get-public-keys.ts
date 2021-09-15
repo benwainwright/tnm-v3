@@ -12,7 +12,6 @@ interface PublicKey {
   use: string;
 }
 
-
 interface PublicKeys {
   keys: PublicKey[];
 }
@@ -20,7 +19,6 @@ interface PublicKeys {
 interface MapOfKidToPublicKey {
   [key: string]: PublicKeyMeta;
 }
-
 
 let cacheKeys: MapOfKidToPublicKey | undefined;
 export const getPublicKeys = async (): Promise<MapOfKidToPublicKey> => {

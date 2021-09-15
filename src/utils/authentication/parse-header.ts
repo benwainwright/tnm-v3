@@ -7,12 +7,12 @@ export const parseHeader = (token: string): TokenHeader => {
   }
   const headerJSON = Buffer.from(tokenSections[0], "base64").toString("utf8");
   try {
-    const header = JSON.parse(headerJSON)
-    if(isTokenHeader(header)) {
-      return header
+    const header = JSON.parse(headerJSON);
+    if (isTokenHeader(header)) {
+      return header;
     }
-  } catch(error) {
+  } catch (error) {
     throw new Error("Token is invalid");
   }
   throw new Error("Token is invalid");
-} 
+};

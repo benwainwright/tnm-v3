@@ -7,4 +7,3 @@ export interface Claim {
   username: string;
   client_id: string;
 }
-

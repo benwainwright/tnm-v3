@@ -18,11 +18,12 @@ export const loggedOutOnlyRoute = (
     const verifyResult = await verifyJwtToken(tokenPair[1]);
 
     if (verifyResult.isValid) {
-      return backendRedirect(redirectTo, "Route is only available to logged out users");
+      return backendRedirect(
+        redirectTo,
+        "Route is only available to logged out users"
+      );
     }
 
     return (await serverSidePropsCallback?.(context)) ?? { props: {} };
   };
 };
-
-
