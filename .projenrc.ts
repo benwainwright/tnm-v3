@@ -52,6 +52,7 @@ const deps = [
     "fp-ts",
     "cypress",
     "aws-sdk",
+    "aws-sdk-mock",
     "@babel/core",
     "@cypress/code-coverage",
     "babel-preset-react-app"
