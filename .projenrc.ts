@@ -32,6 +32,8 @@ const deps = [
     "webpack",
     "@svgr/webpack",
     "babel-plugin-module-resolver",
+    "reflect-metadata",
+    "inversify",
     "jest-enzyme",
     "jest-transform-stub",
     "@axe-core/react",
@@ -61,6 +63,7 @@ const deps = [
 const depsWithoutTypes = [
   "jsonwebtoken",
   "jwk-to-pem",
+  "aws-lambda",
   "react-helmet",
   "lodash",
   "ramda",
@@ -88,6 +91,7 @@ const tnmApp = new web.NextJsTypeScriptProject({
       "build", "out_lambda", "next.config.js"
     ],
     compilerOptions: {
+      lib: ["es2019", "dom"],
       isolatedModules: false
     }
   },

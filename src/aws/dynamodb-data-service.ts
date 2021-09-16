@@ -7,6 +7,7 @@ import AWS from "aws-sdk";
 
 interface MappingTable {
   customers: Customer;
+  foo: { id: string, name: string }
 }
 
 const TRANSACT_ITEMS_MAX_SIZE = 25;
@@ -72,13 +73,12 @@ export class DynamoDbDataService<TN extends keyof MappingTable>
     return (response.Items ?? []) as MappingTable[TN][];
   }
 
-  public async get(id: string, ...ids: string[]): Promise<MappingTable[TN][]>;
   public async get(...ids: string[]): Promise<MappingTable[TN][]> {
     if (ids.length === 0) {
-      return this.getAll();
+      return await this.getAll();
     }
 
-    return this.getByIds(...ids);
+    return await this.getByIds(...ids);
   }
 
   public async remove(id: string, ...ids: string[]): Promise<void>;

@@ -85,6 +85,10 @@
       "type": "build"
     },
     {
+      "name": "@types/aws-lambda",
+      "type": "build"
+    },
+    {
       "name": "@types/enzyme",
       "type": "build"
     },
@@ -142,6 +146,10 @@
       "type": "build"
     },
     {
+      "name": "aws-lambda",
+      "type": "build"
+    },
+    {
       "name": "aws-sdk",
       "type": "build"
     },
@@ -171,6 +179,10 @@
     },
     {
       "name": "fp-ts",
+      "type": "build"
+    },
+    {
+      "name": "inversify",
       "type": "build"
     },
     {
@@ -237,6 +249,10 @@
     },
     {
       "name": "react-helmet",
+      "type": "build"
+    },
+    {
+      "name": "reflect-metadata",
       "type": "build"
     },
     {
