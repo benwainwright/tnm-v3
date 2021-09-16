@@ -84,8 +84,65 @@ describe("dynamodb data service", () => {
     });
   });
 
+  describe("the put method", () => {
+    it("should call transactWrite with the correct params when passed one argument", async () => {
+
+      const transactWriteSpy = jest.fn();
+
+      AWSMock.mock(
+        "DynamoDB.DocumentClient",
+        "transactWrite",
+        (
+          params: AWS.DynamoDB.DocumentClient.TransactWriteItemsInput,
+          callback: (
+            error: AWSError | null,
+            output: AWS.DynamoDB.DocumentClient.TransactWriteItemsOutput
+          ) => Request<
+            AWS.DynamoDB.DocumentClient.TransactWriteItemsOutput,
+            AWSError
+          >
+        ) => {
+          callback(null, transactWriteSpy(params));
+        }
+      );
+
+
+      const mockCustomer: Customer = {
+        id: "7",
+        firstName: "Ben",
+        surname: "Wainwright",
+        salutation: "mr",
+        address: "",
+        telephone: "123",
+        email: "a@b.c",
+        daysPerWeek: 3,
+        plan: {
+          name: "Mass 2",
+          mealsPerDay: 2,
+          category: "Mass",
+          costPerMeal: 200,
+        },
+        snack: Snack.Large,
+        breakfast: true,
+        exclusions: [],
+      };
+
+      const service = new DynamoDbDataService("customers");
+      await service.put(mockCustomer);
+
+      expect(transactWriteSpy).toBeCalledWith({
+        TransactItems: [{
+          Put: {
+            TableName: 'customers',
+            Item: mockCustomer,
+          },
+        }],
+      })
+    });
+  })
+
   describe("the remove method", () => {
-    it("should call transactUpdate with the correct params when passed one argument", async () => {
+    it("should call transactWrite with the correct params when passed one argument", async () => {
       const transactWriteSpy = jest.fn();
 
       AWSMock.mock(

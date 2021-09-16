@@ -18,12 +18,20 @@ export class DynamoDbDataService<TN extends keyof MappingTable>
     this.defaultParams = { TableName: tableName };
   }
 
-  public async put(..._item: MappingTable[TN][]): Promise<void> {
-    throw new Error("Method not implemented.");
+  public async put(...items: MappingTable[TN][]): Promise<void> {
+    const params = {
+      TransactItems: items.map(item => ({
+        Put: {
+          TableName: 'customers',
+          Item: item
+        },
+      })),
+    };
+
+    await this.dynamoDb.transactWrite(params).promise();
   }
 
   public async get(...ids: string[]): Promise<MappingTable[TN][]> {
-
     if(ids.length > 100)  {
       throw new Error("Cannot get more than 100 items at once")
     }
