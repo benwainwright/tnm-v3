@@ -14,13 +14,91 @@ describe("dynamodb data service", () => {
   });
 
   describe("the get method", () => {
+    it("should perform a scan if no ids are provided and return the responses as an array", async () => {
+      const scanSpy = jest.fn();
+
+      AWSMock.mock(
+        "DynamoDB.DocumentClient",
+        "scan",
+        (
+          params: AWS.DynamoDB.DocumentClient.BatchGetItemInput,
+          callback: (
+            error: AWSError | null,
+            output: AWS.DynamoDB.DocumentClient.ScanInput
+          ) => Request<AWS.DynamoDB.DocumentClient.ScanOutput, AWSError>
+        ) => {
+          callback(null, scanSpy(params));
+        }
+      );
+
+      const scanInput: AWS.DynamoDB.DocumentClient.ScanInput = {
+        TableName: "customers",
+      };
+
+      const mockCustomer1: Customer = {
+        id: "7",
+        firstName: "Ben",
+        surname: "Wainwright",
+        salutation: "mr",
+        address: "",
+        telephone: "123",
+        email: "a@b.c",
+        daysPerWeek: 3,
+        plan: {
+          name: "Mass 2",
+          mealsPerDay: 2,
+          category: "Mass",
+          costPerMeal: 200,
+        },
+        snack: Snack.Large,
+        breakfast: true,
+        exclusions: [],
+      };
+
+      const mockCustomer2: Customer = {
+        id: "6",
+        firstName: "Fred",
+        surname: "Blogs",
+        salutation: "mr",
+        address: "",
+        telephone: "1234",
+        email: "a@b.cd",
+        daysPerWeek: 2,
+        plan: {
+          name: "Mass 3",
+          mealsPerDay: 1,
+          category: "EQ",
+          costPerMeal: 300,
+        },
+        snack: Snack.Large,
+        breakfast: true,
+        exclusions: [],
+      };
+
+      const scanOutput: AWS.DynamoDB.DocumentClient.ScanOutput = {
+        Items: [mockCustomer1, mockCustomer2],
+      };
+
+      when(scanSpy).calledWith(scanInput).mockReturnValue(scanOutput);
+
+      const service = new DynamoDbDataService("customers");
+
+      const response = await service.get();
+
+      expect(response).toHaveLength(2);
+      expect(response[0]).toBe(mockCustomer1);
+      expect(response[1]).toBe(mockCustomer2);
+    });
+
     it("should throw an error if you supply more than 100 ids", async () => {
       const service = new DynamoDbDataService("customers");
 
-      const ids = Array.from(Array(101).keys()).map(String)
+      const ids = Array.from(Array(101).keys()).map(String);
 
-      await expect(service.get(...ids)).rejects.toThrow(new Error("Cannot get more than 100 items at once"))
-    })
+      await expect(service.get(...ids)).rejects.toThrow(
+        new Error("Cannot get more than 100 items at once")
+      );
+    });
 
     it("should call batchGet with the correct params when passed a single argument and return the results", async () => {
       const batchGetSpy = jest.fn();
@@ -86,7 +164,6 @@ describe("dynamodb data service", () => {
 
   describe("the put method", () => {
     it("should call transactWrite with the correct params when passed one argument", async () => {
-
       const transactWriteSpy = jest.fn();
 
       AWSMock.mock(
@@ -105,7 +182,6 @@ describe("dynamodb data service", () => {
           callback(null, transactWriteSpy(params));
         }
       );
-
 
       const mockCustomer: Customer = {
         id: "7",
@@ -131,15 +207,17 @@ describe("dynamodb data service", () => {
       await service.put(mockCustomer);
 
       expect(transactWriteSpy).toBeCalledWith({
-        TransactItems: [{
-          Put: {
-            TableName: 'customers',
-            Item: mockCustomer,
+        TransactItems: [
+          {
+            Put: {
+              TableName: "customers",
+              Item: mockCustomer,
+            },
           },
-        }],
-      })
+        ],
+      });
     });
-  })
+  });
 
   describe("the remove method", () => {
     it("should call transactWrite with the correct params when passed one argument", async () => {
@@ -202,7 +280,6 @@ describe("dynamodb data service", () => {
       );
 
       const ids = [
-        "0",
         "1",
         "2",
         "3",
@@ -236,7 +313,7 @@ describe("dynamodb data service", () => {
 
       const service = new DynamoDbDataService("customers");
 
-      service.remove(...ids);
+      service.remove("0", ...ids);
 
       expect(paramsReceived).toHaveLength(2);
       expect(paramsReceived[0].TransactItems).toHaveLength(25);

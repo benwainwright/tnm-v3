@@ -1,5 +1,7 @@
 import { Customer } from "@app/types";
-import { Database } from "@app/types/database";
+import { DatabaseDeleter } from "@app/types/database-deleter";
+import { DatabaseWriter } from "@app/types/database-writer";
+import { DatabaseReader } from "@app/types/database-reader";
 import { batchArray } from "@app/utils";
 import AWS from "aws-sdk";
 
@@ -10,7 +12,10 @@ interface MappingTable {
 const TRANSACT_ITEMS_MAX_SIZE = 25;
 
 export class DynamoDbDataService<TN extends keyof MappingTable>
-  implements Database<MappingTable[TN]> {
+  implements
+    DatabaseDeleter,
+    DatabaseWriter<MappingTable[TN]>,
+    DatabaseReader<MappingTable[TN]> {
   private dynamoDb = new AWS.DynamoDB.DocumentClient({ region: "us-east-1" });
   private defaultParams: { TableName: string };
 
@@ -18,12 +23,20 @@ export class DynamoDbDataService<TN extends keyof MappingTable>
     this.defaultParams = { TableName: tableName };
   }
 
+  public async put(
+    item: MappingTable[TN],
+    ...items: MappingTable[TN][]
+  ): Promise<void>;
   public async put(...items: MappingTable[TN][]): Promise<void> {
+    if (items.length === 0) {
+      return;
+    }
+
     const params = {
-      TransactItems: items.map(item => ({
+      TransactItems: items.map((item) => ({
         Put: {
-          TableName: 'customers',
-          Item: item
+          TableName: "customers",
+          Item: item,
         },
       })),
     };
@@ -31,9 +44,9 @@ export class DynamoDbDataService<TN extends keyof MappingTable>
     await this.dynamoDb.transactWrite(params).promise();
   }
 
-  public async get(...ids: string[]): Promise<MappingTable[TN][]> {
-    if(ids.length > 100)  {
-      throw new Error("Cannot get more than 100 items at once")
+  private async getByIds(...ids: string[]): Promise<MappingTable[TN][]> {
+    if (ids.length > 100) {
+      throw new Error("Cannot get more than 100 items at once");
     }
 
     const params = {
@@ -53,6 +66,22 @@ export class DynamoDbDataService<TN extends keyof MappingTable>
     );
   }
 
+  private async getAll(): Promise<MappingTable[TN][]> {
+    const response = await this.dynamoDb.scan(this.defaultParams).promise();
+
+    return (response.Items ?? []) as MappingTable[TN][];
+  }
+
+  public async get(id: string, ...ids: string[]): Promise<MappingTable[TN][]>;
+  public async get(...ids: string[]): Promise<MappingTable[TN][]> {
+    if (ids.length === 0) {
+      return this.getAll();
+    }
+
+    return this.getByIds(...ids);
+  }
+
+  public async remove(id: string, ...ids: string[]): Promise<void>;
   public async remove(...ids: string[]): Promise<void> {
     if (ids.length === 0) {
       return;
