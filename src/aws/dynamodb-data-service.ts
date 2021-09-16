@@ -7,7 +7,7 @@ import AWS from "aws-sdk";
 
 interface MappingTable {
   customers: Customer;
-  foo: { id: string, name: string }
+  foo: { id: string; name: string };
 }
 
 const TRANSACT_ITEMS_MAX_SIZE = 25;

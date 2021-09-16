@@ -1,8 +1,10 @@
-import { Customer } from "../../types"
+import { Customer } from "../../types";
 import { AppSyncResolverHandler } from "aws-lambda";
-import { makeHandler } from "../services/configure-container"
+import { makeHandler } from "../services/configure-container";
 
-const withServices = makeHandler<AppSyncResolverHandler<void, Customer[]>>()
+const withServices = makeHandler<AppSyncResolverHandler<void, Customer[]>>();
 
-export const handler = withServices(async ({ customerReader }) => customerReader.get(), "CustomerReader")
-
+export const handler = withServices(
+  async ({ customerReader }) => customerReader.get(),
+  "CustomerReader"
+);
