@@ -11,7 +11,6 @@ const TRANSACT_ITEMS_MAX_SIZE = 25;
 
 export class DynamoDbDataService<TN extends keyof MappingTable>
   implements Database<MappingTable[TN]> {
-
   private dynamoDb = new AWS.DynamoDB.DocumentClient({ region: "us-east-1" });
   private defaultParams: { TableName: string };
 
@@ -19,27 +18,29 @@ export class DynamoDbDataService<TN extends keyof MappingTable>
     this.defaultParams = { TableName: tableName };
   }
 
-  public async putAll(_item: MappingTable[TN][]): Promise<void> {
+  public async put(..._item: MappingTable[TN][]): Promise<void> {
     throw new Error("Method not implemented.");
   }
 
-  public async put(_item: MappingTable[TN]): Promise<void> {
-    throw new Error("Method not implemented.");
+  public async get(...ids: string[]): Promise<MappingTable[TN][]> {
+    const params = {
+      RequestItems: {
+        [this.defaultParams.TableName]: {
+          Keys: ids.map((id) => ({ id })),
+        },
+      },
+    };
+
+    const results = await this.dynamoDb.batchGet(params).promise();
+
+    return (
+      (results.Responses?.[
+        this.defaultParams.TableName
+      ] as MappingTable[TN][]) ?? []
+    );
   }
 
-  public async getById(_id: string): Promise<MappingTable[TN] | undefined> {
-    return undefined;
-  }
-
-  public async getAll(): Promise<MappingTable[TN][]> {
-    return [];
-  }
-
-  public async remove(id: string): Promise<void> {
-    return await this.removeAll([id])
-  }
-
-  public async removeAll(ids: string[]): Promise<void> {
+  public async remove(...ids: string[]): Promise<void> {
     if (ids.length === 0) {
       return;
     }

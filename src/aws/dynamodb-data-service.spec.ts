@@ -1,9 +1,8 @@
 import * as AWSMock from "aws-sdk-mock";
 import AWS, { AWSError, Request } from "aws-sdk";
-import { mock } from "jest-mock-extended"
 import { DynamoDbDataService } from "./dynamodb-data-service";
-
-type DC = AWS.DynamoDB.DocumentClient;
+import { when } from "jest-when";
+import { Customer, Snack } from "@app/types";
 
 describe("dynamodb data service", () => {
   beforeEach(() => {
@@ -14,8 +13,71 @@ describe("dynamodb data service", () => {
     AWSMock.restore();
   });
 
+  describe("the get method", () => {
+    it("should call batchGet with the correct params when passed a single argument and return the results", async () => {
+      const batchGetSpy = jest.fn();
+
+      AWSMock.mock(
+        "DynamoDB.DocumentClient",
+        "batchGet",
+        (
+          params: AWS.DynamoDB.DocumentClient.BatchGetItemInput,
+          callback: (
+            error: AWSError | null,
+            output: AWS.DynamoDB.DocumentClient.BatchGetItemOutput
+          ) => Request<AWS.DynamoDB.DocumentClient.BatchGetItemOutput, AWSError>
+        ) => {
+          callback(null, batchGetSpy(params));
+        }
+      );
+
+      const getInput: AWS.DynamoDB.DocumentClient.BatchGetItemInput = {
+        RequestItems: {
+          customers: {
+            Keys: [{ id: "7" }],
+          },
+        },
+      };
+
+      const mockCustomer: Customer = {
+        id: "7",
+        firstName: "Ben",
+        surname: "Wainwright",
+        salutation: "mr",
+        address: "",
+        telephone: "123",
+        email: "a@b.c",
+        daysPerWeek: 3,
+        plan: {
+          name: "Mass 2",
+          mealsPerDay: 2,
+          category: "Mass",
+          costPerMeal: 200,
+        },
+        snack: Snack.Large,
+        breakfast: true,
+        exclusions: [],
+      };
+
+      const getOutput: AWS.DynamoDB.DocumentClient.BatchGetItemOutput = {
+        Responses: {
+          customers: [mockCustomer],
+        },
+      };
+
+      when(batchGetSpy).calledWith(getInput).mockReturnValue(getOutput);
+
+      const service = new DynamoDbDataService("customers");
+
+      const result = await service.get("7");
+
+      expect(result).toHaveLength(1);
+      expect(result[0]).toBe(mockCustomer);
+    });
+  });
+
   describe("the remove method", () => {
-    it("should call transactUpdate with the correct params", async () => {
+    it("should call transactUpdate with the correct params when passed one argument", async () => {
       const transactWriteSpy = jest.fn();
 
       AWSMock.mock(
@@ -56,7 +118,7 @@ describe("dynamodb data service", () => {
         ],
       });
     });
-  })
+  });
 
   describe("the removeAll method", () => {
     it("batches items into groups of 25 when passing them through to transactWrite", async () => {
@@ -109,7 +171,7 @@ describe("dynamodb data service", () => {
 
       const service = new DynamoDbDataService("customers");
 
-      service.removeAll(ids)
+      service.remove(...ids);
 
       expect(paramsReceived).toHaveLength(2);
       expect(paramsReceived[0].TransactItems).toHaveLength(25);
@@ -141,7 +203,7 @@ describe("dynamodb data service", () => {
 
       const service = new DynamoDbDataService("customers");
 
-      await service.removeAll(["1", "2"]);
+      await service.remove("1", "2");
 
       expect(transactWriteSpy).toHaveBeenCalledWith({
         TransactItems: [

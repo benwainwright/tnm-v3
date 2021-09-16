@@ -3,4 +3,5 @@ import Exclusion from "./exclusion";
 import Plan from "./plan";
 import Snack from "./snack";
 
-export type { Plan, Customer, Exclusion, Snack };
+export { Snack };
+export type { Plan, Customer, Exclusion };
