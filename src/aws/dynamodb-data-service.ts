@@ -23,6 +23,11 @@ export class DynamoDbDataService<TN extends keyof MappingTable>
   }
 
   public async get(...ids: string[]): Promise<MappingTable[TN][]> {
+
+    if(ids.length > 100)  {
+      throw new Error("Cannot get more than 100 items at once")
+    }
+
     const params = {
       RequestItems: {
         [this.defaultParams.TableName]: {

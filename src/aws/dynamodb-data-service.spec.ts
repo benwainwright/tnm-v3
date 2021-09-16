@@ -14,6 +14,14 @@ describe("dynamodb data service", () => {
   });
 
   describe("the get method", () => {
+    it("should throw an error if you supply more than 100 ids", async () => {
+      const service = new DynamoDbDataService("customers");
+
+      const ids = Array.from(Array(101).keys()).map(String)
+
+      await expect(service.get(...ids)).rejects.toThrow(new Error("Cannot get more than 100 items at once"))
+    })
+
     it("should call batchGet with the correct params when passed a single argument and return the results", async () => {
       const batchGetSpy = jest.fn();
 
