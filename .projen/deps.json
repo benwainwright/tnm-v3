@@ -138,6 +138,10 @@
       "type": "build"
     },
     {
+      "name": "@types/uuid",
+      "type": "build"
+    },
+    {
       "name": "@wojtekmaj/enzyme-adapter-react-17",
       "type": "build"
     },
@@ -266,6 +270,10 @@
     },
     {
       "name": "typescript",
+      "type": "build"
+    },
+    {
+      "name": "uuid",
       "type": "build"
     },
     {

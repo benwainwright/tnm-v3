@@ -64,6 +64,7 @@ const depsWithoutTypes = [
   "jsonwebtoken",
   "jwk-to-pem",
   "aws-lambda",
+  "uuid",
   "react-helmet",
   "lodash",
   "ramda",
