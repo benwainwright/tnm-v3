@@ -11,6 +11,7 @@ const TRANSACT_ITEMS_MAX_SIZE = 25;
 
 export class DynamoDbDataService<TN extends keyof MappingTable>
   implements Database<MappingTable[TN]> {
+
   private dynamoDb = new AWS.DynamoDB.DocumentClient({ region: "us-east-1" });
   private defaultParams: { TableName: string };
 
@@ -43,9 +44,8 @@ export class DynamoDbDataService<TN extends keyof MappingTable>
       return;
     }
 
-    const batches = batchArray(ids, TRANSACT_ITEMS_MAX_SIZE);
     await Promise.all(
-      batches.map(async (batch) => {
+      batchArray(ids, TRANSACT_ITEMS_MAX_SIZE).map(async (batch) => {
         /* eslint-disable @typescript-eslint/naming-convention */
         const params = {
           TransactItems: batch.map((id) => ({
