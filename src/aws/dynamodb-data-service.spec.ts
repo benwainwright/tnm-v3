@@ -179,6 +179,49 @@ describe("dynamodb data service", () => {
   });
 
   describe("the put method", () => {
+
+    it("batches items into groups of 25 when passing them through to transactWrite", async () => {
+      const transactWriteSpy = jest.fn();
+      AWSMock.setSDKInstance(AWS);
+      AWSMock.mock(
+        "DynamoDB.DocumentClient",
+        "transactWrite",
+        (
+          params: AWS.DynamoDB.TransactWriteItemsInput,
+          callback: (error: Error | null, output: AWS.DynamoDB.DocumentClient.TransactWriteItemsOutput) => void
+        ) => {
+          callback(null, transactWriteSpy(params));
+        }
+      );
+
+      const mockCustomer: Customer = {
+        id: "7",
+        firstName: "Ben",
+        surname: "Wainwright",
+        salutation: "mr",
+        address: "",
+        telephone: "123",
+        email: "a@b.c",
+        daysPerWeek: 3,
+        plan: {
+          name: "Mass 2",
+          mealsPerDay: 2,
+          category: "Mass",
+          costPerMeal: 200,
+        },
+        snack: Snack.Large,
+        breakfast: true,
+        exclusions: [],
+      };
+      const customers = Array.from(Array(107).keys()).map(() => mockCustomer)
+
+      const service = new DynamoDbDataService("customers");
+      await service.put(...customers);
+
+      expect(transactWriteSpy).toBeCalledTimes(5)
+    });
+
+
     it("should call transactWrite with the correct params when passed one argument", async () => {
       const transactWriteSpy = jest.fn();
 

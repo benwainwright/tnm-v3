@@ -26,7 +26,6 @@ export class DynamoDbDataService<TN extends keyof MappingTable>
   }
 
   public async put(
-    item: MappingTable[TN],
     ...items: MappingTable[TN][]
   ): Promise<void>;
   public async put(...items: MappingTable[TN][]): Promise<void> {
@@ -34,20 +33,23 @@ export class DynamoDbDataService<TN extends keyof MappingTable>
       return;
     }
 
-    const params = {
-      TransactItems: items.map((item) => ({
-        Put: {
-          TableName: "customers",
-          Item: item,
-        },
-      })),
-    };
+    const batches = batchArray(items, TRANSACT_ITEMS_MAX_SIZE)
 
-    await this.dynamoDb.transactWrite(params).promise();
+    await Promise.all(batches.map(async batch => {
+      const params = {
+        TransactItems: batch.map((item) => ({
+          Put: {
+            TableName: "customers",
+            Item: item,
+          },
+        })),
+      };
+
+      await this.dynamoDb.transactWrite(params).promise();
+    }))
   }
 
   private async getByIds(...ids: string[]): Promise<MappingTable[TN][]> {
-
     const batches = batchArray(ids, BATCH_GET_ITEMS_MAX_SIZE)
     const response = await Promise.all(batches.map(async batch => {
 
@@ -68,7 +70,6 @@ export class DynamoDbDataService<TN extends keyof MappingTable>
       );
 
     }))
-
     return response.flat();
   }
 
