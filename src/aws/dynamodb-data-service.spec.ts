@@ -90,14 +90,30 @@ describe("dynamodb data service", () => {
       expect(response[1]).toBe(mockCustomer2);
     });
 
-    it("should throw an error if you supply more than 100 ids", async () => {
+    it("should batch calls to batchGetItems into batches of 100", async () => {
+      const batchGetSpy = jest.fn();
+
+      AWSMock.mock(
+        "DynamoDB.DocumentClient",
+        "batchGet",
+        (
+          params: AWS.DynamoDB.DocumentClient.BatchGetItemInput,
+          callback: (
+            error: AWSError | null,
+            output: AWS.DynamoDB.DocumentClient.BatchGetItemOutput
+          ) => Request<AWS.DynamoDB.DocumentClient.BatchGetItemOutput, AWSError>
+        ) => {
+          callback(null, batchGetSpy(params));
+        }
+      );
+
       const service = new DynamoDbDataService("customers");
 
-      const ids = Array.from(Array(101).keys()).map(String);
+      const ids = Array.from(Array(107).keys()).map(String);
 
-      await expect(service.get(...ids)).rejects.toThrow(
-        new Error("Cannot get more than 100 items at once")
-      );
+      service.get(...ids)
+
+      expect(batchGetSpy).toBeCalledTimes(2)
     });
 
     it("should call batchGet with the correct params when passed a single argument and return the results", async () => {

@@ -11,6 +11,7 @@ interface MappingTable {
 }
 
 const TRANSACT_ITEMS_MAX_SIZE = 25;
+const BATCH_GET_ITEMS_MAX_SIZE = 100;
 
 export class DynamoDbDataService<TN extends keyof MappingTable>
   implements
@@ -46,25 +47,29 @@ export class DynamoDbDataService<TN extends keyof MappingTable>
   }
 
   private async getByIds(...ids: string[]): Promise<MappingTable[TN][]> {
-    if (ids.length > 100) {
-      throw new Error("Cannot get more than 100 items at once");
-    }
 
-    const params = {
-      RequestItems: {
-        [this.defaultParams.TableName]: {
-          Keys: ids.map((id) => ({ id })),
+    const batches = batchArray(ids, BATCH_GET_ITEMS_MAX_SIZE)
+    const response = await Promise.all(batches.map(async batch => {
+
+      const params = {
+        RequestItems: {
+          [this.defaultParams.TableName]: {
+            Keys: batch.map((id) => ({ id })),
+          },
         },
-      },
-    };
+      };
 
-    const results = await this.dynamoDb.batchGet(params).promise();
+      const results = await this.dynamoDb.batchGet(params).promise();
 
-    return (
-      (results.Responses?.[
-        this.defaultParams.TableName
-      ] as MappingTable[TN][]) ?? []
-    );
+      return (
+        (results.Responses?.[
+          this.defaultParams.TableName
+        ] as MappingTable[TN][]) ?? []
+      );
+
+    }))
+
+    return response.flat();
   }
 
   private async getAll(): Promise<MappingTable[TN][]> {
