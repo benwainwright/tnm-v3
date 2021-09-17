@@ -111,9 +111,9 @@ describe("dynamodb data service", () => {
 
       const ids = Array.from(Array(107).keys()).map(String);
 
-      service.get(...ids)
+      service.get(...ids);
 
-      expect(batchGetSpy).toBeCalledTimes(2)
+      expect(batchGetSpy).toBeCalledTimes(2);
     });
 
     it("should call batchGet with the correct params when passed a single argument and return the results", async () => {
@@ -179,7 +179,6 @@ describe("dynamodb data service", () => {
   });
 
   describe("the put method", () => {
-
     it("batches items into groups of 25 when passing them through to transactWrite", async () => {
       const transactWriteSpy = jest.fn();
       AWSMock.setSDKInstance(AWS);
@@ -188,7 +187,10 @@ describe("dynamodb data service", () => {
         "transactWrite",
         (
           params: AWS.DynamoDB.TransactWriteItemsInput,
-          callback: (error: Error | null, output: AWS.DynamoDB.DocumentClient.TransactWriteItemsOutput) => void
+          callback: (
+            error: Error | null,
+            output: AWS.DynamoDB.DocumentClient.TransactWriteItemsOutput
+          ) => void
         ) => {
           callback(null, transactWriteSpy(params));
         }
@@ -213,14 +215,13 @@ describe("dynamodb data service", () => {
         breakfast: true,
         exclusions: [],
       };
-      const customers = Array.from(Array(107).keys()).map(() => mockCustomer)
+      const customers = Array.from(Array(107).keys()).map(() => mockCustomer);
 
       const service = new DynamoDbDataService("customers");
       await service.put(...customers);
 
-      expect(transactWriteSpy).toBeCalledTimes(5)
+      expect(transactWriteSpy).toBeCalledTimes(5);
     });
-
 
     it("should call transactWrite with the correct params when passed one argument", async () => {
       const transactWriteSpy = jest.fn();

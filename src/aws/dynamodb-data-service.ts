@@ -13,6 +13,17 @@ interface MappingTable {
 const TRANSACT_ITEMS_MAX_SIZE = 25;
 const BATCH_GET_ITEMS_MAX_SIZE = 100;
 
+const batchMapPromises = async <T, O extends any[] | void>(
+  input: T[],
+  batchSize: number,
+  callback: (batch: T[]) => Promise<O>
+) => {
+  const responses = await Promise.all(
+    batchArray(input, batchSize).map(callback)
+  );
+  return responses.flat();
+};
+
 export class DynamoDbDataService<TN extends keyof MappingTable>
   implements
     DatabaseDeleter,
@@ -25,17 +36,8 @@ export class DynamoDbDataService<TN extends keyof MappingTable>
     this.defaultParams = { TableName: tableName };
   }
 
-  public async put(
-    ...items: MappingTable[TN][]
-  ): Promise<void>;
   public async put(...items: MappingTable[TN][]): Promise<void> {
-    if (items.length === 0) {
-      return;
-    }
-
-    const batches = batchArray(items, TRANSACT_ITEMS_MAX_SIZE)
-
-    await Promise.all(batches.map(async batch => {
+    await batchMapPromises(items, TRANSACT_ITEMS_MAX_SIZE, async (batch) => {
       const params = {
         TransactItems: batch.map((item) => ({
           Put: {
@@ -46,31 +48,31 @@ export class DynamoDbDataService<TN extends keyof MappingTable>
       };
 
       await this.dynamoDb.transactWrite(params).promise();
-    }))
+    });
   }
 
   private async getByIds(...ids: string[]): Promise<MappingTable[TN][]> {
-    const batches = batchArray(ids, BATCH_GET_ITEMS_MAX_SIZE)
-    const response = await Promise.all(batches.map(async batch => {
-
-      const params = {
-        RequestItems: {
-          [this.defaultParams.TableName]: {
-            Keys: batch.map((id) => ({ id })),
+    return await batchMapPromises(
+      ids,
+      BATCH_GET_ITEMS_MAX_SIZE,
+      async (batch) => {
+        const params = {
+          RequestItems: {
+            [this.defaultParams.TableName]: {
+              Keys: batch.map((id) => ({ id })),
+            },
           },
-        },
-      };
+        };
 
-      const results = await this.dynamoDb.batchGet(params).promise();
+        const results = await this.dynamoDb.batchGet(params).promise();
 
-      return (
-        (results.Responses?.[
-          this.defaultParams.TableName
-        ] as MappingTable[TN][]) ?? []
-      );
-
-    }))
-    return response.flat();
+        return (
+          (results.Responses?.[
+            this.defaultParams.TableName
+          ] as MappingTable[TN][]) ?? []
+        );
+      }
+    );
   }
 
   private async getAll(): Promise<MappingTable[TN][]> {
@@ -87,29 +89,21 @@ export class DynamoDbDataService<TN extends keyof MappingTable>
     return await this.getByIds(...ids);
   }
 
-  public async remove(id: string, ...ids: string[]): Promise<void>;
   public async remove(...ids: string[]): Promise<void> {
-    if (ids.length === 0) {
-      return;
-    }
-
-    await Promise.all(
-      batchArray(ids, TRANSACT_ITEMS_MAX_SIZE).map(async (batch) => {
-        /* eslint-disable @typescript-eslint/naming-convention */
-        const params = {
-          TransactItems: batch.map((id) => ({
-            Update: {
-              ...this.defaultParams,
-              UpdateExpression: "SET deleted = :newvalue",
-              ExpressionAttributeValues: { ":newvalue": true },
-              Key: {
-                id,
-              },
+    await batchMapPromises(ids, TRANSACT_ITEMS_MAX_SIZE, async (batch) => {
+      const params = {
+        TransactItems: batch.map((id) => ({
+          Update: {
+            ...this.defaultParams,
+            UpdateExpression: "SET deleted = :newvalue",
+            ExpressionAttributeValues: { ":newvalue": true },
+            Key: {
+              id,
             },
-          })),
-        };
-        await this.dynamoDb.transactWrite(params).promise();
-      })
-    );
+          },
+        })),
+      };
+      await this.dynamoDb.transactWrite(params).promise();
+    });
   }
 }
