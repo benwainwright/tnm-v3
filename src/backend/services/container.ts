@@ -75,10 +75,7 @@ export const makeServiceInjector = <T>(container: Container<T>) => <
   handler: HandlerWithServices<H, T, S>,
   ...identifiers: S
 ) => {
-  return async (
-    event: Parameters<H>[0],
-    context: Parameters<H>[1]
-  ) => {
+  return async (event: Parameters<H>[0], context: Parameters<H>[1]) => {
     const services = container.serviceObject(...identifiers);
     return await handler({ context, event, ...services });
   };
