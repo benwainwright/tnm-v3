@@ -38,8 +38,7 @@ export class DynamoDbDataService<TN extends keyof MappingTable>
   implements
     DatabaseDeleter,
     DatabaseWriter<MappingTable[TN]>,
-    DatabaseReader<MappingTable[TN]>
-{
+    DatabaseReader<MappingTable[TN]> {
   private dynamoDb = new AWS.DynamoDB.DocumentClient({ region: "us-east-1" });
   private defaultParams: { TableName: string };
 

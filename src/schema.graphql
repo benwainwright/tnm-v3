@@ -123,7 +123,6 @@ type Customer implements Node {
   requiredCustomisations: [Customisation!]!
 }
 
-
 input CustomerInput {
   username: String!
   firstName: String!
@@ -172,46 +171,42 @@ input DeleteCustomerInput {
 }
 
 type Query {
-  customisatios: [Customisation]
-  @aws_auth(cognito_groups: ["user", "admin"])
+  customisatios: [Customisation] @aws_auth(cognito_groups: ["user", "admin"])
 
-  recipes: [Recipe]
-  @aws_auth(cognito_groups: ["user", "admin"])
+  recipes: [Recipe] @aws_auth(cognito_groups: ["user", "admin"])
 
-  customers: [Customer]
-  @aws_auth(cognito_groups: ["user", "admin"])
+  customers: [Customer] @aws_auth(cognito_groups: ["user", "admin"])
 
-  node(id: String): Node
-  @aws_auth(cognito_groups: ["user", "admin"])
+  node(id: String): Node @aws_auth(cognito_groups: ["user", "admin"])
 }
 
 type Mutation {
   updateRecipe(input: UpdateRecipeInput): Recipe
-  @aws_auth(cognito_groups: ["user", "admin"])
+    @aws_auth(cognito_groups: ["user", "admin"])
 
   deleteRecipe(input: DeleteRecipeInput): String
-  @aws_auth(cognito_groups: ["user", "admin"])
+    @aws_auth(cognito_groups: ["user", "admin"])
 
   createRecipe(input: RecipeInput): Recipe
-  @aws_auth(cognito_groups: ["user", "admin"])
+    @aws_auth(cognito_groups: ["user", "admin"])
 
   updateCustomer(input: UpdateCustomerInput): Customer
-  @aws_auth(cognito_groups: ["user", "admin"])
+    @aws_auth(cognito_groups: ["user", "admin"])
 
   createCustomer(input: CustomerInput): Customer
-  @aws_auth(cognito_groups: ["user", "admin"])
+    @aws_auth(cognito_groups: ["user", "admin"])
 
   deleteCustomer(input: DeleteCustomerInput): String
-  @aws_auth(cognito_groups: ["user", "admin"])
-  
+    @aws_auth(cognito_groups: ["user", "admin"])
+
   updateCustomisation(input: UpdateCustomisationInput): Customisation
-  @aws_auth(cognito_groups: ["user", "admin"])
+    @aws_auth(cognito_groups: ["user", "admin"])
 
   createCustomisation(input: CustomisationInput): Customisation
-  @aws_auth(cognito_groups: ["user", "admin"])
+    @aws_auth(cognito_groups: ["user", "admin"])
 
   deleteCustomisation(input: DeleteCustomisationInput): String
-  @aws_auth(cognito_groups: ["user", "admin"])
+    @aws_auth(cognito_groups: ["user", "admin"])
 }
 
 type Plan {

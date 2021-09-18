@@ -1,5 +1,7 @@
+import { logger } from "@app/utils/logger";
+
 export const backendRedirect = (route: string, message: string) => {
-  console.log(`Redirecting to '/${route}' (${message})`);
+  logger.info(`Redirecting to '/${route}' (${message})`);
   return {
     redirect: {
       destination: `/${route}`,

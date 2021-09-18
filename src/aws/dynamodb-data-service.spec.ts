@@ -131,16 +131,15 @@ describe("dynamodb data service", () => {
         exclusions: [],
       };
 
-      const responses = Array.from(new Array(107)).map(() => mockCustomer1)
+      const responses = Array.from(new Array(107)).map(() => mockCustomer1);
 
       const batchGetOutput: AWS.DynamoDB.DocumentClient.BatchGetItemOutput = {
         Responses: {
-          customers: responses
-        }
+          customers: responses,
+        },
       };
 
-      batchGetSpy.mockResolvedValue(batchGetOutput)
-
+      batchGetSpy.mockResolvedValue(batchGetOutput);
 
       await service.get(...ids);
 

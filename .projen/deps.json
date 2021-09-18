@@ -309,6 +309,10 @@
       "type": "runtime"
     },
     {
+      "name": "tslog",
+      "type": "runtime"
+    },
+    {
       "name": "uuid",
       "type": "runtime"
     },

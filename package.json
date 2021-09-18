@@ -100,6 +100,7 @@
     "react-helmet": "^6.1.0",
     "reflect-metadata": "^0.1.13",
     "ts-jest": "^27.0.5",
+    "tslog": "^3.2.2",
     "uuid": "^8.3.2",
     "webpack": "^5.53.0"
   },

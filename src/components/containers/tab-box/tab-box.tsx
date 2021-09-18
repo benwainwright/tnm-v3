@@ -38,7 +38,7 @@ type ExcludesUndefined = <T>(x: T | undefined) => x is T;
 const getTabs = (nodes: ReactNode): ReactElement<TabProps>[] =>
   Children.map<ReactElement<TabProps> | undefined, ReactNode>(nodes, (node) =>
     isTab(node) ? node : undefined
-  )?.filter(Boolean as unknown as ExcludesUndefined) ?? [];
+  )?.filter((Boolean as unknown) as ExcludesUndefined) ?? [];
 
 const TabBox: FC<TabBoxProps> = (props) => {
   const tabs = getTabs(props.children);
