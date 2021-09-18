@@ -6,7 +6,7 @@ import { getIssuer } from "./get-issuer";
 describe("verify JWT", () => {
   beforeEach(() => {
     jest.resetModules();
-    jest.resetAllMocks()
+    jest.resetAllMocks();
     process.env.COGNITO_POOL_ID = "us-east-1_nfWupeuVh";
     process.env.AWS_REGION = "us-east-1";
     jest
@@ -17,7 +17,7 @@ describe("verify JWT", () => {
   it("throws an error if the claim does not match the public keys", async () => {
     jest.doMock("./get-public-keys");
 
-    const { getPublicKeys } = await import('./get-public-keys')
+    const { getPublicKeys } = await import("./get-public-keys");
 
     mocked(getPublicKeys).mockResolvedValue({
       "l5X/+tD2qmhRilvQ3wEGP5acorOHndbc2EYLmLo59vA=": {
@@ -46,41 +46,45 @@ describe("verify JWT", () => {
       },
     });
 
-    const { verifyJwtToken: verifyJwtTokenWithMockedPublicKeys } = await import("./verify-jwt")
-    const result = await verifyJwtTokenWithMockedPublicKeys(validToken)
+    const { verifyJwtToken: verifyJwtTokenWithMockedPublicKeys } = await import(
+      "./verify-jwt"
+    );
+    const result = await verifyJwtTokenWithMockedPublicKeys(validToken);
 
-    expect(result.isValid).toEqual(false)
-    expect(result.error.message).toEqual("claim made for unknown kid")
+    expect(result.isValid).toEqual(false);
+    expect(result.error.message).toEqual("claim made for unknown kid");
   });
 
   it("throws an error if the issuer doesn't match", async () => {
     jest.doMock("./verify");
     jest.dontMock("./get-public-keys");
 
-    const { verify } = await import('./verify')
+    const { verify } = await import("./verify");
 
     mocked(verify).mockResolvedValue({
-        token_use: "id",
-        auth_time: Math.floor(new Date("2021-09-14").getTime() / 1000),
-        iss: "the-wrong-issuer",
-        exp: Math.floor(new Date("2021-09-14").getTime() / 1000) + 1000,
-        "cognito:groups": [],
-        username: "ben",
-        client_id: "bar"
-      });
+      token_use: "id",
+      auth_time: Math.floor(new Date("2021-09-14").getTime() / 1000),
+      iss: "the-wrong-issuer",
+      exp: Math.floor(new Date("2021-09-14").getTime() / 1000) + 1000,
+      "cognito:groups": [],
+      username: "ben",
+      client_id: "bar",
+    });
 
-    const { verifyJwtToken: verifyWithMockedVerify } = await import("./verify-jwt")
-    const result = await verifyWithMockedVerify(validToken)
+    const { verifyJwtToken: verifyWithMockedVerify } = await import(
+      "./verify-jwt"
+    );
+    const result = await verifyWithMockedVerify(validToken);
 
-    expect(result.isValid).toEqual(false)
-    expect(result.error.message).toEqual("claim issuer is invalid")
+    expect(result.isValid).toEqual(false);
+    expect(result.error.message).toEqual("claim issuer is invalid");
   });
 
-  it('Returns groups as an empty array when the groups are not present in the claim', async () => {
+  it("Returns groups as an empty array when the groups are not present in the claim", async () => {
     jest.doMock("./verify");
     jest.dontMock("./get-public-keys");
 
-    const { verify } = await import('./verify')
+    const { verify } = await import("./verify");
 
     mocked(verify).mockResolvedValue({
       token_use: "id",
@@ -88,35 +92,39 @@ describe("verify JWT", () => {
       iss: getIssuer(),
       exp: Math.floor(new Date("2021-09-14").getTime() / 1000) + 1000,
       username: "ben",
-      client_id: "bar"
+      client_id: "bar",
     });
 
-    const { verifyJwtToken: verifyWithMockedVerify } = await import("./verify-jwt")
-    const result = await verifyWithMockedVerify(validToken)
+    const { verifyJwtToken: verifyWithMockedVerify } = await import(
+      "./verify-jwt"
+    );
+    const result = await verifyWithMockedVerify(validToken);
 
-    expect(result.groups).toEqual([])
-  })
+    expect(result.groups).toEqual([]);
+  });
 
   it("throws an error if the token is not an access token", async () => {
     jest.doMock("./verify");
 
-    const { verify } = await import('./verify')
+    const { verify } = await import("./verify");
 
     mocked(verify).mockResolvedValue({
-        token_use: "something-else",
-        auth_time: Math.floor(new Date("2021-09-14").getTime() / 1000),
-        iss: getIssuer(),
-        exp: Math.floor(new Date("2021-09-14").getTime() / 1000) + 1000,
-        "cognito:groups": [],
-        username: "ben",
-        client_id: "bar"
-      });
+      token_use: "something-else",
+      auth_time: Math.floor(new Date("2021-09-14").getTime() / 1000),
+      iss: getIssuer(),
+      exp: Math.floor(new Date("2021-09-14").getTime() / 1000) + 1000,
+      "cognito:groups": [],
+      username: "ben",
+      client_id: "bar",
+    });
 
-    const { verifyJwtToken: verifyWithMockedVerify } = await import("./verify-jwt")
-    const result = await verifyWithMockedVerify(validToken)
+    const { verifyJwtToken: verifyWithMockedVerify } = await import(
+      "./verify-jwt"
+    );
+    const result = await verifyWithMockedVerify(validToken);
 
-    expect(result.isValid).toEqual(false)
-    expect(result.error.message).toEqual("claim use is not access")
+    expect(result.isValid).toEqual(false);
+    expect(result.error.message).toEqual("claim use is not access");
   });
 
   it.each`
