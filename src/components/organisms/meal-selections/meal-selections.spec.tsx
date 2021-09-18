@@ -68,7 +68,3 @@ test("The <MealSelections> component disables all the increase buttons when the 
   expect(fooIncrease).toHaveAttribute("disabled");
   expect(fooBarIncrease).toHaveAttribute("disabled");
 });
-
-test.todo(
-  "Displays a list of spinbuttons in the basket for each selected item"
-);
