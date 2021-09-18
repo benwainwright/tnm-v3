@@ -161,6 +161,10 @@
       "type": "runtime"
     },
     {
+      "name": "@types/pluralize",
+      "type": "runtime"
+    },
+    {
       "name": "@types/ramda",
       "type": "runtime"
     },
@@ -274,6 +278,10 @@
     },
     {
       "name": "next-images",
+      "type": "runtime"
+    },
+    {
+      "name": "pluralize",
       "type": "runtime"
     },
     {

@@ -51,7 +51,7 @@
     "@aws-cdk/core" "1.123.0"
     constructs "^3.3.69"
 
-"@aws-cdk/aws-appsync@*":
+"@aws-cdk/aws-appsync@^1.123.0":
   version "1.123.0"
   resolved "https://registry.npmjs.org/@aws-cdk/aws-appsync/-/aws-appsync-1.123.0.tgz#f15311c97d9387f1fd1f357346ba0d4f2c5f078c"
   integrity sha512-85iDocW+pS8amVwpcaGEOzGQm5ufTUEMQVjlJlnK7YgBWQPhemxr6Mhik2A/HIynuUPELEb3DMAKUTs77lkwaw==

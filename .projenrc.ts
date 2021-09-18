@@ -65,6 +65,7 @@ const depsWithoutTypes = [
   "jsonwebtoken",
   "jwk-to-pem",
   "aws-lambda",
+  "pluralize",
   "uuid",
   "react-helmet",
   "lodash",
@@ -109,7 +110,6 @@ const tnmApp = new web.NextJsTypeScriptProject({
       testPathIgnorePatterns: [
         `node_modules`,
         `\\.cache`,
-        `infrastructure`,
         `<rootDir>.*/public`,
         `cypress`
       ],
@@ -153,6 +153,11 @@ const infrastructure = new AwsCdkTypeScriptApp({
   minNodeVersion: "14.17.6",
   outdir: 'infrastructure',
   defaultReleaseBranch: 'main',
+  tsconfig: {
+    compilerOptions: {
+      esModuleInterop: true
+    }
+  },
   devDeps: [
     ...cdk.map(dep => `@aws-cdk/aws-${dep}`),
     "@aws-cdk/core",

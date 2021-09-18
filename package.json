@@ -63,6 +63,7 @@
     "@types/jsonwebtoken": "^8.5.5",
     "@types/jwk-to-pem": "^2.0.1",
     "@types/lodash": "^4.14.173",
+    "@types/pluralize": "^0.0.29",
     "@types/ramda": "^0.27.44",
     "@types/react-helmet": "^6.1.2",
     "@types/testing-library__jest-dom": "^5.14.1",
@@ -92,6 +93,7 @@
     "next": "^11.1.2",
     "next-aws-lambda-webpack-plugin": "^0.2.8",
     "next-images": "^1.8.1",
+    "pluralize": "^8.0.0",
     "ramda": "^0.27.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -118,7 +120,6 @@
     "testPathIgnorePatterns": [
       "node_modules",
       "\\.cache",
-      "infrastructure",
       "<rootDir>.*/public",
       "cypress"
     ],
@@ -145,7 +146,6 @@
     "coveragePathIgnorePatterns": [
       "node_modules",
       "\\.cache",
-      "infrastructure",
       "<rootDir>.*/public",
       "cypress"
     ],

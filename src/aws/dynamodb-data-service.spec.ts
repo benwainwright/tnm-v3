@@ -111,7 +111,38 @@ describe("dynamodb data service", () => {
 
       const ids = Array.from(Array(107).keys()).map(String);
 
-      service.get(...ids);
+      const mockCustomer1: Customer = {
+        id: "7",
+        firstName: "Ben",
+        surname: "Wainwright",
+        salutation: "mr",
+        address: "",
+        telephone: "123",
+        email: "a@b.c",
+        daysPerWeek: 3,
+        plan: {
+          name: "Mass 2",
+          mealsPerDay: 2,
+          category: "Mass",
+          costPerMeal: 200,
+        },
+        snack: Snack.Large,
+        breakfast: true,
+        exclusions: [],
+      };
+
+      const responses = Array.from(new Array(107)).map(() => mockCustomer1)
+
+      const batchGetOutput: AWS.DynamoDB.DocumentClient.BatchGetItemOutput = {
+        Responses: {
+          customers: responses
+        }
+      };
+
+      batchGetSpy.mockResolvedValue(batchGetOutput)
+
+
+      await service.get(...ids);
 
       expect(batchGetSpy).toBeCalledTimes(2);
     });

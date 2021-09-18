@@ -1,6 +1,6 @@
 import * as path from 'path';
 import { Code, LayerVersion } from '@aws-cdk/aws-lambda';
-import { Construct } from 'constructs';
+import { Construct } from '@aws-cdk/core';
 
 interface NextPagesApiProps {
   lambdaOutPath: string;
