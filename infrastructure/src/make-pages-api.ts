@@ -1,9 +1,9 @@
 import * as path from 'path';
-import * as cdk from 'aws-cdk-lib';
-import { Cors, LambdaIntegration, RestApi } from 'aws-cdk-lib/aws-apigateway';
-import { Code, LayerVersion, Function, Runtime } from 'aws-cdk-lib/aws-lambda';
-import { HttpOrigin } from 'aws-cdk-lib/lib/aws-cloudfront-origins';
-import { UserPool } from 'aws-cdk-lib/lib/aws-cognito';
+import * as cdk from '@aws-cdk/core';
+import { Cors, LambdaIntegration, RestApi } from '@aws-cdk/aws-apigateway';
+import { Code, LayerVersion, Function, Runtime } from '@aws-cdk/aws-lambda';
+import { HttpOrigin } from '@aws-cdk/aws-cloudfront-origins';
+import { UserPool } from '@aws-cdk/aws-cognito';
 import { Construct } from 'constructs';
 import * as fs from 'fs-extra';
 import { getResourceName } from './get-resource-name';

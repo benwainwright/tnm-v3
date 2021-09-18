@@ -1,9 +1,9 @@
+import { ErrorResponse } from "@app/types/error-response";
+import { ChangePasswordFormData } from "@app/types/srp-data";
+import styled from "@emotion/styled";
 import { FC } from "react";
 import { Input } from "../../atoms";
 import { ChallengeForm } from "../../containers";
-import styled from "@emotion/styled";
-import { ChangePasswordFormData } from "@app/types/srp-data";
-import { ErrorResponse } from "@app/types/error-response";
 
 export interface NewPasswordFormProps {
   onSubmit: (data: ChangePasswordFormData) => void;

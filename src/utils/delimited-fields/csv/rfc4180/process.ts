@@ -1,6 +1,6 @@
 import processFields from "../../process-fields";
-import processField from "./process-field";
 import { ArbitraryObjectType } from "../../process-fields";
+import processField from "./process-field";
 
 const _dummyObjectType: ArbitraryObjectType | undefined = undefined;
 _dummyObjectType;

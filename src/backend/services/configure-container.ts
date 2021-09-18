@@ -1,5 +1,5 @@
-import { Container, makeServiceInjector } from "./container";
 import { DynamoDbDataService } from "../../aws/dynamodb-data-service";
+import { Container, makeServiceInjector } from "./container";
 import { TokenMap } from "./token-map";
 
 export const container = new Container<TokenMap>();

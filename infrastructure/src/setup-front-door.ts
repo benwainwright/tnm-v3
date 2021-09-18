@@ -1,18 +1,18 @@
-import { CfnOutput } from 'aws-cdk-lib';
-import { DnsValidatedCertificate } from 'aws-cdk-lib/lib/aws-certificatemanager';
+import { CfnOutput } from '@aws-cdk/core';
+import { DnsValidatedCertificate } from '@aws-cdk/aws-certificatemanager';
 import {
   Distribution,
   OriginRequestCookieBehavior,
   OriginRequestPolicy,
   ViewerProtocolPolicy,
-} from 'aws-cdk-lib/lib/aws-cloudfront';
-import { HttpOrigin } from 'aws-cdk-lib/lib/aws-cloudfront-origins';
+} from '@aws-cdk/aws-cloudfront';
+import { HttpOrigin } from '@aws-cdk/aws-cloudfront-origins';
 import {
   ARecord,
   PublicHostedZone,
   RecordTarget,
-} from 'aws-cdk-lib/lib/aws-route53';
-import { CloudFrontTarget } from 'aws-cdk-lib/lib/aws-route53-targets';
+} from '@aws-cdk/aws-route53';
+import { CloudFrontTarget } from '@aws-cdk/aws-route53-targets';
 import { Construct } from 'constructs';
 import { getDomainName } from './get-domain-name';
 

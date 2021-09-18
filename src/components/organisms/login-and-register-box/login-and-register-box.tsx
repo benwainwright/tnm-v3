@@ -1,6 +1,6 @@
-import { FC } from "react";
 import { TabBox, Tab, Box } from "@app/components/containers";
 import styled from "@emotion/styled";
+import { FC } from "react";
 import LoginBox from "./login-box";
 import RegisterBox from "./register-box";
 

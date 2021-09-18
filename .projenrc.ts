@@ -32,6 +32,7 @@ const deps = [
     "webpack",
     "@svgr/webpack",
     "babel-plugin-module-resolver",
+    "esbuild",
     "reflect-metadata",
     "inversify",
     "jest-enzyme",
@@ -84,6 +85,8 @@ const tnmApp = new web.NextJsTypeScriptProject({
   ],
   name: 'tnm-v3',
   srcdir: 'src',
+  tailwind: false,
+  compileBeforeTest: false,
   jest: true,
   projenrcTs: true,
   tsconfig: {
@@ -117,16 +120,49 @@ const tnmApp = new web.NextJsTypeScriptProject({
       setupFilesAfterEnv: ["<rootDir>/src/testSetup.ts"]
     }
   },
-  devDeps: [...deps, ...depsWithoutTypes, ...depsWithoutTypes.map(dep => `@types/${dep}`)],
+  deps: [
+    ...deps,
+    ...depsWithoutTypes,
+    ...depsWithoutTypes.map(dep => `@types/${dep}`)
+  ],
 });
+
+const cdk = [
+  "s3",
+  "s3-deployment",
+  "cloudfront",
+  "cloudfront-origins",
+  "cognito",
+  "apigateway",
+  "lambda",
+  "certificatemanager",
+  "route53",
+  "route53-targets",
+  "s3",
+  "s3-deployment",
+  "dynamodb"
+]
 
 const infrastructure = new AwsCdkTypeScriptApp({
   name: 'tnm-v3-infrastructure',
-  cdkVersion: '2.0.0-rc.21',
+  cdkVersion: '1.123.0',
+  context: {
+    "@aws-cdk/core:newStyleStackSynthesis": "true"
+  },
   minNodeVersion: "14.17.6",
   outdir: 'infrastructure',
   defaultReleaseBranch: 'main',
-  devDeps: ["fs-extra", "@types/fs-extra", "@types/node", "memfs", "extract-zip"],
+  devDeps: [
+    ...cdk.map(dep => `@aws-cdk/aws-${dep}`),
+    "@aws-cdk/core",
+    'aws-cdk',
+    "aws-cdk-local",
+    "fs-extra",
+    "@types/fs-extra",
+    "@types/node",
+    "memfs",
+    "extract-zip",
+  ],
   parent: tnmApp,
 });
 

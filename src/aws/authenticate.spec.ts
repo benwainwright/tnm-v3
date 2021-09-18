@@ -1,10 +1,10 @@
 import { Auth } from "@aws-amplify/auth";
+import { ISignUpResult } from "amazon-cognito-identity-js";
+import { mock } from "jest-mock-extended";
 import { when } from "jest-when";
 import { mocked } from "ts-jest/utils";
-import { getPoolConfig } from "./getPoolConfig";
 import * as authenticate from "./authenticate";
-import { mock } from "jest-mock-extended";
-import { ISignUpResult } from "amazon-cognito-identity-js";
+import { getPoolConfig } from "./getPoolConfig";
 
 jest.mock("@aws-amplify/auth");
 jest.mock("aws-sdk");

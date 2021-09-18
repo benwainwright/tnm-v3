@@ -1,9 +1,9 @@
+import { ErrorResponse } from "@app/types/error-response";
+import { MfaFormData } from "@app/types/srp-data";
+import styled from "@emotion/styled";
 import { FC } from "react";
 import { Input } from "../../atoms";
 import { ChallengeForm } from "../../containers";
-import styled from "@emotion/styled";
-import { ErrorResponse } from "@app/types/error-response";
-import { MfaFormData } from "@app/types/srp-data";
 
 export interface MfaFormProps {
   onSubmit: (data: MfaFormData) => void;

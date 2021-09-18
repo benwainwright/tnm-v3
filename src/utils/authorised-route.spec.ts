@@ -1,8 +1,8 @@
-import { authorizedRoute } from "./authorised-route";
 import { mock } from "jest-mock-extended";
-import { mocked } from "ts-jest/utils";
 import { GetServerSidePropsContext } from "next";
+import { mocked } from "ts-jest/utils";
 import { verifyJwtToken } from "./authentication";
+import { authorizedRoute } from "./authorised-route";
 
 jest.mock("./authentication");
 

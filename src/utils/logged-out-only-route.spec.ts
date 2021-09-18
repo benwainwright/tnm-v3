@@ -1,8 +1,8 @@
-import { verifyJwtToken } from "./authentication";
-import { mocked } from "ts-jest/utils";
-import { loggedOutOnlyRoute } from "./logged-out-only-route";
 import { mock } from "jest-mock-extended";
 import { GetServerSidePropsContext } from "next";
+import { mocked } from "ts-jest/utils";
+import { verifyJwtToken } from "./authentication";
+import { loggedOutOnlyRoute } from "./logged-out-only-route";
 
 jest.mock("./authentication");
 

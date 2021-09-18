@@ -1,6 +1,54 @@
 {
   "dependencies": [
     {
+      "name": "@aws-cdk/aws-apigateway",
+      "type": "build"
+    },
+    {
+      "name": "@aws-cdk/aws-certificatemanager",
+      "type": "build"
+    },
+    {
+      "name": "@aws-cdk/aws-cloudfront",
+      "type": "build"
+    },
+    {
+      "name": "@aws-cdk/aws-cloudfront-origins",
+      "type": "build"
+    },
+    {
+      "name": "@aws-cdk/aws-cognito",
+      "type": "build"
+    },
+    {
+      "name": "@aws-cdk/aws-dynamodb",
+      "type": "build"
+    },
+    {
+      "name": "@aws-cdk/aws-lambda",
+      "type": "build"
+    },
+    {
+      "name": "@aws-cdk/aws-route53",
+      "type": "build"
+    },
+    {
+      "name": "@aws-cdk/aws-route53-targets",
+      "type": "build"
+    },
+    {
+      "name": "@aws-cdk/aws-s3",
+      "type": "build"
+    },
+    {
+      "name": "@aws-cdk/aws-s3-deployment",
+      "type": "build"
+    },
+    {
+      "name": "@aws-cdk/core",
+      "type": "build"
+    },
+    {
       "name": "@types/fs-extra",
       "type": "build"
     },
@@ -22,8 +70,12 @@
       "type": "build"
     },
     {
+      "name": "aws-cdk-local",
+      "type": "build"
+    },
+    {
       "name": "aws-cdk",
-      "version": "^2.0.0-rc.21",
+      "version": "^1.123.0",
       "type": "build"
     },
     {
@@ -91,17 +143,12 @@
     },
     {
       "name": "@aws-cdk/assert",
-      "version": "^2.0.0-rc.21",
+      "version": "^1.123.0",
       "type": "runtime"
     },
     {
-      "name": "aws-cdk-lib",
-      "version": "^2.0.0-rc.21",
-      "type": "runtime"
-    },
-    {
-      "name": "constructs",
-      "version": "^10.0.5",
+      "name": "@aws-cdk/core",
+      "version": "^1.123.0",
       "type": "runtime"
     }
   ],

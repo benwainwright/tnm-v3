@@ -1,6 +1,6 @@
-import { getPoolConfig } from "./getPoolConfig";
 import { mocked } from "ts-jest/utils";
 import { getOutputs } from "./getOutputs";
+import { getPoolConfig } from "./getPoolConfig";
 
 jest.mock("./getOutputs");
 

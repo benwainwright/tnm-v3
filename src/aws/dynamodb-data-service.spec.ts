@@ -1,8 +1,8 @@
-import * as AWSMock from "aws-sdk-mock";
-import AWS, { AWSError, Request } from "aws-sdk";
-import { DynamoDbDataService } from "./dynamodb-data-service";
-import { when } from "jest-when";
 import { Customer, Snack } from "@app/types";
+import AWS, { AWSError, Request } from "aws-sdk";
+import * as AWSMock from "aws-sdk-mock";
+import { when } from "jest-when";
+import { DynamoDbDataService } from "./dynamodb-data-service";
 
 describe("dynamodb data service", () => {
   beforeEach(() => {

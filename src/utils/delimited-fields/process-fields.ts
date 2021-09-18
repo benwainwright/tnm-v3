@@ -1,6 +1,6 @@
-import { ValueType } from "./types";
 import { left, right, Either } from "fp-ts/Either";
 import { curry, pipe } from "ramda";
+import { ValueType } from "./types";
 
 export interface ArbitraryObjectType {
   [key: string]: ValueType;

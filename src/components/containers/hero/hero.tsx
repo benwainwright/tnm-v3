@@ -1,6 +1,6 @@
-import { FC } from "react";
-import styled from "@emotion/styled";
 import { MENUBAR_HEIGHT } from "@app/config";
+import styled from "@emotion/styled";
+import { FC } from "react";
 
 const HeroBox = styled("div")`
   min-height: 330px;

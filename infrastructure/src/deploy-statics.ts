@@ -1,8 +1,8 @@
-import { CfnOutput, RemovalPolicy } from 'aws-cdk-lib';
-import { Distribution } from 'aws-cdk-lib/lib/aws-cloudfront';
-import { S3Origin } from 'aws-cdk-lib/lib/aws-cloudfront-origins';
-import { Bucket } from 'aws-cdk-lib/lib/aws-s3';
-import { BucketDeployment, Source } from 'aws-cdk-lib/lib/aws-s3-deployment';
+import { CfnOutput, RemovalPolicy } from '@aws-cdk/core';
+import { Distribution } from '@aws-cdk/aws-cloudfront';
+import { S3Origin } from '@aws-cdk/aws-cloudfront-origins';
+import { Bucket } from '@aws-cdk/aws-s3';
+import { BucketDeployment, Source } from '@aws-cdk/aws-s3-deployment';
 import { Construct } from 'constructs';
 import { getDomainName } from './get-domain-name';
 

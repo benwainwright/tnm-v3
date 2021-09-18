@@ -1,8 +1,8 @@
-import { FC } from "react";
-import { QuantityStepper } from "@app/components/molecules";
-import { uniqueId } from "lodash";
 import { ParagraphText } from "@app/components/atoms";
+import { QuantityStepper } from "@app/components/molecules";
 import styled from "@emotion/styled";
+import { uniqueId } from "lodash";
+import { FC } from "react";
 
 export interface MealCounterProps {
   title: string;

@@ -1,6 +1,6 @@
 import { GetServerSideProps } from "next";
-import { backendRedirect } from "./backend-redirect";
 import { verifyJwtToken } from "./authentication";
+import { backendRedirect } from "./backend-redirect";
 
 interface AuthorizedRouteWrapper {
   (args?: {

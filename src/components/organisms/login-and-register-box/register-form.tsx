@@ -1,9 +1,9 @@
-import { FC } from "react";
-import { ChallengeForm } from "@app/components/containers";
 import { Input } from "@app/components/atoms";
+import { ChallengeForm } from "@app/components/containers";
 import { ErrorResponse } from "@app/types/error-response";
 import { RegisterFormData } from "@app/types/srp-data";
 import styled from "@emotion/styled";
+import { FC } from "react";
 
 export interface RegisterFormProps {
   onSubmit: (data: RegisterFormData) => void;

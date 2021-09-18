@@ -1,7 +1,7 @@
 import { Customer } from "@app/types";
 import { DatabaseDeleter } from "@app/types/database-deleter";
-import { DatabaseWriter } from "@app/types/database-writer";
 import { DatabaseReader } from "@app/types/database-reader";
+import { DatabaseWriter } from "@app/types/database-writer";
 import { batchArray } from "@app/utils";
 import AWS, { AWSError, Request } from "aws-sdk";
 
@@ -34,12 +34,12 @@ type GetInputType<T extends (param: unknown) => unknown> = T extends (
   ? Params
   : never;
 
-
 export class DynamoDbDataService<TN extends keyof MappingTable>
   implements
     DatabaseDeleter,
     DatabaseWriter<MappingTable[TN]>,
-    DatabaseReader<MappingTable[TN]> {
+    DatabaseReader<MappingTable[TN]>
+{
   private dynamoDb = new AWS.DynamoDB.DocumentClient({ region: "us-east-1" });
   private defaultParams: { TableName: string };
 
@@ -48,25 +48,22 @@ export class DynamoDbDataService<TN extends keyof MappingTable>
   }
 
   public async put(...items: MappingTable[TN][]): Promise<void> {
-    await this.transactWrite(
-      items,
-      (batch) => ({
-        TransactItems: batch.map((item) => ({
-          Put: {
-            TableName: "customers",
-            Item: item,
-          },
-        })),
-      })
-    );
+    await this.transactWrite(items, (batch) => ({
+      TransactItems: batch.map((item) => ({
+        Put: {
+          TableName: "customers",
+          Item: item,
+        },
+      })),
+    }));
   }
 
   public async get(...ids: string[]): Promise<MappingTable[TN][]> {
     if (ids.length === 0) {
-      return await this.getAll();
+      return this.getAll();
     }
 
-    return await this.getByIds(...ids);
+    return this.getByIds(...ids);
   }
 
   public async remove(...ids: string[]): Promise<void> {
@@ -84,20 +81,22 @@ export class DynamoDbDataService<TN extends keyof MappingTable>
     }));
   }
 
-  private async batchRequest <T, R extends RequestFunctions>(
+  private async batchRequest<T, R extends RequestFunctions>(
     input: T[],
     batchSize: number,
     requestFunc: R,
     paramFunc: (batch: T[]) => GetInputType<R>
-  )  {
+  ) {
     await batchMapPromises<T, void>(input, batchSize, async (batch) => {
       await requestFunc(paramFunc(batch)).promise();
     });
-  };
+  }
 
   private async transactWrite<T>(
     input: T[],
-    paramFunc: (batch: T[]) => AWS.DynamoDB.DocumentClient.TransactWriteItemsInput
+    paramFunc: (
+      batch: T[]
+    ) => AWS.DynamoDB.DocumentClient.TransactWriteItemsInput
   ) {
     await this.batchRequest(
       input,
@@ -108,27 +107,23 @@ export class DynamoDbDataService<TN extends keyof MappingTable>
   }
 
   private async getByIds(...ids: string[]): Promise<MappingTable[TN][]> {
-    return await batchMapPromises(
-      ids,
-      BATCH_GET_ITEMS_MAX_SIZE,
-      async (batch) => {
-        const params = {
-          RequestItems: {
-            [this.defaultParams.TableName]: {
-              Keys: batch.map((id) => ({ id })),
-            },
+    return batchMapPromises(ids, BATCH_GET_ITEMS_MAX_SIZE, async (batch) => {
+      const params = {
+        RequestItems: {
+          [this.defaultParams.TableName]: {
+            Keys: batch.map((id) => ({ id })),
           },
-        };
+        },
+      };
 
-        const results = await this.dynamoDb.batchGet(params).promise();
+      const results = await this.dynamoDb.batchGet(params).promise();
 
-        return (
-          (results.Responses?.[
-            this.defaultParams.TableName
-          ] as MappingTable[TN][]) ?? []
-        );
-      }
-    );
+      return (
+        (results.Responses?.[
+          this.defaultParams.TableName
+        ] as MappingTable[TN][]) ?? []
+      );
+    });
   }
 
   private async getAll(): Promise<MappingTable[TN][]> {

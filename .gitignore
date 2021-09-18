@@ -48,6 +48,4 @@ junit.xml
 /lib
 /dist/
 !/tsconfig.jest.json
-!/tailwind.config.json
-!/postcss.config.json
 /.next/

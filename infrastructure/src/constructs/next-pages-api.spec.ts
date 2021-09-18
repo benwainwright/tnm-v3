@@ -2,7 +2,7 @@ import * as fs from 'fs/promises';
 import * as os from 'os';
 import * as path from 'path';
 import { haveResourceLike, expect as cdkExpect, Capture } from '@aws-cdk/assert';
-import { App, Stack } from 'aws-cdk-lib';
+import { App, Stack } from '@aws-cdk/core';
 import { vol } from '../test-support';
 import { NextPagesApi } from './next-pages-api';
 
@@ -32,7 +32,7 @@ describe('the next pages api construct', () => {
     const stackName = 'my-stack';
     const stack = new Stack(app, stackName);
 
-    new NextPagesApi(stack, 'api', { lambdaOutPath });
+    new NextPagesApi(stack, 'api', { lambdaOutPath: outPath });
 
     const bucketName = Capture.aString();
     const S3Key = Capture.aString();
@@ -58,4 +58,6 @@ describe('the next pages api construct', () => {
     expect(filesInAssetDir).toEqual(expect.arrayContaining(['file-1', 'file-2']))
     expect(file.destinations['current_account-current_region'].bucketName).toEqual(bucketName.capturedValue);
   });
+
+
 });

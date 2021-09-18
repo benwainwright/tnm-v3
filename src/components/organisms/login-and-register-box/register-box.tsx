@@ -1,6 +1,6 @@
 import { FC } from "react";
-import RegisterForm from "./register-form";
 import ConfirmMobileForm from "./ConfirmMobileForm";
+import RegisterForm from "./register-form";
 import { RegisterState, useRegisterBox } from "./use-register-box";
 
 const getRegisterBox = (_state: RegisterState) => {

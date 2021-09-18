@@ -1,6 +1,6 @@
-import { PublicKeyMeta } from "./public-key-meta";
 import * as jsonwebtoken from "jsonwebtoken";
 import { Claim } from "./claim";
+import { PublicKeyMeta } from "./public-key-meta";
 
 export const verify = async (
   token: string,

@@ -1,6 +1,6 @@
-import { FC, useEffect } from "react";
 import { currentUser } from "@app/aws/authenticate";
 import { navigate } from "@app/utils/navigate";
+import { FC, useEffect } from "react";
 
 export enum Redirect {
   IfLoggedIn,

@@ -16,8 +16,6 @@
 /cdk.json                        	linguist-generated
 /LICENSE                         	linguist-generated
 /package.json                    	linguist-generated
-/postcss.config.json             	linguist-generated
-/tailwind.config.json            	linguist-generated
 /tsconfig.eslint.json            	linguist-generated
 /tsconfig.jest.json              	linguist-generated
 /tsconfig.json                   	linguist-generated

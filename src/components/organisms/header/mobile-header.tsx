@@ -1,6 +1,6 @@
+import styled from "@emotion/styled";
 import { FC, Fragment } from "react";
 
-import styled from "@emotion/styled";
 import { Button } from "../../atoms";
 
 const StyledMenuIcon = styled.img`

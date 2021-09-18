@@ -1,9 +1,9 @@
-import { FC, Fragment } from "react";
-import { IconButton } from "@app/components/atoms";
 import AddIcon from "@app/assets/images/icons/tnm-add.png";
 import MinusIcon from "@app/assets/images/icons/tnm-subtract.png";
-import { uniqueId } from "lodash";
+import { IconButton } from "@app/components/atoms";
 import styled from "@emotion/styled";
+import { uniqueId } from "lodash";
+import { FC, Fragment } from "react";
 
 export interface QuantityStepperProps {
   value?: number;

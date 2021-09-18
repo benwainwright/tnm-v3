@@ -1,5 +1,5 @@
 import * as path from 'path';
-import { App, Stack, StackProps } from 'aws-cdk-lib';
+import { App, Stack, StackProps } from '@aws-cdk/core';
 import { Construct } from 'constructs';
 import { deployStatics } from './deploy-statics';
 import { makeDataTables } from './make-data-tables';
@@ -47,8 +47,10 @@ export class TnmV3Stack extends Stack {
 
 const app = new App();
 
+const account = process.env.IS_CDK_LOCAL ? '000000000000' : '568693217207'
+
 const env = {
-  account: '568693217207',
+  account,
   region: 'eu-west-2',
 };
 

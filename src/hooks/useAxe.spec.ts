@@ -1,9 +1,9 @@
-import { renderHook } from "@testing-library/react-hooks";
-import { useAxe } from "./useAxe";
-import { mocked } from "ts-jest/utils";
 import axe from "@axe-core/react";
+import { renderHook } from "@testing-library/react-hooks";
 import React from "react";
 import ReactDom from "react-dom";
+import { mocked } from "ts-jest/utils";
+import { useAxe } from "./useAxe";
 
 jest.mock("react-dom");
 jest.mock("@axe-core/react");

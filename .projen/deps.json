@@ -1,124 +1,12 @@
 {
   "dependencies": [
     {
-      "name": "@aws-amplify/auth",
-      "type": "build"
-    },
-    {
-      "name": "@axe-core/react",
-      "type": "build"
-    },
-    {
-      "name": "@babel/core",
-      "type": "build"
-    },
-    {
-      "name": "@cypress/code-coverage",
-      "type": "build"
-    },
-    {
-      "name": "@emotion/babel-plugin",
-      "type": "build"
-    },
-    {
-      "name": "@emotion/jest",
-      "type": "build"
-    },
-    {
-      "name": "@emotion/react",
-      "type": "build"
-    },
-    {
-      "name": "@emotion/styled",
-      "type": "build"
-    },
-    {
-      "name": "@storybook/addon-a11y",
-      "type": "build"
-    },
-    {
-      "name": "@storybook/addon-actions",
-      "type": "build"
-    },
-    {
-      "name": "@storybook/addon-essentials",
-      "type": "build"
-    },
-    {
-      "name": "@storybook/addon-links",
-      "type": "build"
-    },
-    {
-      "name": "@storybook/builder-webpack5",
-      "type": "build"
-    },
-    {
-      "name": "@storybook/cli",
-      "type": "build"
-    },
-    {
-      "name": "@storybook/manager-webpack5",
-      "type": "build"
-    },
-    {
-      "name": "@storybook/react",
-      "type": "build"
-    },
-    {
-      "name": "@svgr/webpack",
-      "type": "build"
-    },
-    {
-      "name": "@testing-library/jest-dom",
-      "type": "build"
-    },
-    {
-      "name": "@testing-library/react",
-      "type": "build"
-    },
-    {
-      "name": "@testing-library/react-hooks",
-      "type": "build"
-    },
-    {
-      "name": "@testing-library/user-event",
-      "type": "build"
-    },
-    {
-      "name": "@types/aws-lambda",
-      "type": "build"
-    },
-    {
-      "name": "@types/enzyme",
-      "type": "build"
-    },
-    {
       "name": "@types/jest",
-      "type": "build"
-    },
-    {
-      "name": "@types/jest-when",
-      "type": "build"
-    },
-    {
-      "name": "@types/jsonwebtoken",
-      "type": "build"
-    },
-    {
-      "name": "@types/jwk-to-pem",
-      "type": "build"
-    },
-    {
-      "name": "@types/lodash",
       "type": "build"
     },
     {
       "name": "@types/node",
       "version": "^12.13.0",
-      "type": "build"
-    },
-    {
-      "name": "@types/ramda",
       "type": "build"
     },
     {
@@ -130,112 +18,12 @@
       "type": "build"
     },
     {
-      "name": "@types/react-helmet",
-      "type": "build"
-    },
-    {
-      "name": "@types/testing-library__jest-dom",
-      "type": "build"
-    },
-    {
-      "name": "@types/uuid",
-      "type": "build"
-    },
-    {
-      "name": "@wojtekmaj/enzyme-adapter-react-17",
-      "type": "build"
-    },
-    {
-      "name": "amazon-cognito-identity-js",
-      "type": "build"
-    },
-    {
-      "name": "aws-lambda",
-      "type": "build"
-    },
-    {
-      "name": "aws-sdk",
-      "type": "build"
-    },
-    {
-      "name": "aws-sdk-mock",
-      "type": "build"
-    },
-    {
-      "name": "axios",
-      "type": "build"
-    },
-    {
-      "name": "babel-plugin-module-resolver",
-      "type": "build"
-    },
-    {
-      "name": "babel-preset-react-app",
-      "type": "build"
-    },
-    {
-      "name": "cypress",
-      "type": "build"
-    },
-    {
-      "name": "enzyme",
-      "type": "build"
-    },
-    {
-      "name": "fp-ts",
-      "type": "build"
-    },
-    {
-      "name": "inversify",
-      "type": "build"
-    },
-    {
       "name": "jest",
-      "type": "build"
-    },
-    {
-      "name": "jest-enzyme",
-      "type": "build"
-    },
-    {
-      "name": "jest-extended",
       "type": "build"
     },
     {
       "name": "jest-junit",
       "version": "^12",
-      "type": "build"
-    },
-    {
-      "name": "jest-mock-extended",
-      "type": "build"
-    },
-    {
-      "name": "jest-transform-stub",
-      "type": "build"
-    },
-    {
-      "name": "jest-when",
-      "type": "build"
-    },
-    {
-      "name": "jsonwebtoken",
-      "type": "build"
-    },
-    {
-      "name": "jwk-to-pem",
-      "type": "build"
-    },
-    {
-      "name": "lodash",
-      "type": "build"
-    },
-    {
-      "name": "next-aws-lambda-webpack-plugin",
-      "type": "build"
-    },
-    {
-      "name": "next-images",
       "type": "build"
     },
     {
@@ -245,18 +33,6 @@
     },
     {
       "name": "projen",
-      "type": "build"
-    },
-    {
-      "name": "ramda",
-      "type": "build"
-    },
-    {
-      "name": "react-helmet",
-      "type": "build"
-    },
-    {
-      "name": "reflect-metadata",
       "type": "build"
     },
     {
@@ -273,15 +49,219 @@
       "type": "build"
     },
     {
-      "name": "uuid",
-      "type": "build"
+      "name": "@aws-amplify/auth",
+      "type": "runtime"
     },
     {
-      "name": "webpack",
-      "type": "build"
+      "name": "@axe-core/react",
+      "type": "runtime"
     },
     {
-      "name": "autoprefixer",
+      "name": "@babel/core",
+      "type": "runtime"
+    },
+    {
+      "name": "@cypress/code-coverage",
+      "type": "runtime"
+    },
+    {
+      "name": "@emotion/babel-plugin",
+      "type": "runtime"
+    },
+    {
+      "name": "@emotion/jest",
+      "type": "runtime"
+    },
+    {
+      "name": "@emotion/react",
+      "type": "runtime"
+    },
+    {
+      "name": "@emotion/styled",
+      "type": "runtime"
+    },
+    {
+      "name": "@storybook/addon-a11y",
+      "type": "runtime"
+    },
+    {
+      "name": "@storybook/addon-actions",
+      "type": "runtime"
+    },
+    {
+      "name": "@storybook/addon-essentials",
+      "type": "runtime"
+    },
+    {
+      "name": "@storybook/addon-links",
+      "type": "runtime"
+    },
+    {
+      "name": "@storybook/builder-webpack5",
+      "type": "runtime"
+    },
+    {
+      "name": "@storybook/cli",
+      "type": "runtime"
+    },
+    {
+      "name": "@storybook/manager-webpack5",
+      "type": "runtime"
+    },
+    {
+      "name": "@storybook/react",
+      "type": "runtime"
+    },
+    {
+      "name": "@svgr/webpack",
+      "type": "runtime"
+    },
+    {
+      "name": "@testing-library/jest-dom",
+      "type": "runtime"
+    },
+    {
+      "name": "@testing-library/react",
+      "type": "runtime"
+    },
+    {
+      "name": "@testing-library/react-hooks",
+      "type": "runtime"
+    },
+    {
+      "name": "@testing-library/user-event",
+      "type": "runtime"
+    },
+    {
+      "name": "@types/aws-lambda",
+      "type": "runtime"
+    },
+    {
+      "name": "@types/enzyme",
+      "type": "runtime"
+    },
+    {
+      "name": "@types/jest",
+      "type": "runtime"
+    },
+    {
+      "name": "@types/jest-when",
+      "type": "runtime"
+    },
+    {
+      "name": "@types/jsonwebtoken",
+      "type": "runtime"
+    },
+    {
+      "name": "@types/jwk-to-pem",
+      "type": "runtime"
+    },
+    {
+      "name": "@types/lodash",
+      "type": "runtime"
+    },
+    {
+      "name": "@types/ramda",
+      "type": "runtime"
+    },
+    {
+      "name": "@types/react-helmet",
+      "type": "runtime"
+    },
+    {
+      "name": "@types/testing-library__jest-dom",
+      "type": "runtime"
+    },
+    {
+      "name": "@types/uuid",
+      "type": "runtime"
+    },
+    {
+      "name": "@wojtekmaj/enzyme-adapter-react-17",
+      "type": "runtime"
+    },
+    {
+      "name": "amazon-cognito-identity-js",
+      "type": "runtime"
+    },
+    {
+      "name": "aws-lambda",
+      "type": "runtime"
+    },
+    {
+      "name": "aws-sdk",
+      "type": "runtime"
+    },
+    {
+      "name": "aws-sdk-mock",
+      "type": "runtime"
+    },
+    {
+      "name": "axios",
+      "type": "runtime"
+    },
+    {
+      "name": "babel-plugin-module-resolver",
+      "type": "runtime"
+    },
+    {
+      "name": "babel-preset-react-app",
+      "type": "runtime"
+    },
+    {
+      "name": "cypress",
+      "type": "runtime"
+    },
+    {
+      "name": "enzyme",
+      "type": "runtime"
+    },
+    {
+      "name": "esbuild",
+      "type": "runtime"
+    },
+    {
+      "name": "fp-ts",
+      "type": "runtime"
+    },
+    {
+      "name": "inversify",
+      "type": "runtime"
+    },
+    {
+      "name": "jest",
+      "type": "runtime"
+    },
+    {
+      "name": "jest-enzyme",
+      "type": "runtime"
+    },
+    {
+      "name": "jest-extended",
+      "type": "runtime"
+    },
+    {
+      "name": "jest-mock-extended",
+      "type": "runtime"
+    },
+    {
+      "name": "jest-transform-stub",
+      "type": "runtime"
+    },
+    {
+      "name": "jest-when",
+      "type": "runtime"
+    },
+    {
+      "name": "jsonwebtoken",
+      "type": "runtime"
+    },
+    {
+      "name": "jwk-to-pem",
+      "type": "runtime"
+    },
+    {
+      "name": "lodash",
       "type": "runtime"
     },
     {
@@ -289,7 +269,15 @@
       "type": "runtime"
     },
     {
-      "name": "postcss",
+      "name": "next-aws-lambda-webpack-plugin",
+      "type": "runtime"
+    },
+    {
+      "name": "next-images",
+      "type": "runtime"
+    },
+    {
+      "name": "ramda",
       "type": "runtime"
     },
     {
@@ -301,7 +289,23 @@
       "type": "runtime"
     },
     {
-      "name": "tailwindcss",
+      "name": "react-helmet",
+      "type": "runtime"
+    },
+    {
+      "name": "reflect-metadata",
+      "type": "runtime"
+    },
+    {
+      "name": "ts-jest",
+      "type": "runtime"
+    },
+    {
+      "name": "uuid",
+      "type": "runtime"
+    },
+    {
+      "name": "webpack",
       "type": "runtime"
     }
   ],

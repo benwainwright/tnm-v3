@@ -1,10 +1,10 @@
-import { FC } from "react";
-import { ChallengeForm } from "@app/components/containers";
 import { Input } from "@app/components/atoms";
+import { ChallengeForm } from "@app/components/containers";
+import { BUTTON_BLACK } from "@app/config";
 import { ErrorResponse } from "@app/types/error-response";
 import { LoginFormData } from "@app/types/srp-data";
-import { BUTTON_BLACK } from "@app/config";
 import styled from "@emotion/styled";
+import { FC } from "react";
 
 interface LoginFormProps {
   onSubmit?: (data: LoginFormData) => void;

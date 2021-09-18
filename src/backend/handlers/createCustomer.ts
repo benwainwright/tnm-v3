@@ -1,6 +1,6 @@
-import { Customer } from "../../types";
 import { AppSyncResolverHandler } from "aws-lambda";
 import * as uuid from "uuid";
+import { Customer } from "../../types";
 import { makeHandler } from "../services/configure-container";
 
 const withServices = makeHandler<AppSyncResolverHandler<Customer, Customer>>();

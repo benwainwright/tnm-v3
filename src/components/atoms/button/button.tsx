@@ -1,6 +1,6 @@
+import styled from "@emotion/styled";
 import type { FC, MouseEvent } from "react";
 
-import styled from "@emotion/styled";
 import { BUTTON_BLACK } from "../../../config";
 
 export interface ButtonProps {

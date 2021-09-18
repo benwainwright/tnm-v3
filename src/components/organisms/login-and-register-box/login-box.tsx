@@ -1,7 +1,7 @@
 import { FC } from "react";
 import LoginForm from "./login-form";
-import NewPasswordForm from "./new-password-form";
 import MfaForm from "./mfa-form";
+import NewPasswordForm from "./new-password-form";
 import { useLoginBox } from "./use-login-box";
 
 export enum LoginState {

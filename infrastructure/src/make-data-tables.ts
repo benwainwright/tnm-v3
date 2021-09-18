@@ -1,9 +1,9 @@
-import { RemovalPolicy } from 'aws-cdk-lib';
+import { RemovalPolicy } from '@aws-cdk/core';
 import {
   AttributeType,
   BillingMode,
   Table,
-} from 'aws-cdk-lib/lib/aws-dynamodb';
+} from '@aws-cdk/aws-dynamodb';
 import { Construct } from 'constructs';
 import { getResourceName } from './get-resource-name';
 

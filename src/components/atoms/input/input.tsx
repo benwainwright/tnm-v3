@@ -1,6 +1,5 @@
-import { FC, ChangeEvent } from "react";
-
 import styled from "@emotion/styled";
+import { FC, ChangeEvent } from "react";
 
 import { LABEL_TEXT, BUTTON_BLACK } from "../../../config";
 

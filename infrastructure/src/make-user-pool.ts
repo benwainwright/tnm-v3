@@ -1,5 +1,5 @@
-import { CfnOutput, RemovalPolicy } from 'aws-cdk-lib';
-import { UserPool, VerificationEmailStyle } from 'aws-cdk-lib/lib/aws-cognito';
+import { CfnOutput, RemovalPolicy } from '@aws-cdk/core';
+import { UserPool, VerificationEmailStyle } from '@aws-cdk/aws-cognito';
 import { Construct } from 'constructs';
 import { getResourceName } from './get-resource-name';
 
