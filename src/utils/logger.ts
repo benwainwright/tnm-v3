@@ -5,7 +5,6 @@ const minLevel =
     ? "info"
     : "silly";
 
-const type = process.env.NODE_ENV === "production" ?
-             "json" : "pretty"
+const type = process.env.NODE_ENV === "production" ? "json" : "pretty";
 
 export const logger = new Logger({ minLevel, type });

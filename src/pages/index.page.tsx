@@ -1,8 +1,7 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 
 import { ParagraphText } from "@app/components/atoms";
 import { Layout, Hero } from "@app/components/containers";
-import { signOut } from "@app/aws/authenticate";
 import styled from "@emotion/styled";
 
 const StyledDiv = styled.div`
@@ -10,10 +9,6 @@ const StyledDiv = styled.div`
 `;
 
 const IndexPage: FC = () => {
-  useEffect(() => {
-    signOut();
-  }, []);
-
   return (
     <Layout>
       <Hero>

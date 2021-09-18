@@ -57,4 +57,3 @@ export class Container<T> {
     return this.rawContainer.bind(serviceIdentifier);
   }
 }
-

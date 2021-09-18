@@ -3,7 +3,7 @@ export interface Claim {
   auth_time: number;
   iss: string;
   exp: number;
-  "cognito:groups": string[];
+  "cognito:groups"?: string[];
   username: string;
   client_id: string;
 }
