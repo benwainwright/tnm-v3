@@ -61,6 +61,10 @@
       "type": "runtime"
     },
     {
+      "name": "@babel/plugin-proposal-decorators",
+      "type": "runtime"
+    },
+    {
       "name": "@cypress/code-coverage",
       "type": "runtime"
     },

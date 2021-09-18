@@ -37,6 +37,7 @@ const deps = [
     "inversify",
     "jest-enzyme",
     "jest-transform-stub",
+    "@babel/plugin-proposal-decorators",
     "@axe-core/react",
     "@storybook/builder-webpack5",
     "next-images",

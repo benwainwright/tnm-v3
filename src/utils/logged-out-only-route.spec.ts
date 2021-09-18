@@ -8,6 +8,7 @@ jest.mock("./authentication");
 
 describe("logged out only route", () => {
   it("redirects to the supplied route if there is an accessToken and verification is successful", async () => {
+
     mocked(verifyJwtToken).mockResolvedValue({
       userName: "user",
       isValid: true,

@@ -38,6 +38,7 @@
     "@aws-amplify/auth": "^4.3.6",
     "@axe-core/react": "^4.2.2",
     "@babel/core": "^7.15.5",
+    "@babel/plugin-proposal-decorators": "^7.15.4",
     "@cypress/code-coverage": "^3.9.11",
     "@emotion/babel-plugin": "^11.3.0",
     "@emotion/jest": "^11.3.0",
