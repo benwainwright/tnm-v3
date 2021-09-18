@@ -4,6 +4,7 @@ import { Construct } from 'constructs';
 
 interface NextPagesApiProps {
   lambdaOutPath: string;
+  nextDir: string;
 }
 
 export class NextPagesApi extends Construct {

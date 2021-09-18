@@ -4,10 +4,10 @@ import {
   BillingMode,
   Table,
 } from '@aws-cdk/aws-dynamodb';
-import { Construct } from 'constructs';
+import { Construct } from "@aws-cdk/core";
 import { getResourceName } from './get-resource-name';
 
-const makeTable = (
+export const makeTable = (
   context: Construct,
   name: string,
   env: string,

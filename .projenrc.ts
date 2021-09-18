@@ -140,7 +140,8 @@ const cdk = [
   "route53-targets",
   "s3",
   "s3-deployment",
-  "dynamodb"
+  "dynamodb",
+  "appsync"
 ]
 
 const infrastructure = new AwsCdkTypeScriptApp({

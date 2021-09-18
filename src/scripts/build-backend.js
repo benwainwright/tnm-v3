@@ -7,7 +7,6 @@ const { build } = require("esbuild");
 
 const root = path.resolve(__dirname, "..", "..");
 const src = path.resolve(root, "src");
-const dist = path.resolve(root, "dist");
 
 const inDir = path.resolve(src, "backend", "handlers");
 
