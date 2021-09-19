@@ -1,6 +1,6 @@
 import { IGraphqlApi } from "@aws-cdk/aws-appsync";
 import { Construct } from "@aws-cdk/core";
-import { getResourceName } from './get-resource-name';
+import { getResourceName } from "./get-resource-name";
 
 import * as lambda from "@aws-cdk/aws-lambda";
 
@@ -15,8 +15,7 @@ export const generateResolverLambda = (
   handlerFolder: string,
   environment: { [key: string]: string }
 ) => {
-
-  const baseName = `${name}-${type.toLocaleLowerCase()}`
+  const baseName = `${name}-${type.toLocaleLowerCase()}`;
 
   const resolverLambda = new lambda.Function(context, baseName, {
     functionName: getResourceName(baseName, envName),

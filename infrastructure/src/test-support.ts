@@ -1,5 +1,3 @@
-import { Volume } from 'memfs';
+import { Volume } from "memfs";
 
 export const vol = new Volume();
-
-

@@ -1,30 +1,41 @@
 import { Construct } from "@aws-cdk/core";
-import { IResolver } from "./graphql-crud-resolver"
-import { IGraphqlApi } from "@aws-cdk/aws-appsync";
+import { IResolver } from "./graphql-crud-resolver";
+import { AuthorizationType, IGraphqlApi } from "@aws-cdk/aws-appsync";
 import { GraphqlApi, GraphqlApiProps } from "@aws-cdk/aws-appsync";
-
+import { IUserPool } from "@aws-cdk/aws-cognito";
 
 interface GraphqlDataApiProps extends GraphqlApiProps {
-  handlersFolder: string
-  resolvers: IResolver[]
+  handlersFolder: string;
+  resolvers: IResolver[];
   transient?: boolean;
-  envName: string
+  userPool?: IUserPool;
 }
 
 export class GraphqlDataApi extends Construct {
-  public readonly graphqlApi: IGraphqlApi
-  public readonly handlersFolder: string
+  public readonly graphqlApi: IGraphqlApi;
+  public readonly handlersFolder: string;
   public readonly transient?: boolean;
-  public readonly envName: string
-  public readonly name: string
+  public readonly name: string;
 
   constructor(scope: Construct, id: string, props: GraphqlDataApiProps) {
-    super(scope, id)
-    this.graphqlApi = new GraphqlApi(this, `${id}-api`, props);
-    this.handlersFolder = props.handlersFolder
-    this.transient = props.transient
-    this.envName = props.envName
-    this.name = props.name
-    props.resolvers.forEach(resolver => resolver.setApi(this))
+    super(scope, id);
+    const apiProps = props.userPool
+      ? {
+          ...props,
+          authorizationConfig: {
+            defaultAuthorization: {
+              authorizationType: AuthorizationType.USER_POOL,
+              userPoolConfig: {
+                userPool: props.userPool,
+              },
+            },
+          },
+        }
+      : props;
+    this.graphqlApi = new GraphqlApi(this, `${id}-api`, apiProps);
+    this.handlersFolder = props.handlersFolder;
+    this.transient = props.transient;
+    this.name = props.name;
+    props.resolvers.forEach((resolver) => resolver.setApi(this));
   }
 }
