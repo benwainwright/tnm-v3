@@ -100,16 +100,16 @@ describe("the graphql data api construct", () => {
       schema: Schema.fromAsset(path.resolve(process.cwd(), "schema.graphql")),
     });
 
-    const userPoolRef = Capture.aString()
+    const userPoolRef = Capture.aString();
 
     cdkExpect(stack).to(
       haveResourceLike("AWS::AppSync::GraphQLApi", {
         AuthenticationType: "AMAZON_COGNITO_USER_POOLS",
         UserPoolConfig: {
           UserPoolId: {
-            Ref: userPoolRef.capture()
-          }
-        }
+            Ref: userPoolRef.capture(),
+          },
+        },
       })
     );
 
@@ -119,7 +119,7 @@ describe("the graphql data api construct", () => {
 
     const pool = resources.find(([key]) => key === userPoolRef.capturedValue);
 
-    expect(pool).not.toBeUndefined()
+    expect(pool).not.toBeUndefined();
 
     if (pool) {
       const resource = pool[1] as {
@@ -128,7 +128,7 @@ describe("the graphql data api construct", () => {
       };
       expect(resource.Type).toEqual("AWS::Cognito::UserPool");
     }
-  })
+  });
 
   it("Creates a table for the entity which is not transient by default", async () => {
     const app = new App();

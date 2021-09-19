@@ -16,7 +16,6 @@ export interface IResolver {
 }
 
 export class GraphqlCrudResolver extends Construct {
-
   static forEntity(scope: Construct, id: string, entityName: string) {
     return new GraphqlCrudResolver(scope, id, { resourceName: entityName });
   }
@@ -26,7 +25,11 @@ export class GraphqlCrudResolver extends Construct {
 
   private prepared = false;
 
-  private constructor(scope: Construct, id: string, props: GraphqlCrudResolverProps) {
+  private constructor(
+    scope: Construct,
+    id: string,
+    props: GraphqlCrudResolverProps
+  ) {
     super(scope, id);
     this.resourceName = props.resourceName;
   }
@@ -56,12 +59,11 @@ export class GraphqlCrudResolver extends Construct {
       `delete${this.capitalize(this.resourceName)}`,
       "Mutation"
     );
-    this.generateDataTable(pluralize(this.resourceName), [
-      list,
-      create,
-      update,
-      remove,
-    ]);
+    this.generateDataTable(
+      pluralize(this.resourceName),
+      [list],
+      [create, update, remove]
+    );
     this.prepared = true;
   }
 
@@ -73,7 +75,11 @@ export class GraphqlCrudResolver extends Construct {
     return dataApi;
   }
 
-  private generateDataTable(name: string, accessors: IGrantable[]) {
+  private generateDataTable(
+    name: string,
+    readers: IGrantable[],
+    writers: IGrantable[]
+  ) {
     const dataApi = this.getApi();
     const baseName = `${dataApi.name}-${name}`;
     const table = new Table(this, `${baseName}-table`, {
@@ -88,7 +94,8 @@ export class GraphqlCrudResolver extends Construct {
       },
     });
 
-    accessors.forEach((accessor) => table.grantReadWriteData(accessor));
+    readers.forEach((reader) => table.grantReadData(reader));
+    writers.forEach((writer) => table.grantWriteData(writer));
   }
 
   private generateResolverLambda(name: string, type: ResolverType) {

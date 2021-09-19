@@ -43,17 +43,21 @@ export class TnmV3Stack extends Stack {
       distribution
     );
 
-    new GraphqlDataApi(this, 'data-api', {
+    new GraphqlDataApi(this, "data-api", {
       name: getResourceName("data-api", props.envName),
       handlersFolder: path.resolve(projectRoot, "backend"),
       resolvers: [
         GraphqlCrudResolver.forEntity(this, "customers-resolver", "customer"),
         GraphqlCrudResolver.forEntity(this, "recipes-resolver", "recipe"),
-        GraphqlCrudResolver.forEntity(this, "customisations-resolver", "customisation"),
+        GraphqlCrudResolver.forEntity(
+          this,
+          "customisations-resolver",
+          "customisation"
+        ),
       ],
       transient,
-      userPool
-    })
+      userPool,
+    });
   }
 }
 
