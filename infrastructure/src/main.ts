@@ -2,10 +2,12 @@ import * as path from "path";
 import { App, Stack, StackProps } from "@aws-cdk/core";
 import { Construct } from "constructs";
 import { deployStatics } from "./deploy-statics";
-import { makeDataTables } from "./make-data-tables";
 import { makePagesApi } from "./make-pages-api";
 import { makeUserPool } from "./make-user-pool";
 import { setupFrontDoor } from "./setup-front-door";
+import { GraphqlDataApi } from "./constructs/graphql-data-api";
+import { getResourceName } from "./get-resource-name";
+import { GraphqlCrudResolver } from "./constructs/graphql-crud-resolver";
 
 const projectRoot = path.resolve(__dirname, "..", "..");
 
@@ -41,7 +43,17 @@ export class TnmV3Stack extends Stack {
       distribution
     );
 
-    makeDataTables(this, transient, props.envName);
+    new GraphqlDataApi(this, 'data-api', {
+      name: getResourceName("data-api", props.envName),
+      handlersFolder: path.resolve(projectRoot, "backend"),
+      resolvers: [
+        GraphqlCrudResolver.forEntity(this, "customers-resolver", "customer"),
+        GraphqlCrudResolver.forEntity(this, "recipes-resolver", "recipe"),
+        GraphqlCrudResolver.forEntity(this, "customisations-resolver", "customisation"),
+      ],
+      transient,
+      userPool
+    })
   }
 }
 

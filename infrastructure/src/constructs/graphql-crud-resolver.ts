@@ -16,6 +16,7 @@ export interface IResolver {
 }
 
 export class GraphqlCrudResolver extends Construct {
+
   static forEntity(scope: Construct, id: string, entityName: string) {
     return new GraphqlCrudResolver(scope, id, { resourceName: entityName });
   }
@@ -25,7 +26,7 @@ export class GraphqlCrudResolver extends Construct {
 
   private prepared = false;
 
-  constructor(scope: Construct, id: string, props: GraphqlCrudResolverProps) {
+  private constructor(scope: Construct, id: string, props: GraphqlCrudResolverProps) {
     super(scope, id);
     this.resourceName = props.resourceName;
   }
